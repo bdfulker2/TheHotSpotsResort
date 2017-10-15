@@ -20,6 +20,7 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
      */
     public BookCancelLookUpGUI() {
         initComponents();
+        setLookAndFeel();
     }
 
     /**
@@ -80,17 +81,22 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookingButtonActionPerformed
-        // TODO add your handling code here:
-        //LoginGUI loginGui = new LoginGUI();
-        //String[] args = null;
-        LoginGUI.mainGUI();
-        dispose();
+        try {
+            // TODO add your handling code here:
+            //LoginGUI loginGui = new LoginGUI();
+            //String[] args = null;
+            TheHotSpotsResort.bookingButtonClick();
+        } catch (IOException ex) {
+            Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        bookButton = true;
+        
     }//GEN-LAST:event_BookingButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void mainGUI() {
+    public static void setLookAndFeel() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -115,15 +121,16 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new BookCancelLookUpGUI().setVisible(true);
             }
-        });
+        });*/
         
   
     }
 
+    protected static boolean bookButton = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JButton BookingButton;
     protected static javax.swing.JButton CancelButton;

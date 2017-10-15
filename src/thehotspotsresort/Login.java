@@ -31,7 +31,7 @@ public class Login extends LoginGUI
 
     protected static String EIN = LoginGUI.einTextField.getText();
     protected static boolean Admin = false;     //static boolean for Admin
-    private boolean match = false;              //boolean for if passwords match
+    protected static boolean match;              
     
     /*
     *@params EIN and password
@@ -39,6 +39,7 @@ public class Login extends LoginGUI
     */
     public Login(String EIN, String password) throws IOException    
     {
+        Login.match = false;
         Login.EIN = EIN;                
         Login.password = password;
      
@@ -90,8 +91,8 @@ public class Login extends LoginGUI
                                 "You EIN or Password isn't the correct length");
             //TheHotSpotsResort.loginButtonClick();
             //String[] args = null;
-            BookCancelLookUpGUI.mainGUI();
-            //System.exit(0);
+            //BookCancelLookUpGUI.mainGUI();
+            System.exit(0);
         }
 
     }
@@ -121,10 +122,8 @@ public class Login extends LoginGUI
             {
                 JOptionPane.showMessageDialog(null, 
                       "Your EIN or Password or both doesn't match our records");
-                LoginGUI.passwordTextField.setText(" ");
-                LoginGUI.einTextField.setText(" ");
-                BookCancelLookUpGUI.mainGUI();
-               
+                //BookCancelLookUpGUI.mainGUI();
+               System.exit(0);
             }
         }
         else if(EIN.charAt(0) == 's')
@@ -142,19 +141,16 @@ public class Login extends LoginGUI
             {
                 JOptionPane.showMessageDialog(null, 
                       "Your EIN or Password or both doesn't match our records");
-                LoginGUI.passwordTextField.setText(" ");
-                LoginGUI.einTextField.setText(" ");
-                BookCancelLookUpGUI.mainGUI();
-                
+                //BookCancelLookUpGUI.mainGUI();
+                System.exit(0);
             }
         }
         else
         {//if EIN doesn't start with an 'a' or 'a' then it was wrong and restart
             JOptionPane.showMessageDialog(null, 
                              "You EIN doesn't start with the right characters");
-            LoginGUI.passwordTextField.setText(" ");
-            LoginGUI.einTextField.setText(" ");
-            BookCancelLookUpGUI.mainGUI();
+            //BookCancelLookUpGUI.mainGUI();
+                System.exit(0);
              
         }
     }  

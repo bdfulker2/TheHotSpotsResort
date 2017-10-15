@@ -21,6 +21,8 @@ public class LoginGUI extends javax.swing.JFrame {
      */
     public LoginGUI() {
         initComponents();
+        setLookAndFeel();
+        
         
     }
 
@@ -28,7 +30,7 @@ public class LoginGUI extends javax.swing.JFrame {
      * @param args the command line arguments
      * @throws java.io.IOException
      */
-    public static void mainGUI() //throws IOException
+    public static void setLookAndFeel() //throws IOException
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -42,23 +44,17 @@ public class LoginGUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+       /* java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginGUI().setVisible(true);
             }
-        });
+        });*/
+        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,15 +66,12 @@ public class LoginGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         einTextField = new javax.swing.JTextField();
-        passwordTextField = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         loginPasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         einTextField.setText("Enter EIN Here");
-
-        passwordTextField.setText("Enter Password Here");
 
         loginButton.setText("Login");
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -97,9 +90,7 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(passwordTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                            .addComponent(einTextField)))
+                        .addComponent(einTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,9 +103,7 @@ public class LoginGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addComponent(einTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49)
-                .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(86, 86, 86)
                 .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginButton)
@@ -125,6 +114,9 @@ public class LoginGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
+        
+        logGUI = true;
+        
         try {
             // TODO add your handling code here:
             //TheHotSpotsResort.loginButtonClick();
@@ -132,18 +124,15 @@ public class LoginGUI extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
+
         
     }//GEN-LAST:event_loginButtonMouseClicked
 
 
-
+    protected static boolean logGUI = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JTextField einTextField;
     protected static javax.swing.JButton loginButton;
     protected static javax.swing.JPasswordField loginPasswordField;
-    protected static javax.swing.JTextField passwordTextField;
     // End of variables declaration//GEN-END:variables
 }

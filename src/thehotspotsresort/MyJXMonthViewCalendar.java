@@ -7,6 +7,7 @@ package thehotspotsresort;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -28,7 +29,6 @@ public class MyJXMonthViewCalendar extends JFrame {
     
     
     private static DateSpan span;
-    
     private static int numOfDays = 0;
     private static Calendar eCal, sCal;
     
@@ -36,12 +36,10 @@ public class MyJXMonthViewCalendar extends JFrame {
     public MyJXMonthViewCalendar()
     {
         this.span = span;
-        initComponents();
-        
-       
+        initComponents();      
     }
     
-    public static void initComponents() {
+    private void initComponents() {
         
         setLookAndFeel();
                       //intialize DateSpan variable
@@ -75,59 +73,7 @@ public class MyJXMonthViewCalendar extends JFrame {
         action = (ActionEvent event) -> {
             MyJXMonthViewCalendar.span = new DateSpan(monthView.getFirstSelectionDate(),
                     monthView.getLastSelectionDate());
-            //////////////////////////////////////////////////////
-            /**
-             * This section converts the data from a date span to the start and
-             * end dates, which then formats the dates using SimpleDateFormater
-             * It save each part of the date as a String start and end Month, 
-             * Day, and Year. The day and year are parsed to ints, but the month
-             * is Spelled out. So the "MMMM" spells out the whole word. The word
-             * is then compared to an String[] of months "January, February etc
-             * then th index location is taking and that number is the month
-             * number. The type calendar uses 0 -11, for month zero being Jan
-             * so with the array so the solution doesn't need to be manipulated
-             * once each month, day, and year for start and end is converted to 
-             * type int. We put it in Calendar.set(Year, Month, Day). Then
-             * the numOfDays method is called to add a day to the calendar day
-             * so the system calculates the number of days of the stay so it can 
-             * be used later
-            */
-             
-        /*    int sMonth, sDay, sYear;        
-            int eMonth, eDay, eYear;
-
-            Date sDate = span.getStartAsDate();
-            System.out.println("sdate ===== " + sDate);
-            Date eDate = span.getEndAsDate();
-            System.out.println("eDate = " + eDate);
-            SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
-            SimpleDateFormat dayFormat = new SimpleDateFormat("d");
-            SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
-            String startMonth = monthFormat.format(sDate);
-            String startDay = dayFormat.format(sDate);
-            String startYear = yearFormat.format(sDate);
-            String endMonth = monthFormat.format(eDate);
-            String endDay = dayFormat.format(eDate);
-            String endYear = yearFormat.format(eDate);
-
-            //sMonth = Integer.parseInt(startMonth);
-            sDay = Integer.parseInt(startDay);
-            sYear = Integer.parseInt(startYear);
-
-            //eMonth = Integer.parseInt(endMonth);
-            eDay = Integer.parseInt(endDay);
-            eYear = Integer.parseInt(endYear);
-             
-            String[] monthInYear = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-            eMonth = (Arrays.asList(monthInYear).indexOf(endMonth) + 1); 		//this line goes to the above array and gets its index locations number and adds one to it so the number matches 				
-            sMonth = (Arrays.asList(monthInYear).indexOf(startMonth) + 1);
-            
-            System.out.println("emonth = " + eMonth + " -- sMonth = " + sMonth);
-            
-            sCal = Calendar.getInstance(); 
-            eCal = Calendar.getInstance();
-            eCal.set(eYear, eMonth, eDay);
-            sCal.set(sYear, sMonth, sDay);*/
+         
             dateTypeToCalendarType(span);
             ///////////////////////////////////////////////////////////
             System.out.println("span = " + span);
@@ -164,82 +110,59 @@ public class MyJXMonthViewCalendar extends JFrame {
      */
     public static void dateTypeToCalendarType(DateSpan newSpan)
     {
-        //////////////////////////////////////////////////////
-            
-           
-             
+                                //delcar local vars for start date and endDate
             int sMonth, sDay, sYear;        
             int eMonth, eDay, eYear;
-
+                    //call dateSpan getStartAsDate() stored local var Date sDate
             Date sDate = span.getStartAsDate();
-            System.out.println("sdate ===== " + sDate);
-            Date eDate = span.getEndAsDate();
-            System.out.println("eDate = " + eDate);
+            System.out.println("sdate ===== " + sDate); //testing data println
+                    //call dateSpan getEndAsDate() store local var Date eDate 
+            Date eDate = span.getEndAsDate(); 
+            System.out.println("eDate = " + eDate); //testing data println
+               //SimpleDateFormat to format to seperate Month Day Year
+               //the "MMMM" spells out the month, but day and year string number
             SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
             SimpleDateFormat dayFormat = new SimpleDateFormat("d");
             SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+               //formated sDate stored in local string start MOnth, day , year
             String startMonth = monthFormat.format(sDate);
             String startDay = dayFormat.format(sDate);
             String startYear = yearFormat.format(sDate);
+                //formated eDate stored in local string end MOnth, day , year
             String endMonth = monthFormat.format(eDate);
             String endDay = dayFormat.format(eDate);
             String endYear = yearFormat.format(eDate);
 
-            //sMonth = Integer.parseInt(startMonth);
+                                        //parse sDay, sYear from string to int
             sDay = Integer.parseInt(startDay);
             sYear = Integer.parseInt(startYear);
 
-            //eMonth = Integer.parseInt(endMonth);
+                                        //parse eDay, eYear from string to int
             eDay = Integer.parseInt(endDay);
             eYear = Integer.parseInt(endYear);
              
-            String[] monthInYear = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
-            eMonth = (Arrays.asList(monthInYear).indexOf(endMonth) + 1); 		//this line goes to the above array and gets its index locations number and adds one to it so the number matches 				
+                        //used to get int representation of month index locaion
+                        //location + 1 is equal to month needed to set Calendar
+            String[] monthInYear = { "January", "February", "March", "April", 
+                        "May", "June", "July", "August", "September", "October", 
+                                                       "November", "December" };
+         //this line goes to the above array and gets its index locations number
+                             //and adds one to get correct month nubmer
+            eMonth = (Arrays.asList(monthInYear).indexOf(endMonth) + 1); 		 				
             sMonth = (Arrays.asList(monthInYear).indexOf(startMonth) + 1);
-            
+                                //print to console to test wont show when 
+                                //system acutally runs
             System.out.println("emonth = " + eMonth + " -- sMonth = " + sMonth);
             
-            sCal = Calendar.getInstance(); 
-            eCal = Calendar.getInstance();
-            eCal.set(eYear, eMonth, eDay);
-            sCal.set(sYear, sMonth, sDay);
+            sCal = Calendar.getInstance();      //get calendar instance 
+            eCal = Calendar.getInstance();      //get calendar instance
+            eCal.set(eYear, eMonth, eDay);      //set eCal(Year,month, day)
+            sCal.set(sYear, sMonth, sDay);      //set sCal(Year, month, day)
     }
     
     public static void numOfDays()
     {
-        
-        
-       // int sMonth, sDay, sYear;
-       // int eMonth, eDay, eYear;
-               
-       /* Date sDate = span.getStartAsDate();
-        System.out.println("sdate ===== " + sDate);
-        Date eDate = span.getEndAsDate();
-        System.out.println("eDate = " + eDate);
-        
-        /*SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
-        SimpleDateFormat dayFormat = new SimpleDateFormat("d");
-        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
-        String startMonth = monthFormat.format(sDate);
-        String startDay = dayFormat.format(sDate);
-        String startYear = yearFormat.format(sDate);
-        String endMonth = monthFormat.format(eDate);
-        String endDay = dayFormat.format(eDate);
-        String endYear = yearFormat.format(eDate);
-        
-        sMonth = Integer.parseInt(startMonth);
-        sDay = Integer.parseInt(startDay);
-        sYear = Integer.parseInt(startYear);
-        
-        eMonth = Integer.parseInt(endMonth);
-        eDay = Integer.parseInt(endDay);
-        eYear = Integer.parseInt(endYear);
-        
-        Calendar dateStart = Calendar.getInstance();
-        
-        Calendar sCal = Calendar.getInstance() , eCal = Calendar.getInstance();
-        eCal.set(eYear, eMonth, eDay);
-        sCal.set(sYear, sMonth, sDay);*/
+          
         try
         {
             Calendar dateStart = (Calendar)sCal.clone();
@@ -252,6 +175,7 @@ public class MyJXMonthViewCalendar extends JFrame {
             System.out.println("num of day = " + numOfDays);
         }
         catch(NullPointerException npe){}
+        
         
     }
     /**

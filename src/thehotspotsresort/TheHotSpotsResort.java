@@ -36,15 +36,42 @@ public class TheHotSpotsResort extends LoginGUI
         //BookingDatePicker picker = new BookingDatePicker();//.setVisible(true);
         //picker.setVisible(true);
         
-        MyJXMonthViewCalendar myCal = new MyJXMonthViewCalendar();
-        //BookCancelLookUpGUI.mainGUI();
-        System.out.println("We are back in the main now");
+        
+        
+        BookCancelLookUpGUI bookcanlook = new BookCancelLookUpGUI() ;
+        bookcanlook.setVisible(true);
+        if(BookCancelLookUpGUI.bookButton == true)
+        {
+            bookcanlook.dispose();
+            //Login login = new Login(Login.EIN, Login.password);
+            //login.setVisible(true);
+            if((Login.match == true)&&(Login.Admin == true))
+            {   
+                
+                
+            }
+            else if((Login.match == true)&&(Login.Admin == false))
+            {
+                
+            }
+            
+        }
+                
+            
+        //MyJXMonthViewCalendar myCal = new MyJXMonthViewCalendar();
+            System.out.println("We are back in the main now");
         
     }
-    
+    public static void bookingButtonClick() throws IOException
+    {
+        LoginGUI loginGUI = new LoginGUI();
+        loginGUI.setVisible(true);
+        
+    }
     public static void loginButtonClick() throws IOException
     {
         Login login = new Login(Login.EIN, Login.password);
+       
         
     }
     
