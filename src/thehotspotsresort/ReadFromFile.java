@@ -28,9 +28,9 @@ public class ReadFromFile {
             filePath = ("C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\StaffPassword.txt");
         }
         
-        String line = "";
+        String line;
         BufferedReader reading = new BufferedReader(new FileReader(filePath));		//creates and instance of the filereader with the filePath inside a bufferedreader
-	//line = null;
+	line = null;
         try
         {
             if(line == null)
@@ -60,6 +60,10 @@ public class ReadFromFile {
 	{
             System.out.println("File Not Found " + fne.getMessage());
 	}
+        catch(IOException ioe)
+        {
+            System.out.println("An IO-Exception Has Been thrown program continues on though" + ioe.getMessage());
+        }
 	finally
 	{
             reading.close();			//close the bufferedReader 

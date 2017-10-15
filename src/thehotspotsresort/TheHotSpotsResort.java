@@ -8,12 +8,17 @@ package thehotspotsresort;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javax.swing.JFrame;
+import org.jdesktop.swingx.JXDatePicker;
 
 /**
  *
  * @author bdfulker2
  */
-public class TheHotSpotsResort extends LoginGUI implements ActionListener {
+public class TheHotSpotsResort extends LoginGUI
+{
     
 
     /**
@@ -21,8 +26,19 @@ public class TheHotSpotsResort extends LoginGUI implements ActionListener {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        LoginGUI.mainGUI(args);
+        //LoginGUI.mainGUI(args);
+        /*
+            calls BookCancelLookUpGUI jframe classes main
+        */                                
+        /*JFrame.setDefaultLookAndFeelDecorated(true);
+        BookCalendar1 bookingCal = new BookCalendar1();*/
         
+        //BookingDatePicker picker = new BookingDatePicker();//.setVisible(true);
+        //picker.setVisible(true);
+        
+        MyJXMonthViewCalendar myCal = new MyJXMonthViewCalendar();
+        //BookCancelLookUpGUI.mainGUI();
+        System.out.println("We are back in the main now");
         
     }
     
@@ -32,12 +48,26 @@ public class TheHotSpotsResort extends LoginGUI implements ActionListener {
         
     }
     
-    @Override
+   /* @Override
     public void actionPerformed(ActionEvent e)
     { 
         LoginGUI.loginButton.addActionListener(this);
         LoginGUI.einTextField.addActionListener(this);
         LoginGUI.passwordTextField.addActionListener(this);
-    }
+        LoginGUI.loginPasswordField.addActionListener(this);
+        
+         LoginGUI.einTextField.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+          
+        });
+        LoginGUI.einTextField.addActionListener(this);
+        LoginGUI.passwordTextField.addActionListener(this);
+        LoginGUI.loginPasswordField.addActionListener(this);
+    }*/
     
 }

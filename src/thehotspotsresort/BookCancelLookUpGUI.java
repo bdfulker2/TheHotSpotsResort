@@ -5,6 +5,10 @@
  */
 package thehotspotsresort;
 
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Your Name <Ben Fulker FGCU.EDU>
@@ -77,13 +81,16 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
 
     private void BookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookingButtonActionPerformed
         // TODO add your handling code here:
-        LoginGUI loginGui = new LoginGUI();
+        //LoginGUI loginGui = new LoginGUI();
+        //String[] args = null;
+        LoginGUI.mainGUI();
+        dispose();
     }//GEN-LAST:event_BookingButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void mainGUI() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -113,6 +120,8 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
                 new BookCancelLookUpGUI().setVisible(true);
             }
         });
+        
+  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

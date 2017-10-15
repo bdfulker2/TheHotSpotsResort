@@ -28,7 +28,7 @@ public class LoginGUI extends javax.swing.JFrame {
      * @param args the command line arguments
      * @throws java.io.IOException
      */
-    public static void mainGUI(String args[]) throws IOException
+    public static void mainGUI() //throws IOException
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -72,6 +72,7 @@ public class LoginGUI extends javax.swing.JFrame {
         einTextField = new javax.swing.JTextField();
         passwordTextField = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
+        loginPasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +87,8 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
 
+        loginPasswordField.setText("jPasswordField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +102,9 @@ public class LoginGUI extends javax.swing.JFrame {
                             .addComponent(einTextField)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(143, 143, 143)
-                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,7 +114,9 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addComponent(einTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginButton)
                 .addContainerGap(82, Short.MAX_VALUE))
         );
@@ -128,6 +135,7 @@ public class LoginGUI extends javax.swing.JFrame {
         
         
         
+        
     }//GEN-LAST:event_loginButtonMouseClicked
 
 
@@ -135,6 +143,7 @@ public class LoginGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JTextField einTextField;
     protected static javax.swing.JButton loginButton;
+    protected static javax.swing.JPasswordField loginPasswordField;
     protected static javax.swing.JTextField passwordTextField;
     // End of variables declaration//GEN-END:variables
 }
