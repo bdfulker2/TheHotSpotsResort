@@ -36,10 +36,10 @@ public class TheHotSpotsResort extends LoginGUI
         //BookingDatePicker picker = new BookingDatePicker();//.setVisible(true);
         //picker.setVisible(true);
         
-        
-        
+                                    
+                        //creates an instance of bookCancelLookUpGUI
         BookCancelLookUpGUI bookcanlook = new BookCancelLookUpGUI() ;
-        bookcanlook.setVisible(true);
+        bookcanlook.setVisible(true);           //sets bokcanLook and sets components to visable
         if(BookCancelLookUpGUI.bookButton == true)
         {
             bookcanlook.dispose();
@@ -56,10 +56,32 @@ public class TheHotSpotsResort extends LoginGUI
             }
             
         }
+        else if(BookCancelLookUpGUI.cancelButton == true)
+        {
+            bookcanlook.dispose();
+            //Login login = new Login(Login.EIN, Login.password);
+            //login.setVisible(true);
+            if((Login.match == true)&&(Login.Admin == true))
+            {   
+                
+                
+            }
+            else if((Login.match == true)&&(Login.Admin == false))
+            {
+                
+            }
+            
+        }
+        
+       
                 
             
         //MyJXMonthViewCalendar myCal = new MyJXMonthViewCalendar();
             System.out.println("We are back in the main now");
+        
+    }
+    public static void cancelButtonClick() throws IOException
+    {
         
     }
     public static void bookingButtonClick() throws IOException

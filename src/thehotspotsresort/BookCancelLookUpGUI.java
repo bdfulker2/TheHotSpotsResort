@@ -46,6 +46,11 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
         });
 
         CancelButton.setText("Cancel A Booking");
+        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelButtonActionPerformed(evt);
+            }
+        });
 
         LookUpButton.setText("Look Up Booking");
 
@@ -93,6 +98,16 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BookingButtonActionPerformed
 
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+        // TODO add your handling code here:
+         try {
+            TheHotSpotsResort.cancelButtonClick();
+        } catch (IOException ex) {
+            Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cancelButton = true;
+    }//GEN-LAST:event_CancelButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -129,7 +144,7 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
         
   
     }
-
+    protected static boolean cancelButton = false;
     protected static boolean bookButton = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JButton BookingButton;
