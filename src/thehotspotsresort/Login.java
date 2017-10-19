@@ -30,8 +30,8 @@ public class Login extends LoginGUI
     private static String password;// = String.copyValueOf(LoginGUI.loginPasswordField.getPassword());
 
     private static String EIN;// = LoginGUI.einTextField.getText();
-    protected static boolean Admin = false;     //static boolean for Admin
-    protected static boolean match;            
+    private static boolean Admin;     //static boolean for Admin
+    private static boolean match;            
 
     /**
      * @return the password
@@ -60,6 +60,34 @@ public class Login extends LoginGUI
     public static void setEIN(String aEIN) {
         EIN = aEIN;
     }
+
+    /**
+     * @return the Admin
+     */
+    public static boolean isAdmin() {
+        return Admin;
+    }
+
+    /**
+     * @param aAdmin the Admin to set
+     */
+    public static void setAdmin(boolean aAdmin) {
+        Admin = aAdmin;
+    }
+
+    /**
+     * @return the match
+     */
+    public static boolean isMatch() {
+        return match;
+    }
+
+    /**
+     * @param aMatch the match to set
+     */
+    public static void setMatch(boolean aMatch) {
+        match = aMatch;
+    }
     
     /*
     *@params EIN and password
@@ -68,6 +96,7 @@ public class Login extends LoginGUI
     public Login(String EIN, String password) throws IOException    
     {
         //super();
+        Login.Admin = false;
         Login.match = false;
         Login.EIN = EIN;                
         Login.password = password;
