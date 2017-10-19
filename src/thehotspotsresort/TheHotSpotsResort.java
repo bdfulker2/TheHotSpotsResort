@@ -5,8 +5,10 @@
  */
 package thehotspotsresort;
 
-import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.awt.event.ActionListener;
+import javafx.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.io.IOException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -19,104 +21,52 @@ import org.jdesktop.swingx.JXDatePicker;
  */
 public class TheHotSpotsResort extends LoginGUI
 {
-    
-
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        // TODO code application logic here
-        //LoginGUI.mainGUI(args);
-        /*
-            calls BookCancelLookUpGUI jframe classes main
-        */                                
-        /*JFrame.setDefaultLookAndFeelDecorated(true);
-        BookCalendar1 bookingCal = new BookCalendar1();*/
-        
-        //BookingDatePicker picker = new BookingDatePicker();//.setVisible(true);
-        //picker.setVisible(true);
-        
-                                    
-                        //creates an instance of bookCancelLookUpGUI
-        BookCancelLookUpGUI bookcanlook = new BookCancelLookUpGUI() ;
-        bookcanlook.setVisible(true);           //sets bokcanLook and sets components to visable
-        if(BookCancelLookUpGUI.bookButton == true)
-        {
-            bookcanlook.dispose();
-            //Login login = new Login(Login.EIN, Login.password);
-            //login.setVisible(true);
-            if((Login.match == true)&&(Login.Admin == true))
-            {   
-                
-                
-            }
-            else if((Login.match == true)&&(Login.Admin == false))
-            {
-                
-            }
-            
-        }
-        else if(BookCancelLookUpGUI.cancelButton == true)
-        {
-            bookcanlook.dispose();
-            //Login login = new Login(Login.EIN, Login.password);
-            //login.setVisible(true);
-            if((Login.match == true)&&(Login.Admin == true))
-            {   
-                
-                
-            }
-            else if((Login.match == true)&&(Login.Admin == false))
-            {
-                
-            }
-            
-        }
-        
        
-                
-            
-        //MyJXMonthViewCalendar myCal = new MyJXMonthViewCalendar();
+        LoginGUI logGUI = new LoginGUI();
+        logGUI.setVisible(true);
+        /*BookCancelLookUpGUI bookcanlook = new BookCancelLookUpGUI() ;
+        bookcanlook.setVisible(true);           //sets bokcanLook and sets components to visable
+       */
             System.out.println("We are back in the main now");
         
     }
-    public static void cancelButtonClick() throws IOException
+    
+   /* private class JButtonClickHandler implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e){
+            if(e.getSource() == BookCancelLookUpGUI.BookingButton)
+            {
+                
+            }
+                
+        }
+    }*/
+   /* public static void cancelButtonClick() throws IOException
     {
         
-    }
-    public static void bookingButtonClick() throws IOException
+    }*/
+   /* public static void bookingButtonClick() throws IOException
     {
         LoginGUI loginGUI = new LoginGUI();
         loginGUI.setVisible(true);
         
-    }
-    public static void loginButtonClick() throws IOException
+    }*/
+   /* public static void loginButtonClick() throws IOException
     {
         Login login = new Login(Login.EIN, Login.password);
        
         
-    }
+    }*/
     
-   /* @Override
     public void actionPerformed(ActionEvent e)
     { 
-        LoginGUI.loginButton.addActionListener(this);
-        LoginGUI.einTextField.addActionListener(this);
-        LoginGUI.passwordTextField.addActionListener(this);
-        LoginGUI.loginPasswordField.addActionListener(this);
-        
-         LoginGUI.einTextField.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-          
-        });
-        LoginGUI.einTextField.addActionListener(this);
-        LoginGUI.passwordTextField.addActionListener(this);
-        LoginGUI.loginPasswordField.addActionListener(this);
-    }*/
+        LoginGUI.loginButton.addActionListener((ActionListener) this);
+        LoginGUI.einTextField.addActionListener((ActionListener) this);
+        LoginGUI.loginPasswordField.addActionListener((ActionListener) this);
+    }
     
 }

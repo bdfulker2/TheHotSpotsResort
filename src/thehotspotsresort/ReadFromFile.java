@@ -39,7 +39,7 @@ public class ReadFromFile {
             }
             while((line = reading.readLine()) != null)
             {
-                if(line.contains(Login.EIN) && line.contains(Login.password))
+                if(line.contains(Login.getEIN()) && line.contains(Login.getPassword()))
                 {
                     match = true;
                     System.out.println("Match = true in reader");

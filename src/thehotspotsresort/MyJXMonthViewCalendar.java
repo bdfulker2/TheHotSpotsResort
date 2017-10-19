@@ -5,9 +5,13 @@
  */
 package thehotspotsresort;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
+
+
+//import java.awt.event;
+
+
+
+
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -20,6 +24,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 import org.jdesktop.swingx.JXMonthView;
 import org.jdesktop.swingx.calendar.DateSelectionModel;
 import org.jdesktop.swingx.calendar.DateSpan;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -29,8 +35,64 @@ public class MyJXMonthViewCalendar extends JFrame {
     
     
     private static DateSpan span;
-    private static int numOfDays = 0;
+    private static int numOfDays;
     private static Calendar eCal, sCal;
+
+    /**
+     * @return the span
+     */
+    public static DateSpan getSpan() {
+        return span;
+    }
+
+    /**
+     * @param aSpan the span to set
+     */
+    public static void setSpan(DateSpan aSpan) {
+        span = aSpan;
+    }
+
+    /**
+     * @return the numOfDays
+     */
+    public static int getNumOfDays() {
+        return numOfDays;
+    }
+
+    /**
+     * @param aNumOfDays the numOfDays to set
+     */
+    public static void setNumOfDays(int aNumOfDays) {
+        numOfDays = aNumOfDays;
+    }
+
+    /**
+     * @return the eCal
+     */
+    public static Calendar geteCal() {
+        return eCal;
+    }
+
+    /**
+     * @param aeCal the eCal to set
+     */
+    public static void seteCal(Calendar aeCal) {
+        eCal = aeCal;
+    }
+
+    /**
+     * @return the sCal
+     */
+    public static Calendar getsCal() {
+        return sCal;
+    }
+
+    /**
+     * @param asCal the sCal to set
+     */
+    public static void setsCal(Calendar asCal) {
+        sCal = asCal;
+    }
     
     
     public MyJXMonthViewCalendar()
@@ -69,21 +131,25 @@ public class MyJXMonthViewCalendar extends JFrame {
         //action = new ActionListener() 
         //{ 
         //    public void actionPerformed(ActionEvent e) {
-        ActionListener action;  
-        action = (ActionEvent event) -> {
-            MyJXMonthViewCalendar.span = new DateSpan(monthView.getFirstSelectionDate(),
-                    monthView.getLastSelectionDate());
+        ActionListener a;
+        a = new ActionListener()  
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                MyJXMonthViewCalendar.setSpan(new DateSpan(monthView.getFirstSelectionDate(),
+                        monthView.getLastSelectionDate()));
          
-            dateTypeToCalendarType(span);
+            dateTypeToCalendarType(getSpan());
             ///////////////////////////////////////////////////////////
-            System.out.println("span = " + span);
+            System.out.println("span = " + getSpan());
             System.out.println("Selected Start Date = "
-                    + span.getStartAsDate());
+                    + getSpan().getStartAsDate());
             System.out.println("Selected Start Date = "
-                    + span.getEndAsDate());
+                    + getSpan().getEndAsDate());
             numOfDays();
+            }
         };
-        monthView.addActionListener(action);  //adds actionListener to monthView
+        monthView.addActionListener(a);  //adds actionListener to monthView
         
         frame.getContentPane().add(monthView); //returns content pane for JFrame
         System.out.println(" date span outsid span = " + span);

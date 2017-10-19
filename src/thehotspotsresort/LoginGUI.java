@@ -68,10 +68,11 @@ public class LoginGUI extends javax.swing.JFrame {
         einTextField = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
         loginPasswordField = new javax.swing.JPasswordField();
+        einLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lookUpButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        einTextField.setText("Enter EIN Here");
 
         loginButton.setText("Login");
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -80,7 +81,13 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
 
-        loginPasswordField.setText("jPasswordField1");
+        loginPasswordField.setText("jPasswordFiel");
+
+        einLabel.setText("EIN");
+
+        jLabel1.setText("PASSWORD");
+
+        lookUpButton.setText("Look Up Reservation");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,26 +95,40 @@ public class LoginGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(einTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(126, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(129, 129, 129)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lookUpButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(loginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(76, 76, 76)
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(einLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(einTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(einTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
-                .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(loginButton)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(einTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(einLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(lookUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,13 +136,14 @@ public class LoginGUI extends javax.swing.JFrame {
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
         
-        logGUI = true;
-        
         try {
-            // TODO add your handling code here:
-            //TheHotSpotsResort.loginButtonClick();
-            TheHotSpotsResort.loginButtonClick();
-        } catch (IOException ex) {
+            Login.setPassword(String.copyValueOf(loginPasswordField.getPassword()));
+            
+            Login.setEIN(einTextField.getText());
+            logGUI = true;
+            Login login = new Login(Login.getEIN(), Login.getPassword());
+        } 
+        catch (IOException ex) {
             Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -131,8 +153,11 @@ public class LoginGUI extends javax.swing.JFrame {
 
     protected static boolean logGUI = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel einLabel;
     protected static javax.swing.JTextField einTextField;
+    private javax.swing.JLabel jLabel1;
     protected static javax.swing.JButton loginButton;
     protected static javax.swing.JPasswordField loginPasswordField;
+    private javax.swing.JButton lookUpButton;
     // End of variables declaration//GEN-END:variables
 }

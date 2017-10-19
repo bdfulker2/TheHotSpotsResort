@@ -27,11 +27,39 @@ public class Login extends LoginGUI
     //Static call to LoginGUI textFields to get the text in them
     //protected static String password = LoginGUI.passwordTextField.getText(); 
     //testing with a passwordFiled instead of a text field
-    protected static String password = String.copyValueOf(LoginGUI.loginPasswordField.getPassword());
+    private static String password;// = String.copyValueOf(LoginGUI.loginPasswordField.getPassword());
 
-    protected static String EIN = LoginGUI.einTextField.getText();
+    private static String EIN;// = LoginGUI.einTextField.getText();
     protected static boolean Admin = false;     //static boolean for Admin
-    protected static boolean match;              
+    protected static boolean match;            
+
+    /**
+     * @return the password
+     */
+    public static String getPassword() {
+        return password;
+    }
+
+    /**
+     * @param aPassword the password to set
+     */
+    public static void setPassword(String aPassword) {
+        password = aPassword;
+    }
+
+    /**
+     * @return the EIN
+     */
+    public static String getEIN() {
+        return EIN;
+    }
+
+    /**
+     * @param aEIN the EIN to set
+     */
+    public static void setEIN(String aEIN) {
+        EIN = aEIN;
+    }
     
     /*
     *@params EIN and password
@@ -39,6 +67,7 @@ public class Login extends LoginGUI
     */
     public Login(String EIN, String password) throws IOException    
     {
+        //super();
         Login.match = false;
         Login.EIN = EIN;                
         Login.password = password;
@@ -46,32 +75,12 @@ public class Login extends LoginGUI
         checkPassAndEINLength();   //call to method to check EIN and Pass Length
         checkEinAndPassword();      //call to see if EIN and Pass match database
     }
+    
+   
     /**
      * @return the EIN
      */
-    public String getEIN() {
-        return EIN;
-    }
-
-    /**
-     * @param EIN the EIN to set
-     */
-    public void setEIN(String EIN) {
-        this.EIN = EIN;
-        //comment this bad boy
-        //this.EIN = LoginGUI.einTextField.getText();
-    }
     
-    public String getPassword()
-    {
-        return password;
-    }
-    
-    public void setPassword(String password){
-        this.password = password;
-        //this.password = LoginGUI.passwordTextField.getText();
-        //checkPassLength();
-    }
     /*
     *Thie method checks the length of password and EIN. EIN must be 7 character
     *alpha-numeric string. starting with an 'a' or 's' followed by 6 number 
@@ -80,8 +89,8 @@ public class Login extends LoginGUI
     *if the first char isn't an 's' or an 'a'
     */
     private void checkPassAndEINLength() throws IOException {
-        if( (this.EIN.length() == 7) && (this.password.length() >= 7 
-                                            && this.password.length() <= 12) )
+        if( (this.getEIN().length() == 7) && (this.getPassword().length() >= 7 
+                                            && this.getPassword().length() <= 12) )
         {    //print test will not show up when program runs on an actual system
             System.out.println("test passed EIN == 7 and Password is "
                                                         + "7 - 12 characters");
@@ -105,7 +114,7 @@ public class Login extends LoginGUI
         our database (.txt file)
     */
     private void checkEinAndPassword() throws IOException {
-        if(EIN.charAt(0) == 'a') {  //if EIN char at index 0 is an 'a'
+        if(getEIN().charAt(0) == 'a') {  //if EIN char at index 0 is an 'a'
             System.out.println("You are an Admin");
             Admin = true;           //sets boolean admin so the system knows
                                     //what password file to check
@@ -116,6 +125,8 @@ public class Login extends LoginGUI
             {                       //if EIN and Passsword match do this
                                     //I haven't decided where to go 
                 System.out.println("match = true :" + match);
+                AdminGUI admin = new AdminGUI();
+                admin.setVisible(true);
                
             }
             else
@@ -126,7 +137,7 @@ public class Login extends LoginGUI
                System.exit(0);
             }
         }
-        else if(EIN.charAt(0) == 's')
+        else if(getEIN().charAt(0) == 's')
         {
             System.out.println("Welcome Staff Member");
             
@@ -135,6 +146,8 @@ public class Login extends LoginGUI
             
             if(match == true)
             {
+                StaffGUI staff = new StaffGUI();
+                staff.setVisible(true);
                 System.out.println("match = true :" + match);
             }
             else

@@ -25,41 +25,56 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                      <Component id="einTextField" min="-2" pref="145" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="loginPasswordField" min="-2" max="-2" attributes="0"/>
-                          <Component id="loginButton" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lookUpButton" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="loginButton" alignment="1" min="-2" pref="145" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="loginPasswordField" min="-2" pref="123" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="einLabel" min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="einTextField" min="-2" pref="145" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="126" max="32767" attributes="0"/>
+              <EmptySpace pref="63" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-              <Component id="einTextField" min="-2" pref="29" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
-              <Component id="loginPasswordField" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="loginButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="82" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="einTextField" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="einLabel" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="loginPasswordField" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="loginButton" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="lookUpButton" min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="einTextField">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Enter EIN Here"/>
-      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
       </AuxValues>
@@ -77,11 +92,29 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="loginPasswordField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="&quot;jPasswordFiel&quot;" type="code"/>
+        </Property>
       </Properties>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="einLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="EIN"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="PASSWORD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="lookUpButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Look Up Reservation"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

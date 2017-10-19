@@ -13,12 +13,12 @@ import java.util.logging.Logger;
  *
  * @author Your Name <Ben Fulker FGCU.EDU>
  */
-public class BookCancelLookUpGUI extends javax.swing.JFrame {
+public class AdminGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form BookCancelLookUpGUI
      */
-    public BookCancelLookUpGUI() {
+    public AdminGUI() {
         initComponents();
         setLookAndFeel();
     }
@@ -32,27 +32,28 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BookingButton = new javax.swing.JButton();
-        CancelButton = new javax.swing.JButton();
-        LookUpButton = new javax.swing.JButton();
+        adminBookingButton = new javax.swing.JButton();
+        adminCancelButton = new javax.swing.JButton();
+        printReportButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Admin GUI");
 
-        BookingButton.setText("Book A Room");
-        BookingButton.addActionListener(new java.awt.event.ActionListener() {
+        adminBookingButton.setText("Book A Room");
+        adminBookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BookingButtonActionPerformed(evt);
+                adminBookingButtonActionPerformed(evt);
             }
         });
 
-        CancelButton.setText("Cancel A Booking");
-        CancelButton.addActionListener(new java.awt.event.ActionListener() {
+        adminCancelButton.setText("Cancel A Booking");
+        adminCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelButtonActionPerformed(evt);
+                adminCancelButtonActionPerformed(evt);
             }
         });
 
-        LookUpButton.setText("Look Up Booking");
+        printReportButton.setText("Print Report");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,51 +63,42 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(LookUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(printReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(CancelButton)
-                            .addComponent(BookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(adminCancelButton)
+                            .addComponent(adminBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(89, 89, 89)
-                .addComponent(BookingButton)
+                .addComponent(adminBookingButton)
                 .addGap(18, 18, 18)
-                .addComponent(CancelButton)
+                .addComponent(adminCancelButton)
                 .addGap(18, 18, 18)
-                .addComponent(LookUpButton)
+                .addComponent(printReportButton)
                 .addContainerGap(106, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BookingButtonActionPerformed
-        try {
-            // TODO add your handling code here:
-            //LoginGUI loginGui = new LoginGUI();
-            //String[] args = null;
-            TheHotSpotsResort.bookingButtonClick();
-        } catch (IOException ex) {
-            Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        bookButton = true;
-        
-    }//GEN-LAST:event_BookingButtonActionPerformed
+    private void adminBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminBookingButtonActionPerformed
+       MyJXMonthViewCalendar cal = new MyJXMonthViewCalendar(); 
+    }//GEN-LAST:event_adminBookingButtonActionPerformed
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
+    private void adminCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminCancelButtonActionPerformed
         // TODO add your handling code here:
-         try {
+      /*   try {
             TheHotSpotsResort.cancelButtonClick();
         } catch (IOException ex) {
             Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        cancelButton = true;
-    }//GEN-LAST:event_CancelButtonActionPerformed
+        cancelButton = true;*/
+    }//GEN-LAST:event_adminCancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,14 +117,21 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
+        /* Create and display the form */
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new BookCancelLookUpGUI().setVisible(true);
+            }
         //</editor-fold>
 
         /* Create and display the form */
@@ -145,10 +144,10 @@ public class BookCancelLookUpGUI extends javax.swing.JFrame {
   
     }
     protected static boolean cancelButton = false;
-    protected static boolean bookButton = false;
+    protected static boolean bookButton;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected static javax.swing.JButton BookingButton;
-    protected static javax.swing.JButton CancelButton;
-    protected static javax.swing.JButton LookUpButton;
+    protected static javax.swing.JButton adminBookingButton;
+    protected static javax.swing.JButton adminCancelButton;
+    protected static javax.swing.JButton printReportButton;
     // End of variables declaration//GEN-END:variables
 }
