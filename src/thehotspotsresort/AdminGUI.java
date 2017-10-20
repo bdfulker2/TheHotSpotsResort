@@ -87,7 +87,8 @@ public class AdminGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adminBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminBookingButtonActionPerformed
-       MyJXMonthViewCalendar cal = new MyJXMonthViewCalendar(); 
+       RoomGUI roomGui = new RoomGUI();
+       roomGui.setVisible(true);
     }//GEN-LAST:event_adminBookingButtonActionPerformed
 
     private void adminCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminCancelButtonActionPerformed
