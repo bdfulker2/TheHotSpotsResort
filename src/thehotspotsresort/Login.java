@@ -5,8 +5,10 @@
  */
 package thehotspotsresort;
 
+import java.awt.Color;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  * This Login Class extends LoginGUI. This class takes User input from LoginGUI
@@ -118,18 +120,15 @@ public class Login extends LoginGUI
     *if the first char isn't an 's' or an 'a'
     */
     private void checkPassAndEINLength() throws IOException {
-        if( (this.getEIN().length() == 7) && (this.getPassword().length() >= 7 
-                                            && this.getPassword().length() <= 12) )
+        if( (EIN.length() == 7) && (password.length() >= 7 
+                                            && password.length() <= 12) )
         {    //print test will not show up when program runs on an actual system
             System.out.println("test passed EIN == 7 and Password is "
                                                         + "7 - 12 characters");
         }
         else {           //if EIN or Pass are not the correct length start over
-            JOptionPane.showMessageDialog(null, 
+             JOptionPane.showMessageDialog(null, 
                                 "You EIN or Password isn't the correct length");
-            //TheHotSpotsResort.loginButtonClick();
-            //String[] args = null;
-            //BookCancelLookUpGUI.mainGUI();
             System.exit(0);
         }
 
@@ -143,7 +142,7 @@ public class Login extends LoginGUI
         our database (.txt file)
     */
     private void checkEinAndPassword() throws IOException {
-        if(getEIN().charAt(0) == 'a') {  //if EIN char at index 0 is an 'a'
+        if(EIN.charAt(0) == 'a') {  //if EIN char at index 0 is an 'a'
             System.out.println("You are an Admin");
             Admin = true;           //sets boolean admin so the system knows
                                     //what password file to check
@@ -160,13 +159,13 @@ public class Login extends LoginGUI
             }
             else
             {
+              //  LoginGUI.einTextField.setBackground(Color.red);
                 JOptionPane.showMessageDialog(null, 
                       "Your EIN or Password or both doesn't match our records");
-                //BookCancelLookUpGUI.mainGUI();
                System.exit(0);
             }
         }
-        else if(getEIN().charAt(0) == 's')
+        else if(EIN.charAt(0) == 's')
         {
             System.out.println("Welcome Staff Member");
             
@@ -183,7 +182,6 @@ public class Login extends LoginGUI
             {
                 JOptionPane.showMessageDialog(null, 
                       "Your EIN or Password or both doesn't match our records");
-                //BookCancelLookUpGUI.mainGUI();
                 System.exit(0);
             }
         }
@@ -191,7 +189,6 @@ public class Login extends LoginGUI
         {//if EIN doesn't start with an 'a' or 'a' then it was wrong and restart
             JOptionPane.showMessageDialog(null, 
                              "You EIN doesn't start with the right characters");
-            //BookCancelLookUpGUI.mainGUI();
                 System.exit(0);
              
         }

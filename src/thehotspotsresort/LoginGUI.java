@@ -1,8 +1,15 @@
 package thehotspotsresort;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,11 +26,51 @@ public class LoginGUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
-    public LoginGUI() {
-        initComponents();
-        setLookAndFeel();
+    public LoginGUI() 
+    {
+        initComponents(); //initializes all components from GUI editor
+        setLookAndFeel(); //set the systems OS look and feel if available
         
-        
+       
+        //access SimpleDocumentListener Interface exttends docuementLIstener
+        einTextField.getDocument().addDocumentListener((SimpleDocumentListener) 
+                                                  new SimpleDocumentListener() {
+                        //overrides update method from Interface
+            @Override           //if einTextfield != 7 text color red and diable
+            public void update(DocumentEvent e) {   //loginButton
+                if(einTextField.getText().length() != 7) {
+                    einTextField.setForeground(Color.red);
+                    loginButton.setEnabled(false);
+                }
+                else {      //when einTextField has 7 char text turns green
+                    einTextField.setForeground(Color.GREEN);
+                    loginButton.setEnabled(true);   //loginButton isEnabled
+                }
+            }
+        });
+       /* ActionListener action = new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               
+            }
+        };*/
+        FocusListener clearText = new FocusListener()
+        {
+          
+            @Override
+            public void focusGained(FocusEvent e) {
+                loginPasswordField.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                //nothing happens on this loss of focus event will add if needed
+            }
+
+        };
+        loginPasswordField.addFocusListener(clearText);
     }
 
         /**
@@ -75,9 +122,9 @@ public class LoginGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         loginButton.setText("Login");
-        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loginButtonMouseClicked(evt);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
             }
         });
 
@@ -133,24 +180,27 @@ public class LoginGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+   
+   //action performed is better then mouseClickEvent
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        //the event source is loginButton copyValue of passwordTextField and
+        if(evt.getSource() == loginButton)  //set Login.password with whats in
+        {            //the loginPasswordField and get value einTextField 
+            try {    //and setEIN value for Login.EIN
+                Login.setPassword(String.copyValueOf(loginPasswordField.getPassword()));
 
-    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-        
-        try {
-            Login.setPassword(String.copyValueOf(loginPasswordField.getPassword()));
-            
-            Login.setEIN(einTextField.getText());
-            logGUI = true;
-            Login login = new Login(Login.getEIN(), Login.getPassword());
-        } 
-        catch (IOException ex) {
-            Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+                Login.setEIN(einTextField.getText());
+                Login login = new Login(Login.getEIN(), Login.getPassword());
+            } 
+            catch (IOException ex) {
+                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
-        
-    }//GEN-LAST:event_loginButtonMouseClicked
-
-
+   
+    
     protected static boolean logGUI = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel einLabel;

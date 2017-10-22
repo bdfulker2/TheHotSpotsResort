@@ -11,11 +11,24 @@ import org.jdesktop.swingx.JXMonthView;
  * @author Your Name <Ben Fulker FGCU.EDU>
  */
 public class RoomGUI extends javax.swing.JFrame {
+    protected static boolean one;
+    protected static boolean two;
+    protected static boolean three;
+    protected static boolean four;
+    protected static boolean five;
+    protected static boolean six;
 
     /**
      * Creates new form RoomGUI
      */
     public RoomGUI() {
+        this.one = false;
+        this.two = false;
+        this.three = false;
+        this.four = false;
+        this.four = false;
+        this.five = false;
+        this.six = false;
         initComponents();
     }
 
@@ -28,54 +41,54 @@ public class RoomGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        roomThreeJButton = new javax.swing.JButton();
-        roomTwoJButton = new javax.swing.JButton();
-        roomOneJButton = new javax.swing.JButton();
-        roomFourJButton = new javax.swing.JButton();
-        roomFiveJButton = new javax.swing.JButton();
-        roomSixJButton = new javax.swing.JButton();
+        room3JButton = new javax.swing.JButton();
+        room2JButton = new javax.swing.JButton();
+        room1JButton = new javax.swing.JButton();
+        room4JButton = new javax.swing.JButton();
+        room5JButton = new javax.swing.JButton();
+        room6JButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        roomThreeJButton.setText("3");
-        roomThreeJButton.addActionListener(new java.awt.event.ActionListener() {
+        room3JButton.setText("3");
+        room3JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomThreeJButtonActionPerformed(evt);
+                room3JButtonActionPerformed(evt);
             }
         });
 
-        roomTwoJButton.setText("2");
-        roomTwoJButton.addActionListener(new java.awt.event.ActionListener() {
+        room2JButton.setText("2");
+        room2JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomTwoJButtonActionPerformed(evt);
+                room2JButtonActionPerformed(evt);
             }
         });
 
-        roomOneJButton.setText("1");
-        roomOneJButton.addActionListener(new java.awt.event.ActionListener() {
+        room1JButton.setText("1");
+        room1JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomOneJButtonActionPerformed(evt);
+                room1JButtonActionPerformed(evt);
             }
         });
 
-        roomFourJButton.setText("4");
-        roomFourJButton.addActionListener(new java.awt.event.ActionListener() {
+        room4JButton.setText("4");
+        room4JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomFourJButtonActionPerformed(evt);
+                room4JButtonActionPerformed(evt);
             }
         });
 
-        roomFiveJButton.setText("5");
-        roomFiveJButton.addActionListener(new java.awt.event.ActionListener() {
+        room5JButton.setText("5");
+        room5JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomFiveJButtonActionPerformed(evt);
+                room5JButtonActionPerformed(evt);
             }
         });
 
-        roomSixJButton.setText("6");
-        roomSixJButton.addActionListener(new java.awt.event.ActionListener() {
+        room6JButton.setText("6");
+        room6JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roomSixJButtonActionPerformed(evt);
+                room6JButtonActionPerformed(evt);
             }
         });
 
@@ -86,64 +99,70 @@ public class RoomGUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(roomFourJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(room4JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(roomFiveJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(room5JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(roomOneJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(room1JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(roomTwoJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(room2JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(roomThreeJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roomSixJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
+                    .addComponent(room3JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(room6JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roomTwoJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addComponent(roomOneJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roomThreeJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(room2JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                    .addComponent(room1JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(room3JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(roomFourJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                    .addComponent(roomFiveJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roomSixJButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(room4JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                    .addComponent(room5JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(room6JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void roomOneJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomOneJButtonActionPerformed
+    private void room1JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room1JButtonActionPerformed
         // TODO add your handling code here:
+        one = true;
         MyJXMonthViewCalendar roomOneCalendar = new MyJXMonthViewCalendar();
-    }//GEN-LAST:event_roomOneJButtonActionPerformed
+    }//GEN-LAST:event_room1JButtonActionPerformed
 
-    private void roomTwoJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomTwoJButtonActionPerformed
+    private void room2JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room2JButtonActionPerformed
         // TODO add your handling code here:
+        two = true;
         MyJXMonthViewCalendar roomTwoCalendar = new MyJXMonthViewCalendar();
-    }//GEN-LAST:event_roomTwoJButtonActionPerformed
+    }//GEN-LAST:event_room2JButtonActionPerformed
 
-    private void roomThreeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomThreeJButtonActionPerformed
+    private void room3JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room3JButtonActionPerformed
         // TODO add your handling code here:
+        three = true;
         MyJXMonthViewCalendar roomThreeCalendar = new MyJXMonthViewCalendar();
-    }//GEN-LAST:event_roomThreeJButtonActionPerformed
+    }//GEN-LAST:event_room3JButtonActionPerformed
 
-    private void roomFourJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomFourJButtonActionPerformed
+    private void room4JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room4JButtonActionPerformed
         // TODO add your handling code here:
+        four = true;
         MyJXMonthViewCalendar roomFourCalendar = new MyJXMonthViewCalendar();
-    }//GEN-LAST:event_roomFourJButtonActionPerformed
+    }//GEN-LAST:event_room4JButtonActionPerformed
 
-    private void roomFiveJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomFiveJButtonActionPerformed
+    private void room5JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room5JButtonActionPerformed
         // TODO add your handling code here:
+        five = true;
         MyJXMonthViewCalendar roomFiveCalendar = new MyJXMonthViewCalendar();
-    }//GEN-LAST:event_roomFiveJButtonActionPerformed
+    }//GEN-LAST:event_room5JButtonActionPerformed
 
-    private void roomSixJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomSixJButtonActionPerformed
+    private void room6JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room6JButtonActionPerformed
         // TODO add your handling code here:
+        six = true;
         MyJXMonthViewCalendar roomSixCalendar = new MyJXMonthViewCalendar();
-    }//GEN-LAST:event_roomSixJButtonActionPerformed
+    }//GEN-LAST:event_room6JButtonActionPerformed
                   
 
     /**
@@ -174,11 +193,11 @@ public class RoomGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton roomFiveJButton;
-    private javax.swing.JButton roomFourJButton;
-    private javax.swing.JButton roomOneJButton;
-    private javax.swing.JButton roomSixJButton;
-    private javax.swing.JButton roomThreeJButton;
-    private javax.swing.JButton roomTwoJButton;
+    private javax.swing.JButton room1JButton;
+    private javax.swing.JButton room2JButton;
+    private javax.swing.JButton room3JButton;
+    private javax.swing.JButton room4JButton;
+    private javax.swing.JButton room5JButton;
+    private javax.swing.JButton room6JButton;
     // End of variables declaration//GEN-END:variables
 }

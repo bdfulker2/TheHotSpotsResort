@@ -26,20 +26,20 @@
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="roomFourJButton" min="-2" pref="145" max="-2" attributes="0"/>
+                      <Component id="room4JButton" min="-2" pref="145" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="roomFiveJButton" max="32767" attributes="0"/>
+                      <Component id="room5JButton" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="roomOneJButton" min="-2" pref="145" max="-2" attributes="0"/>
+                      <Component id="room1JButton" min="-2" pref="145" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="roomTwoJButton" min="-2" pref="145" max="-2" attributes="0"/>
+                      <Component id="room2JButton" min="-2" pref="145" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="roomThreeJButton" max="32767" attributes="0"/>
-                  <Component id="roomSixJButton" pref="145" max="32767" attributes="0"/>
+                  <Component id="room3JButton" max="32767" attributes="0"/>
+                  <Component id="room6JButton" pref="145" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -48,67 +48,67 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="roomTwoJButton" alignment="0" pref="153" max="32767" attributes="0"/>
-                  <Component id="roomOneJButton" alignment="0" max="32767" attributes="0"/>
-                  <Component id="roomThreeJButton" alignment="0" max="32767" attributes="0"/>
+                  <Component id="room2JButton" alignment="0" pref="153" max="32767" attributes="0"/>
+                  <Component id="room1JButton" alignment="0" max="32767" attributes="0"/>
+                  <Component id="room3JButton" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="roomFourJButton" pref="141" max="32767" attributes="0"/>
-                  <Component id="roomFiveJButton" max="32767" attributes="0"/>
-                  <Component id="roomSixJButton" max="32767" attributes="0"/>
+                  <Component id="room4JButton" pref="141" max="32767" attributes="0"/>
+                  <Component id="room5JButton" max="32767" attributes="0"/>
+                  <Component id="room6JButton" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="roomThreeJButton">
+    <Component class="javax.swing.JButton" name="room3JButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="3"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomThreeJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="room3JButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="roomTwoJButton">
+    <Component class="javax.swing.JButton" name="room2JButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="2"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomTwoJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="room2JButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="roomOneJButton">
+    <Component class="javax.swing.JButton" name="room1JButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="1"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomOneJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="room1JButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="roomFourJButton">
+    <Component class="javax.swing.JButton" name="room4JButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="4"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomFourJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="room4JButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="roomFiveJButton">
+    <Component class="javax.swing.JButton" name="room5JButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="5"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomFiveJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="room5JButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="roomSixJButton">
+    <Component class="javax.swing.JButton" name="room6JButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="6"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="roomSixJButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="room6JButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -26,47 +26,9 @@ public class TheHotSpotsResort extends LoginGUI
      */
     public static void main(String[] args) throws IOException {
        
-        LoginGUI logGUI = new LoginGUI();
-        logGUI.setVisible(true);
-        /*BookCancelLookUpGUI bookcanlook = new BookCancelLookUpGUI() ;
-        bookcanlook.setVisible(true);           //sets bokcanLook and sets components to visable
-       */
-            System.out.println("We are back in the main now");
+        MyJXMonthViewCalendar myCal = new MyJXMonthViewCalendar();
+        /*LoginGUI logGUI = new LoginGUI();
+        logGUI.setVisible(true);*/
         
     }
-    
-   /* private class JButtonClickHandler implements ActionListener
-    {
-        public void actionPerformed(ActionEvent e){
-            if(e.getSource() == BookCancelLookUpGUI.BookingButton)
-            {
-                
-            }
-                
-        }
-    }*/
-   /* public static void cancelButtonClick() throws IOException
-    {
-        
-    }*/
-   /* public static void bookingButtonClick() throws IOException
-    {
-        LoginGUI loginGUI = new LoginGUI();
-        loginGUI.setVisible(true);
-        
-    }*/
-   /* public static void loginButtonClick() throws IOException
-    {
-        Login login = new Login(Login.EIN, Login.password);
-       
-        
-    }*/
-    
-    public void actionPerformed(ActionEvent e)
-    { 
-        LoginGUI.loginButton.addActionListener((ActionListener) this);
-        LoginGUI.einTextField.addActionListener((ActionListener) this);
-        LoginGUI.loginPasswordField.addActionListener((ActionListener) this);
-    }
-    
 }

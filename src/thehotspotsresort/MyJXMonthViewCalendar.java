@@ -26,6 +26,8 @@ import org.jdesktop.swingx.calendar.DateSelectionModel;
 import org.jdesktop.swingx.calendar.DateSpan;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,6 +39,20 @@ public class MyJXMonthViewCalendar extends JFrame {
     private static DateSpan span;
     private static int numOfDays;
     private static Calendar eCal, sCal;
+    private static Calendar[] stayCal;
+    private static boolean acceptDates;
+    
+    public MyJXMonthViewCalendar()
+    {
+        this.eCal = eCal;
+        this.sCal = sCal;
+        this.span = span;
+        this.numOfDays = numOfDays;
+        this.stayCal = new Calendar[numOfDays];
+        this.acceptDates = false;
+        initComponents();  
+        
+    }
 
     /**
      * @return the span
@@ -95,11 +111,7 @@ public class MyJXMonthViewCalendar extends JFrame {
     }
     
     
-    public MyJXMonthViewCalendar()
-    {
-        this.span = span;
-        initComponents();      
-    }
+    
     
     private void initComponents() {
         
@@ -110,9 +122,7 @@ public class MyJXMonthViewCalendar extends JFrame {
         
         //Tell application to automatically exit when the user selects the Close
         //menu item from the frame window’s system menu.
-
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        
         
         //Install a month view componet. It instantiates a calendar view
         JXMonthView monthView = new JXMonthView();
@@ -138,23 +148,22 @@ public class MyJXMonthViewCalendar extends JFrame {
             {
                 MyJXMonthViewCalendar.setSpan(new DateSpan(monthView.getFirstSelectionDate(),
                         monthView.getLastSelectionDate()));
-         
-            dateTypeToCalendarType(getSpan());
-            ///////////////////////////////////////////////////////////
-            System.out.println("span = " + getSpan());
-            System.out.println("Selected Start Date = "
-                    + getSpan().getStartAsDate());
-            System.out.println("Selected Start Date = "
-                    + getSpan().getEndAsDate());
-            numOfDays();
+                
+                dateTypeToCalendarType(getSpan());
+                ///////////////////////////////////////////////////////////
+                System.out.println("span = " + getSpan());
+                System.out.println("Selected Start Date = "
+                        + getSpan().getStartAsDate());
+                System.out.println("Selected Start Date = "
+                        + getSpan().getEndAsDate());
+                numOfDays();
+                rememberChk(span.getStartAsDate(), span.getEndAsDate());
             }
         };
         monthView.addActionListener(a);  //adds actionListener to monthView
         
         frame.getContentPane().add(monthView); //returns content pane for JFrame
         System.out.println(" date span outsid span = " + span);
-        
-        
     }
 
     /**
@@ -226,6 +235,27 @@ public class MyJXMonthViewCalendar extends JFrame {
             sCal.set(sYear, sMonth, sDay);      //set sCal(Year, month, day)
     }
     
+    public static void listAllDatesAsString()
+    {
+          
+        try
+        {
+            Calendar dateStart = (Calendar)sCal.clone();
+            int i = 0;
+            while(i <= numOfDays)
+            {
+                dateStart.add(Calendar.DAY_OF_MONTH, 1);
+                stayCal[i] = dateStart;
+                i++;
+            }
+        
+            System.out.println("num of day = " + numOfDays);
+        }
+        catch(NullPointerException npe){}
+        
+        
+    }
+    
     public static void numOfDays()
     {
           
@@ -244,6 +274,33 @@ public class MyJXMonthViewCalendar extends JFrame {
         
         
     }
+    
+    public void rememberChk(Date start, Date end)
+    {//this method is only enterd to verify the user wants these dates
+        int yesNoSelection;
+        SimpleDateFormat dateFormatter;
+        dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");	
+                   //creates a message box that user can validate date selection 
+        JCheckBox rememberChk = new JCheckBox("Check This Box If You Wish To " +
+                                                       "Keep This Appointment");	
+//selection is remembered serves as confirmation for the system from the user
+        String msg = ("Your selected checkin date is " +
+               dateFormatter.format(start) + " - " + dateFormatter.format(end));
+        Object[] msgContent = {msg, rememberChk};
+        yesNoSelection = JOptionPane.showConfirmDialog ( null,  msgContent,  
+                                            "Title", JOptionPane.YES_NO_OPTION);
+        acceptDates = rememberChk.isSelected();
+        if((yesNoSelection == JOptionPane.NO_OPTION) || (acceptDates == false)){
+            initComponents();
+        }
+        else if ( (yesNoSelection == JOptionPane.YES_OPTION) && 
+                                                       (acceptDates == true) ) {
+            
+            GuestInfoGUI guestGUI = new GuestInfoGUI();
+            guestGUI.setVisible(true);
+        }
+
+    }
     /**
      * This method is set up to make that is native to the OS the system is run
      * on. It implements the native OS's lookAndFeel. If there isn't a look and
@@ -261,6 +318,8 @@ public class MyJXMonthViewCalendar extends JFrame {
         }
         
     }
-    
+    public String toString() {
+        return sCal.toString() + "," + eCal.toString() + "," + numOfDays;
+    }
     
 }
