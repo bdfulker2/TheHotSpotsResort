@@ -166,7 +166,7 @@ public class RoomGUI extends javax.swing.JFrame {
                   
 
     /**
-     * @param args the command line arguments
+     * 
      */
     public static void setLookAndFeel() {
         /* Set the Nimbus look and feel */

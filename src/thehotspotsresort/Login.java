@@ -147,7 +147,8 @@ public class Login extends LoginGUI
             Admin = true;           //sets boolean admin so the system knows
                                     //what password file to check
             ReadFromFile reader = new ReadFromFile(); //creates an instance of
-            match = reader.read(Admin); //of ReadFromFile class and reads .txt 
+           // match = reader.read(Admin); //of ReadFromFile class and reads .txt 
+            match = reader.read2(Admin, "admin"); //of ReadFromFile class and reads .txt 
                                         //AdminPassword.txt file
             if(match == true)
             {                       //if EIN and Passsword match do this
@@ -170,8 +171,9 @@ public class Login extends LoginGUI
             System.out.println("Welcome Staff Member");
             
             ReadFromFile reader = new ReadFromFile();
-            match = reader.read(Admin);
-            
+            //match = reader.read(Admin);
+                                        //of ReadFromFile class and reads .txt
+             match = reader.read2(Admin, "staff"); 
             if(match == true)
             {
                 StaffGUI staff = new StaffGUI();

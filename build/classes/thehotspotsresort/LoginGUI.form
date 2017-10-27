@@ -115,6 +115,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Look Up Reservation"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lookUpButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

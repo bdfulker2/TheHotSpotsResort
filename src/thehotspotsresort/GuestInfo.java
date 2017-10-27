@@ -5,7 +5,10 @@
  */
 package thehotspotsresort;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,7 +16,7 @@ import java.text.SimpleDateFormat;
  */
 public class GuestInfo// extends MyJXMonthViewCalendar
 {
-    SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");
+    SimpleDateFormat dateFormatter = new SimpleDateFormat("EE- MMM d- yyyy");
     private static String firstName;
     private static String lastName;
     private static String streetAddress;
@@ -162,16 +165,50 @@ public class GuestInfo// extends MyJXMonthViewCalendar
         this.twoDigMonth = twoDigMonth;
         this.twoDigYear = twoDigYear;
         this.cvv2 = cvv2;
+        try {
+            passToFile();
+        } catch (IOException ex) {
+            Logger.getLogger(GuestInfo.class.getName()).log(Level.SEVERE, null,
+                    ex);
+        }
+    }
+
+    /**
+     *
+     * @throws IOException
+     */
+    private void passToFile() throws IOException {
+        if(RoomGUI.one == true) {
+            WriteReservationToFile.FileWriter("room1",toString());
+        }
+        else if(RoomGUI.two == true) {
+            WriteReservationToFile.FileWriter("room2",toString());
+        }
+        else if(RoomGUI.three == true) {
+            WriteReservationToFile.FileWriter("room3",toString());
+        }
+        else if(RoomGUI.four == true) {
+            WriteReservationToFile.FileWriter("room4",toString());
+        }
+        else if(RoomGUI.five == true) {
+            WriteReservationToFile.FileWriter("room5",toString());
+        }
+        else if(RoomGUI.six == true) {
+            WriteReservationToFile.FileWriter("room6",toString());
+        }
     }
     
     
-    
+    @Override
     public String toString() {
-        
-       return super.toString() + "," + firstName + "," + lastName + "," + 
-               streetAddress + "," + aptNum + "," + zipCode + "," + creditCard +
-               "," + twoDigMonth + "," + twoDigYear + "," + cvv2 + "," + 
-               Login.getEIN();
+       return  
+          dateFormatter.format(MyJXMonthViewCalendar.getSpan().getStartAsDate()) 
+          + "!" + 
+          dateFormatter.format(MyJXMonthViewCalendar.getSpan().getEndAsDate()) 
+          + "!" + MyJXMonthViewCalendar.getNumOfDays() + "!" + firstName + 
+          "!" + lastName + "!" + streetAddress + "!" + aptNum + "!" + 
+          zipCode + "!" + creditCard + "!" + twoDigMonth + "!" + twoDigYear + 
+               "!" + cvv2 + "!" + Login.getEIN();
     }
     
     

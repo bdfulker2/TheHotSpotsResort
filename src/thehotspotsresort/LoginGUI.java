@@ -135,6 +135,11 @@ public class LoginGUI extends javax.swing.JFrame {
         jLabel1.setText("PASSWORD");
 
         lookUpButton.setText("Look Up Reservation");
+        lookUpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lookUpButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,7 +194,6 @@ public class LoginGUI extends javax.swing.JFrame {
         {            //the loginPasswordField and get value einTextField 
             try {    //and setEIN value for Login.EIN
                 Login.setPassword(String.copyValueOf(loginPasswordField.getPassword()));
-
                 Login.setEIN(einTextField.getText());
                 Login login = new Login(Login.getEIN(), Login.getPassword());
             } 
@@ -198,6 +202,13 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void lookUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lookUpButtonActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == lookUpButton) {
+            
+        }
+    }//GEN-LAST:event_lookUpButtonActionPerformed
 
    
     

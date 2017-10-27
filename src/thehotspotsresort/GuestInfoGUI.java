@@ -296,33 +296,45 @@ public class GuestInfoGUI extends javax.swing.JFrame {
             GuestInfo.setTwoDigMonth(monthJTextField.getText());
             GuestInfo.setTwoDigYear(yearJTextField.getText());
             GuestInfo.setCvv2(cvv2JTextField.getText());
-            GuestInfo guest = new GuestInfo(GuestInfo.getFirstName(), 
+            
+            
+            ImageIcon icon = new ImageIcon("C:\\Users\\bdfulker2\\Desktop\\" +
+                    "CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\" +
+                    "Images\\hotspot(1).png");
+            String str = String.format(
+                    "\n Guest Name-------: %s, %s" +
+                    "\n Check In Date-----: %s " +
+                    "\n Check Out Date---: %s " +
+                    "\n Staying For---------: %s" +
+                    "\n Card Ending------: %s" +
+                    "\n Expiration Month-: %s"+ 
+                    "\n Expiration Year---: %s" +
+                    "\n CVV2 Code--------: %s" +
+                    "\n Address------------: %s" +
+                    "\n Apartment---------: %s" +
+                    "\n 5 Digit Zip-Code-: %s", 
+                GuestInfo.getLastName(), GuestInfo.getFirstName(), 
+                dateFormatter.format(MyJXMonthViewCalendar.getSpan().getStartAsDate()),         
+                dateFormatter.format(MyJXMonthViewCalendar.getSpan().getEndAsDate()),
+                MyJXMonthViewCalendar.getNumOfDays(),
+                GuestInfo.getCreditCard(),
+                GuestInfo.getTwoDigMonth(),
+                GuestInfo.getTwoDigYear(),
+                GuestInfo.getCvv2(),
+                GuestInfo.getStreetAddress(),
+                GuestInfo.getAptNum(),
+                GuestInfo.getZipCode());
+            int input = JOptionPane.showConfirmDialog(new GuestInfoGUI(),str, "Confirm Reservation Information",
+                JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, icon);
+            System.out.println("printing in GuestInfoGUI the int value from JOptionpane : input = " + input);
+            if(input == 0)
+            {
+                GuestInfo guest = new GuestInfo(GuestInfo.getFirstName(), 
                     GuestInfo.getLastName(), GuestInfo.getStreetAddress(), 
                     GuestInfo.getAptNum(), GuestInfo.getZipCode(), 
                     GuestInfo.getCreditCard(), GuestInfo.getTwoDigMonth(), 
                     GuestInfo.getTwoDigYear(), GuestInfo.getCvv2());
-            
-            ImageIcon icon = new ImageIcon("TheHotSpotsResort\\src\\thehotspotsresort\\" +
-                    "Images\\hotspot (1).png");
-            int input = JOptionPane.showConfirmDialog(new GuestInfoGUI(),
-                "\n Guest Name     : " + GuestInfo.getLastName() + "," 
-                                                    + GuestInfo.getFirstName() +
-                "\n Check In Date  : " 
-                       + dateFormatter.format(MyJXMonthViewCalendar.getSpan()
-                                                            .getStartAsDate()) +         
-                "\n Check Out Date : " 
-                       + dateFormatter.format(MyJXMonthViewCalendar.getSpan()
-                                                              .getEndAsDate()) +
-                "\n Staying For     : " + MyJXMonthViewCalendar.getNumOfDays() +
-                "\n Card Ending     : " + GuestInfo.getCreditCard() + 
-                "\n Expiration Month: " + GuestInfo.getTwoDigMonth() +
-                "\n Expiration Year : " + GuestInfo.getTwoDigYear() +
-                "\n CVV2 Code       : " + GuestInfo.getCvv2() +
-                "\n Street Address  : " + GuestInfo.getStreetAddress() +
-                "\n Apartment #     : " + GuestInfo.getAptNum() +
-                "\n 5 Digit Zip-Code: " + GuestInfo.getZipCode()
-                , "Confirm Reservation Information",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, icon);
+            }
         }
         
     }//GEN-LAST:event_saveInfoJButtonActionPerformed
@@ -358,7 +370,7 @@ public class GuestInfoGUI extends javax.swing.JFrame {
                     getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
-SimpleDateFormat dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");
+SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AptNumJTextField;
     private javax.swing.JTextArea JTextArea;

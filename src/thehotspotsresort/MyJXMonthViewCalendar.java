@@ -186,53 +186,58 @@ public class MyJXMonthViewCalendar extends JFrame {
     public static void dateTypeToCalendarType(DateSpan newSpan)
     {
                                 //delcar local vars for start date and endDate
-            int sMonth, sDay, sYear;        
-            int eMonth, eDay, eYear;
-                    //call dateSpan getStartAsDate() stored local var Date sDate
-            Date sDate = span.getStartAsDate();
-            System.out.println("sdate ===== " + sDate); //testing data println
-                    //call dateSpan getEndAsDate() store local var Date eDate 
-            Date eDate = span.getEndAsDate(); 
-            System.out.println("eDate = " + eDate); //testing data println
-               //SimpleDateFormat to format to seperate Month Day Year
-               //the "MMMM" spells out the month, but day and year string number
-            SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
-            SimpleDateFormat dayFormat = new SimpleDateFormat("d");
-            SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
-               //formated sDate stored in local string start MOnth, day , year
-            String startMonth = monthFormat.format(sDate);
-            String startDay = dayFormat.format(sDate);
-            String startYear = yearFormat.format(sDate);
-                //formated eDate stored in local string end MOnth, day , year
-            String endMonth = monthFormat.format(eDate);
-            String endDay = dayFormat.format(eDate);
-            String endYear = yearFormat.format(eDate);
+        int sMonth, sDay, sYear;        
+        int eMonth, eDay, eYear;
+                //call dateSpan getStartAsDate() stored local var Date sDate
+        Date sDate = span.getStartAsDate();
+        System.out.println("sdate ===== " + sDate); //testing data println
+                //call dateSpan getEndAsDate() store local var Date eDate 
+        Date eDate = span.getEndAsDate(); 
+        System.out.println("eDate = " + eDate); //testing data println
+           //SimpleDateFormat to format to seperate Month Day Year
+           //the "MMMM" spells out the month, but day and year string number
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
+        SimpleDateFormat dayFormat = new SimpleDateFormat("d");
+        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+           //formated sDate stored in local string start MOnth, day , year
+        String startMonth = monthFormat.format(sDate);
+        String startDay = dayFormat.format(sDate);
+        String startYear = yearFormat.format(sDate);
+            //formated eDate stored in local string end MOnth, day , year
+        String endMonth = monthFormat.format(eDate);
+        String endDay = dayFormat.format(eDate);
+        String endYear = yearFormat.format(eDate);
 
-                                        //parse sDay, sYear from string to int
-            sDay = Integer.parseInt(startDay);
-            sYear = Integer.parseInt(startYear);
+                                    //parse sDay, sYear from string to int
+        sDay = Integer.parseInt(startDay);
+        sYear = Integer.parseInt(startYear);
 
-                                        //parse eDay, eYear from string to int
-            eDay = Integer.parseInt(endDay);
-            eYear = Integer.parseInt(endYear);
-             
-                        //used to get int representation of month index locaion
-                        //location + 1 is equal to month needed to set Calendar
-            String[] monthInYear = { "January", "February", "March", "April", 
-                        "May", "June", "July", "August", "September", "October", 
-                                                       "November", "December" };
-         //this line goes to the above array and gets its index locations number
-                             //and adds one to get correct month nubmer
-            eMonth = (Arrays.asList(monthInYear).indexOf(endMonth) + 1); 		 				
-            sMonth = (Arrays.asList(monthInYear).indexOf(startMonth) + 1);
-                                //print to console to test wont show when 
-                                //system acutally runs
-            System.out.println("emonth = " + eMonth + " -- sMonth = " + sMonth);
-            
-            sCal = Calendar.getInstance();      //get calendar instance 
-            eCal = Calendar.getInstance();      //get calendar instance
-            eCal.set(eYear, eMonth, eDay);      //set eCal(Year,month, day)
-            sCal.set(sYear, sMonth, sDay);      //set sCal(Year, month, day)
+                                    //parse eDay, eYear from string to int
+        eDay = Integer.parseInt(endDay);
+        eYear = Integer.parseInt(endYear);
+
+                    //used to get int representation of month index locaion
+                    //location + 1 is equal to month needed to set Calendar
+        String[] monthInYear = { "January", "February", "March", "April", 
+                    "May", "June", "July", "August", "September", "October", 
+                                                   "November", "December" };
+     //this line goes to the above array and gets its index locations number
+                         //and adds one to get correct month nubmer
+        eMonth = (Arrays.asList(monthInYear).indexOf(endMonth) + 1); 		 				
+        sMonth = (Arrays.asList(monthInYear).indexOf(startMonth) + 1);
+                            //print to console to test wont show when 
+                            //system acutally runs
+        System.out.println("emonth = " + eMonth + " -- sMonth = " + sMonth);
+
+        sCal = Calendar.getInstance();      //get calendar instance 
+        eCal = Calendar.getInstance();      //get calendar instance
+        eCal.set(eYear, eMonth, eDay);      //set eCal(Year,month, day)
+        sCal.set(sYear, sMonth, sDay);      //set sCal(Year, month, day)
+        System.out.println("sCal = " + sCal + " -- eCal = " + eCal);
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
+        System.out.println(dateFormatter.format(span.getStartAsDate()) + "," 
+            + dateFormatter.format(span.getEndAsDate()) + "," + numOfDays);
+
     }
     
     public static void listAllDatesAsString()
@@ -318,8 +323,12 @@ public class MyJXMonthViewCalendar extends JFrame {
         }
         
     }
+   /* @Override
     public String toString() {
-        return sCal.toString() + "," + eCal.toString() + "," + numOfDays;
-    }
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
+        
+        return dateFormatter.format(span.getStartAsDate()) + "," 
+                + dateFormatter.format(span.getEndAsDate()) + "," + numOfDays;
+    }*/
     
 }
