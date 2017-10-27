@@ -312,7 +312,9 @@ public class GuestInfoGUI extends javax.swing.JFrame {
                     "\n CVV2 Code--------: %s" +
                     "\n Address------------: %s" +
                     "\n Apartment---------: %s" +
-                    "\n 5 Digit Zip-Code-: %s", 
+                    "\n 5 Digit Zip-Code-: %s" +
+                    "\n Date Reserved---: %s" +
+                    "\n CONFIRMATION--: %s", 
                 GuestInfo.getLastName(), GuestInfo.getFirstName(), 
                 dateFormatter.format(MyJXMonthViewCalendar.getSpan().getStartAsDate()),         
                 dateFormatter.format(MyJXMonthViewCalendar.getSpan().getEndAsDate()),
@@ -323,7 +325,9 @@ public class GuestInfoGUI extends javax.swing.JFrame {
                 GuestInfo.getCvv2(),
                 GuestInfo.getStreetAddress(),
                 GuestInfo.getAptNum(),
-                GuestInfo.getZipCode());
+                GuestInfo.getZipCode(),
+                GuestInfo.getDateOfReservation(),
+                GuestInfo.getConfirmationNum());
             int input = JOptionPane.showConfirmDialog(new GuestInfoGUI(),str, "Confirm Reservation Information",
                 JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, icon);
             System.out.println("printing in GuestInfoGUI the int value from JOptionpane : input = " + input);

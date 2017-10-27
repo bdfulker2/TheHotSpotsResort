@@ -5,8 +5,13 @@
  */
 package thehotspotsresort;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,7 +21,7 @@ import java.util.logging.Logger;
  */
 public class GuestInfo// extends MyJXMonthViewCalendar
 {
-    SimpleDateFormat dateFormatter = new SimpleDateFormat("EE- MMM d- yyyy");
+    private static final SimpleDateFormat dateFormatter = new SimpleDateFormat("EE- MMM d- yyyy");
     private static String firstName;
     private static String lastName;
     private static String streetAddress;
@@ -26,6 +31,23 @@ public class GuestInfo// extends MyJXMonthViewCalendar
     private static String twoDigMonth;
     private static String twoDigYear;
     private static String cvv2;
+    private static long confirmationNum; 
+    private static final Date today = Calendar.getInstance().getTime();
+    private static String dateOfReservation = dateFormatter.format(today); 
+    
+    /**
+     * @return the dateOfReservation
+     */
+    public static String getDateOfReservation() {
+        return dateOfReservation;
+    }
+
+    /**
+     * @param aDateOfReservation the dateOfReservation to set
+     */
+    public static void setDateOfReservation(String aDateOfReservation) {
+        dateOfReservation = aDateOfReservation;
+    }
 
     /**
      * @return the firstName
@@ -153,6 +175,51 @@ public class GuestInfo// extends MyJXMonthViewCalendar
         cvv2 = aCvv2;
     }
     
+     /**
+     * @return the count
+     */
+    public static long getConfirmationNum() { 
+        try {
+            if(RoomGUI.one == true) {
+                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom1Path())).count();
+                confirmationNum += 10000000;
+            }
+            else if(RoomGUI.two == true) {
+                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom2Path())).count();
+                confirmationNum += 20000000;
+            }
+            else if(RoomGUI.three == true) {
+                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom3Path())).count();
+                confirmationNum += 30000000;
+            }
+            else if(RoomGUI.four == true) {
+                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom4Path())).count();
+                confirmationNum += 40000000;
+            }
+            else if(RoomGUI.five == true) {
+                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom5Path())).count();
+                confirmationNum += 50000000;
+            }
+            else if(RoomGUI.six == true) {
+                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom6Path())).count();
+                confirmationNum += 60000000;
+            }
+        }
+        catch (IOException ex) {
+            Logger.getLogger(GuestInfo.class.getName()).log(Level.SEVERE, null,
+                    ex);
+        }
+        System.out.println("last confirmation number = " + confirmationNum + "newConfirmation number is = " );
+        return confirmationNum + 1;
+    }
+
+    /**
+     * @param aCount the count to set
+     */
+    public static void setConfirmationNum(long aCount) {
+        confirmationNum = aCount;
+    }
+    
     public GuestInfo(String firstName, String lastName, String streetAddress, 
                         String aptNum, String zipCode, String creditCard, String 
                                    twoDigMonth, String twoDigYear, String cvv2){
@@ -165,6 +232,7 @@ public class GuestInfo// extends MyJXMonthViewCalendar
         this.twoDigMonth = twoDigMonth;
         this.twoDigYear = twoDigYear;
         this.cvv2 = cvv2;
+        
         try {
             passToFile();
         } catch (IOException ex) {
@@ -197,11 +265,12 @@ public class GuestInfo// extends MyJXMonthViewCalendar
             WriteReservationToFile.FileWriter("room6",toString());
         }
     }
-    
+   
     
     @Override
     public String toString() {
-       return  
+       return 
+          getConfirmationNum() + "!" + dateOfReservation + "!" +
           dateFormatter.format(MyJXMonthViewCalendar.getSpan().getStartAsDate()) 
           + "!" + 
           dateFormatter.format(MyJXMonthViewCalendar.getSpan().getEndAsDate()) 

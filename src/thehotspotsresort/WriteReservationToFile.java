@@ -18,6 +18,7 @@ import java.util.Date;
  * @author Your Name <Ben Fulker FGCU.EDU>
  */
 public class WriteReservationToFile {
+                       //final stative variables for reservation .txt databases
     private static final String room1Path = 
             "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\" +
             "src\\thehotspotsresort\\roomOne.txt";
@@ -91,32 +92,32 @@ public class WriteReservationToFile {
         System.out.println("testing string going to file = " + toFile);
 
         try {
-
+                //
             if(room.contains("room1")) {
-                filePath  = room1Path;                          //"C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\roomOne.txt";
+                filePath = room1Path;                          
             }else if(room.contains("room2")) {
-                filePath = room2Path;                           //"C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\roomTwo.txt";                   
+                filePath = room2Path;                                              
             }else if(room.contains("room3")) {
-                filePath = room3Path;                           //"C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\roomThree.txt";                   
+                filePath = room3Path;                                              
             }
             else if(room.contains("room4")) {
-                filePath = room4Path;                           //"C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\roomFour.txt";                    
+                filePath = room4Path;                                               
             }
             else if(room.contains("room5")) {
-                filePath = room5Path;                           //"C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\roomFive.txt";
+                filePath = room5Path;                           
             }
             else if(room.contains("room6")) {
-                filePath = room6Path;                           //"C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\roomSix.txt";   
+                filePath = room6Path;                              
             }
-
-
-
             
-             //appointment = new StringBuilder().append(patientName + " - ").append(apptDate).append(" @ ").append(apptappointmentTime).toString();
-            writeFile = new BufferedWriter(new PrintWriter(new FileWriter(filePath, true)));		//creates an instance of fileWriter inside a printwriter inside a bufferedwriter
-                     writeFile.newLine();				//If the file is blank or no appointments have been added or written to the file then it tells the BufferedWriter writeFile
-                     writeFile.append(toFile); 		//go to a newLine() then append(appointment) to the DoctorsApptFile.txt and set acceptApptTime = true;
-                         //acceptGuestInfo = true;
+            writeFile = new BufferedWriter(
+                    new PrintWriter(new FileWriter(filePath, true))
+            );              //creates an instance of fileWriter wrapped in 
+                            //printwriter wrapped bufferedwriter
+            writeFile.newLine(); //If the file is blank or no reservation have
+            //been added or written to file then the BufferedWriter writeFile
+            writeFile.append(toFile); //go to a newLine() then append(toFile) 
+                    //to the specified room .txt
         }
         catch(FileNotFoundException fne) {
                 System.err.println("File Not Found " + fne.getMessage());
@@ -129,8 +130,8 @@ public class WriteReservationToFile {
         }
         finally
         {
-                writeFile.close();			//close the bufferedWriter
-        }								//it is always a good coding practice to close any stream or system resource so it doesn't have any leaks
-        //return acceptGuestInfo;
+                writeFile.close();   //close the bufferedWriter free resources
+        }//it is always a good coding practice to close any stream or 
+                            //system resource so it doesn't have any leaks
     }
 }
