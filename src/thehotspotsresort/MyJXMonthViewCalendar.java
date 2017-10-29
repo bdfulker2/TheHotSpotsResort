@@ -41,6 +41,7 @@ public class MyJXMonthViewCalendar extends JFrame {
     private static Calendar eCal, sCal;
     private static Calendar[] stayCal;
     private static boolean acceptDates;
+    private static JXMonthView monthView;
     
     public MyJXMonthViewCalendar()
     {
@@ -136,6 +137,7 @@ public class MyJXMonthViewCalendar extends JFrame {
         frame.pack();  //allow frame to set all component at or above their 
                         //prefered size
         frame.setVisible(true); //display GUI and start event dispatching thread
+       // monthView.setFlaggedDate
         //lamda function used in place of compilier updated to a lamda fucntion
         //ActionListener action 
         //action = new ActionListener() 
@@ -250,6 +252,7 @@ public class MyJXMonthViewCalendar extends JFrame {
             while(i <= numOfDays)
             {
                 dateStart.add(Calendar.DAY_OF_MONTH, 1);
+                //monthView.setFlaggedDates(dateStart, new Date());
                 stayCal[i] = dateStart;
                 i++;
             }

@@ -77,7 +77,8 @@ public class StaffGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void staffBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffBookingButtonActionPerformed
-        MyJXMonthViewCalendar cal = new MyJXMonthViewCalendar(); 
+       RoomGUI roomGUI = new RoomGUI();
+       roomGUI.setVisible(true);
     }//GEN-LAST:event_staffBookingButtonActionPerformed
 
     private void staffCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffCancelButtonActionPerformed
