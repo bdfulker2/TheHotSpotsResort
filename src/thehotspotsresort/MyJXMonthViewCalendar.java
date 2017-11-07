@@ -42,6 +42,7 @@ public class MyJXMonthViewCalendar extends JFrame {
     private static Calendar[] stayCal;
     private static boolean acceptDates;
     private static JXMonthView monthView;
+   
     
     public MyJXMonthViewCalendar()
     {
@@ -51,6 +52,7 @@ public class MyJXMonthViewCalendar extends JFrame {
         this.numOfDays = numOfDays;
         this.stayCal = new Calendar[numOfDays];
         this.acceptDates = false;
+
         initComponents();  
         
     }
@@ -159,6 +161,7 @@ public class MyJXMonthViewCalendar extends JFrame {
                 System.out.println("Selected Start Date = "
                         + getSpan().getEndAsDate());
                 numOfDays();
+                CalculateCost cost = new CalculateCost(); 
                 rememberChk(span.getStartAsDate(), span.getEndAsDate());
             }
         };
@@ -277,11 +280,13 @@ public class MyJXMonthViewCalendar extends JFrame {
             }
         
             System.out.println("num of day = " + numOfDays);
+            
         }
         catch(NullPointerException npe){}
         
         
     }
+   
     
     public void rememberChk(Date start, Date end)
     {//this method is only enterd to verify the user wants these dates
@@ -299,12 +304,16 @@ public class MyJXMonthViewCalendar extends JFrame {
                                             "Title", JOptionPane.YES_NO_OPTION);
         acceptDates = rememberChk.isSelected();
         if((yesNoSelection == JOptionPane.NO_OPTION) || (acceptDates == false)){
+            numOfDays =0;
             initComponents();
+           
         }
-        else if ( (yesNoSelection == JOptionPane.YES_OPTION) && 
-                                                       (acceptDates == true) ) {
-            
+        else if ( ((yesNoSelection == JOptionPane.YES_OPTION) && 
+                                                       (acceptDates == true)) ) {
+            System.out.println("Shouldn't be heree when cancel button");
             GuestInfoGUI guestGUI = new GuestInfoGUI();
+            guestGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    
             guestGUI.setVisible(true);
         }
 

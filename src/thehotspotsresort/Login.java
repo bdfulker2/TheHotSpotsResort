@@ -33,7 +33,8 @@ public class Login extends LoginGUI
 
     private static String EIN;// = LoginGUI.einTextField.getText();
     private static boolean Admin;     //static boolean for Admin
-    private static boolean match;            
+    private static boolean match;   
+    private static boolean Staff;
 
     /**
      * @return the password
@@ -89,6 +90,20 @@ public class Login extends LoginGUI
      */
     public static void setMatch(boolean aMatch) {
         match = aMatch;
+    }
+
+    /**
+     * @return the Staff
+     */
+    public static boolean isStaff() {
+        return Staff;
+    }
+
+    /**
+     * @param aStaff the Staff to set
+     */
+    public static void setStaff(boolean aStaff) {
+        Staff = aStaff;
     }
     
     /*
@@ -176,6 +191,7 @@ public class Login extends LoginGUI
              match = reader.read2(Admin, "staff"); 
             if(match == true)
             {
+                Staff = true;
                 StaffGUI staff = new StaffGUI();
                 staff.setVisible(true);
                 System.out.println("match = true :" + match);
@@ -196,3 +212,4 @@ public class Login extends LoginGUI
         }
     }  
 }
+

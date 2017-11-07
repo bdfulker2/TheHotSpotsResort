@@ -8,6 +8,7 @@ package thehotspotsresort;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -34,6 +35,7 @@ public class StaffGUI extends javax.swing.JFrame {
 
         staffBookingButton = new javax.swing.JButton();
         staffCancelButton = new javax.swing.JButton();
+        staffLookUpJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Staff GUI");
@@ -52,15 +54,27 @@ public class StaffGUI extends javax.swing.JFrame {
             }
         });
 
+        staffLookUpJButton.setText("Look Up Reservations");
+        staffLookUpJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                staffLookUpJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(staffCancelButton)
-                    .addComponent(staffBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(staffLookUpJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(staffCancelButton)
+                            .addComponent(staffBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,7 +84,9 @@ public class StaffGUI extends javax.swing.JFrame {
                 .addComponent(staffBookingButton)
                 .addGap(18, 18, 18)
                 .addComponent(staffCancelButton)
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(staffLookUpJButton)
+                .addContainerGap(106, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,6 +94,7 @@ public class StaffGUI extends javax.swing.JFrame {
 
     private void staffBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffBookingButtonActionPerformed
        RoomGUI roomGUI = new RoomGUI();
+       roomGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        roomGUI.setVisible(true);
     }//GEN-LAST:event_staffBookingButtonActionPerformed
 
@@ -90,6 +107,11 @@ public class StaffGUI extends javax.swing.JFrame {
         }
         cancelButton = true;*/
     }//GEN-LAST:event_staffCancelButtonActionPerformed
+
+    private void staffLookUpJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_staffLookUpJButtonActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_staffLookUpJButtonActionPerformed
 
     /**
      *
@@ -116,5 +138,6 @@ public class StaffGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JButton staffBookingButton;
     protected static javax.swing.JButton staffCancelButton;
+    private javax.swing.JButton staffLookUpJButton;
     // End of variables declaration//GEN-END:variables
 }

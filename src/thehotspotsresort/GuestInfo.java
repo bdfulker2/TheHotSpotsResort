@@ -23,6 +23,7 @@ public class GuestInfo// extends MyJXMonthViewCalendar
 {
     private static final SimpleDateFormat dateFormatter = new SimpleDateFormat("EE- MMM d- yyyy");
     private static String firstName;
+    private static String originalEIN;
     private static String lastName;
     private static String streetAddress;
     private static String aptNum;
@@ -31,7 +32,13 @@ public class GuestInfo// extends MyJXMonthViewCalendar
     private static String twoDigMonth;
     private static String twoDigYear;
     private static String cvv2;
+    private static String dateResMade;
+    private static String dateCheckIn;
+    private static String dateCheckOut;
+    private static String stayLength;
     private static long confirmationNum; 
+    private static boolean edited;
+    private static int priceForStay;
     private static final Date today = Calendar.getInstance().getTime();
     private static String dateOfReservation = dateFormatter.format(today); 
     
@@ -179,38 +186,41 @@ public class GuestInfo// extends MyJXMonthViewCalendar
      * @return the count
      */
     public static long getConfirmationNum() { 
-        try {
-            if(RoomGUI.one == true) {
-                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom1Path())).count();
-                confirmationNum += 10000000;
+        if(AdminGUI.cancelButton == false) {
+            try {
+                if(RoomGUI.one == true) {
+                    confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom1Path())).count();
+                    confirmationNum += 10000000;
+                }
+                else if(RoomGUI.two == true) {
+                    confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom2Path())).count();
+                    confirmationNum += 20000000;
+                }
+                else if(RoomGUI.three == true) {
+                    confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom3Path())).count();
+                    confirmationNum += 30000000;
+                }
+                else if(RoomGUI.four == true) {
+                    confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom4Path())).count();
+                    confirmationNum += 40000000;
+                }
+                else if(RoomGUI.five == true) {
+                    confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom5Path())).count();
+                    confirmationNum += 50000000;
+                }
+                else if(RoomGUI.six == true) {
+                    confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom6Path())).count();
+                    confirmationNum += 60000000;
+                }
             }
-            else if(RoomGUI.two == true) {
-                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom2Path())).count();
-                confirmationNum += 20000000;
+            catch (IOException ex) {
+                Logger.getLogger(GuestInfo.class.getName()).log(Level.SEVERE, null,
+                        ex);
             }
-            else if(RoomGUI.three == true) {
-                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom3Path())).count();
-                confirmationNum += 30000000;
-            }
-            else if(RoomGUI.four == true) {
-                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom4Path())).count();
-                confirmationNum += 40000000;
-            }
-            else if(RoomGUI.five == true) {
-                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom5Path())).count();
-                confirmationNum += 50000000;
-            }
-            else if(RoomGUI.six == true) {
-                confirmationNum = Files.lines(Paths.get(WriteReservationToFile.getRoom6Path())).count();
-                confirmationNum += 60000000;
-            }
-        }
-        catch (IOException ex) {
-            Logger.getLogger(GuestInfo.class.getName()).log(Level.SEVERE, null,
-                    ex);
-        }
-        System.out.println("last confirmation number = " + confirmationNum + "newConfirmation number is = " );
-        return confirmationNum + 1;
+            System.out.println("last confirmation number = " + confirmationNum + "newConfirmation number is = " );
+            return confirmationNum + 1;
+        }else
+            return confirmationNum;
     }
 
     /**
@@ -219,25 +229,179 @@ public class GuestInfo// extends MyJXMonthViewCalendar
     public static void setConfirmationNum(long aCount) {
         confirmationNum = aCount;
     }
+
+    /**
+     * @return the dateResMade
+     */
+    public static String getDateResMade() {
+        return dateResMade;
+    }
+
+    /**
+     * @param aDateResMade the dateResMade to set
+     */
+    public static void setDateResMade(String aDateResMade) {
+        dateResMade = aDateResMade;
+    }
+
+    /**
+     * @return the dateCheckIn
+     */
+    public static String getDateCheckIn() {
+        return dateCheckIn;
+    }
+
+    /**
+     * @param aDateCheckIn the dateCheckIn to set
+     */
+    public static void setDateCheckIn(String aDateCheckIn) {
+        dateCheckIn = aDateCheckIn;
+    }
+
+    /**
+     * @return the dateCheckOut
+     */
+    public static String getDateCheckOut() {
+        return dateCheckOut;
+    }
+
+    /**
+     * @param aDateCheckOut the dateCheckOut to set
+     */
+    public static void setDateCheckOut(String aDateCheckOut) {
+        dateCheckOut = aDateCheckOut;
+    }
+
+    /**
+     * @return the stayLength
+     */
+    public static String getStayLength() {
+        return stayLength;
+    }
+
+    /**
+     * @param aStayLength the stayLength to set
+     */
+    public static void setStayLength(String aStayLength) {
+        stayLength = aStayLength;
+    }
+
+    /**
+     * @return the OriginalEIN
+     */
+    public static String getOriginalEIN() {
+        return originalEIN;
+    }
+
+    /**
+     * @param aOriginalEIN the OriginalEIN to set
+     */
+    public static void setOriginalEIN(String aOriginalEIN) {
+        originalEIN = aOriginalEIN;
+    }
+
+    /**
+     * @return the priceForStay
+     */
+    public static int getPriceForStay() {
+        return priceForStay;
+    }
+
+    /**
+     * @param aPriceForStay the priceForStay to set
+     */
+    public static void setPriceForStay(int aPriceForStay) {
+        priceForStay = aPriceForStay;
+    }
     
     public GuestInfo(String firstName, String lastName, String streetAddress, 
                         String aptNum, String zipCode, String creditCard, String 
                                    twoDigMonth, String twoDigYear, String cvv2){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.streetAddress = streetAddress;
-        this.aptNum = aptNum;
-        this.zipCode = zipCode;
-        this.creditCard = creditCard;
-        this.twoDigMonth = twoDigMonth;
-        this.twoDigYear = twoDigYear;
-        this.cvv2 = cvv2;
+        GuestInfo.firstName = firstName;
+        GuestInfo.lastName = lastName;
+        GuestInfo.streetAddress = streetAddress;
+        GuestInfo.aptNum = aptNum;
+        GuestInfo.zipCode = zipCode;
+        GuestInfo.creditCard = creditCard;
+        GuestInfo.twoDigMonth = twoDigMonth;
+        GuestInfo.twoDigYear = twoDigYear;
+        GuestInfo.cvv2 = cvv2;
+        GuestInfo.stayLength = stayLength;
+        GuestInfo.dateCheckOut = dateCheckOut;
+        GuestInfo.dateCheckIn = dateCheckIn;
+        GuestInfo.edited = false;
+        GuestInfo.priceForStay = priceForStay;
         
-        try {
-            passToFile();
-        } catch (IOException ex) {
-            Logger.getLogger(GuestInfo.class.getName()).log(Level.SEVERE, null,
-                    ex);
+       
+        if((AdminGUI.cancelButton == true ) || 
+                                        (GuestInfoGUI.deleteFromFile == true)) {
+            try {           //so remove from file for both cancel/edit button 
+                removeFromFile();   //or delete buttons
+            } 
+            catch (IOException ex) {
+                Logger.getLogger(GuestInfo.class.getName()).
+                        log(Level.SEVERE, null, ex);
+            }
+                //but if cancel edit button is true and delete is false 
+                //re writed edited data with passToFile
+            
+               
+        } 
+        
+        if( (GuestInfoGUI.saveToFile == true) &&
+                                            (AdminGUI.cancelButton == false )) {
+            try {
+                passToFile();
+            } catch (IOException ex) {
+                Logger.getLogger(GuestInfo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    /**
+     *
+     * @throws IOException
+     */
+    private void removeFromFile() throws IOException {
+        
+        RemoveReservationFromFile remove = new RemoveReservationFromFile();
+        String confirm = Long.toString(confirmationNum);
+        System.out.println("system entered remove file confirm = " + confirm);
+        if(confirmationNum >= 10000000 && confirmationNum < 20000000 ) {
+            remove.RemoveFromFile("room1",confirm);
+            if(GuestInfoGUI.deleteFromFile == false) {
+                WriteReservationToFile.FileWriter("room1",toString());
+            }
+        }
+        else if(confirmationNum >= 20000000 && confirmationNum < 30000000 ) {
+            remove.RemoveFromFile("room2",confirm);
+            if(GuestInfoGUI.deleteFromFile == false) {
+                WriteReservationToFile.FileWriter("room2",toString());
+            }
+        }
+        else if(confirmationNum >= 30000000 && confirmationNum < 40000000 ) {
+            remove.RemoveFromFile("room3",confirm);
+            if(GuestInfoGUI.deleteFromFile == false) {
+                WriteReservationToFile.FileWriter("room3",toString());
+            }
+        }
+        else if(confirmationNum >= 40000000 && confirmationNum < 50000000 ) {
+            remove.RemoveFromFile("room4",confirm);
+            if(GuestInfoGUI.deleteFromFile == false) {
+                WriteReservationToFile.FileWriter("room4",toString());
+            }
+        }
+        else if(confirmationNum >= 50000000 && confirmationNum < 60000000 ) {
+            remove.RemoveFromFile("room5",confirm);
+            if(GuestInfoGUI.deleteFromFile == false) {
+                WriteReservationToFile.FileWriter("room5",toString());
+            }
+        }
+        else if(confirmationNum >= 60000000 && confirmationNum < 70000000 ) {
+            remove.RemoveFromFile("room6",confirm);
+            if(GuestInfoGUI.deleteFromFile == false) {
+                WriteReservationToFile.FileWriter("room6",toString());
+            }
         }
     }
 
@@ -269,15 +433,30 @@ public class GuestInfo// extends MyJXMonthViewCalendar
     
     @Override
     public String toString() {
-       return 
-          getConfirmationNum() + "!" + dateOfReservation + "!" +
+       System.out.print("in toString should be printing");
+    String line = "";
+    
+    if((AdminGUI.cancelButton == true) || (StaffGUI.cancelButton == true)) {
+        edited = true;
+        line = getConfirmationNum() + "!" + dateResMade + "!" +
+          dateCheckIn + "!" + dateCheckOut + "!" + stayLength + "!" + firstName 
+                + "!" + lastName + "!" + streetAddress + "!" + aptNum + "!" + 
+          zipCode + "!" + creditCard + "!" + twoDigMonth + "!" + twoDigYear + 
+               "!" + cvv2 + "!" + originalEIN+ "-" + Login.getEIN() +
+                "!" + edited + "!" + priceForStay;
+    } else  {
+        line = getConfirmationNum() + "!" + dateOfReservation + "!" +
           dateFormatter.format(MyJXMonthViewCalendar.getSpan().getStartAsDate()) 
           + "!" + 
           dateFormatter.format(MyJXMonthViewCalendar.getSpan().getEndAsDate()) 
           + "!" + MyJXMonthViewCalendar.getNumOfDays() + "!" + firstName + 
           "!" + lastName + "!" + streetAddress + "!" + aptNum + "!" + 
           zipCode + "!" + creditCard + "!" + twoDigMonth + "!" + twoDigYear + 
-               "!" + cvv2 + "!" + Login.getEIN();
+               "!" + cvv2 + "!" + Login.getEIN() +
+                "!" + edited + "!" + priceForStay;
+    }
+          
+        return line;
     }
     
     

@@ -8,6 +8,8 @@ package thehotspotsresort;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -106,12 +108,55 @@ public class AdminGUI extends javax.swing.JFrame {
             TheHotSpotsResort.cancelButtonClick();
         } catch (IOException ex) {
             Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        if(evt.getSource() == AdminGUI.adminCancelButton) {
+            cancelButton = true;
+            LookUpGUI adminEditLookUPGUI = new LookUpGUI();
+            adminEditLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            adminEditLookUPGUI.setVisible(true);
         }
-        cancelButton = true;*/
+        
     }//GEN-LAST:event_adminCancelButtonActionPerformed
 
     private void adminLookUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLookUpButtonActionPerformed
         // TODO add your handling code here:
+        if(evt.getSource() == AdminGUI.adminLookUpButton) {
+            LookUpGUI adminLookUPGUI = new LookUpGUI();
+            adminLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            adminLookUPGUI.setVisible(true);
+                 boolean check = false;
+        }
+       /* try {
+            // TODO add your handling code here:
+            
+            LookUp.setfName(LookUpGUI.getfNameJTextField().getText());
+            LookUp.setConfirmationNum(LookUpGUI.getConfirmNumJTextField().getText());
+            LookUp.setlName(LookUpGUI.getlNameJTextField().getText());
+            LookUp look = new LookUp(LookUp.getfName(), LookUp.getlName(), LookUp.getConfirmationNum());
+            ReadFromFile read = new ReadFromFile();
+            check = read.reading();
+            if(check == true)
+            {
+                DefaultTableModel resTable = (DefaultTableModel) LookUpGUI.jTable1.getModel();
+              
+                String adminLookUp[] = new String[]  {
+                    "Confirmation Number", "Booked On Date", "Check In Date",
+                    "Check Out Date", "Stay Length", "First Name", "Last Name"
+                };
+                for(String line : LookUpGUI.getLinesOfReservations())
+                {
+                    System.out.println("line ======================= " + line);
+                    resTable.addRow(line.split("!"));
+                }
+            }
+        } catch (IOException | NullPointerException ex) {
+            Logger.getLogger(LookUpGUI.class.getName()).log(Level.SEVERE, null,
+                    ex);
+        }*/
+       // System.out.println("boolean check in lookUPGuI = " + check);   
+        
+                  
+        
     }//GEN-LAST:event_adminLookUpButtonActionPerformed
 
     /**

@@ -82,10 +82,19 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="fNameJTextField">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="lNameJTextField">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="confirmNumJTextField">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -149,9 +158,14 @@
             <Component class="javax.swing.JTable" name="jTable1">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {},&#xa;    new String [] {&#xa;        &quot;Confirmation Number&quot;, &quot;Booked On Date&quot;, &quot;Check In Date&quot;,&#xa;        &quot;Check Out Date&quot;, &quot;Stay Length&quot;, &quot;First Name&quot;, &quot;Last Name&quot;&#xa;    }&#xa;)" type="code"/>
+                  <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {},&#xa;    new String [] {&#xa;        &quot;Confirmation Number&quot;, &quot;Booked On Date&quot;, &quot;Check In Date&quot;,&#xa;        &quot;Check Out Date&quot;, &quot;Stay Length&quot;, &quot;First Name&quot;, &quot;Last Name&quot;&#xa;    }&#xa;&#xa;)" type="code"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="*/&#xa;if(Login.isAdmin()) {&#xa;    jTable1.setModel(new javax.swing.table.DefaultTableModel(&#xa;            new Object [][] {},&#xa;            new String [] {&#xa;                &quot;Confirmation Number&quot;, &quot;Booked On Date&quot;, &quot;Check In Date&quot;,&#xa;                &quot;Check Out Date&quot;, &quot;Stay Length&quot;, &quot;First Name&quot;, &quot;Last Name&quot;,&#xa;                &quot;Street Address&quot;, &quot;Apartment Num&quot;, &quot;Zip-Code&quot;, &quot;Credit Card #&quot;,&#xa;                &quot;2 Digit Month&quot;, &quot;2 Digit Year&quot;, &quot;CVV2&quot;, &quot;EIN&quot;, &quot;Edited&quot;, &quot;Cost&quot;&#xa;        }&#xa;&#xa;    ));&#xa;} else {&#xa;    jTable1.setModel(new javax.swing.table.DefaultTableModel(&#xa;        new Object [][] {},&#xa;        new String [] {&#xa;            &quot;Confirmation Number&quot;, &quot;Booked On Date&quot;, &quot;Check In Date&quot;,&#xa;            &quot;Check Out Date&quot;, &quot;Stay Length&quot;, &quot;First Name&quot;, &quot;Last Name&quot;&#xa;        }&#xa;    ));&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="/*"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
