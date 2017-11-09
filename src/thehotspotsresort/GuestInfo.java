@@ -401,7 +401,7 @@ public class GuestInfo// extends MyJXMonthViewCalendar
             remove.RemoveFromFile("room6",confirm);
             if(GuestInfoGUI.deleteFromFile == false) {
                 WriteReservationToFile.FileWriter("room6",toString());
-            }
+            } 
         }
     }
 

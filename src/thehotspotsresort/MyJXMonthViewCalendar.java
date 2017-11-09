@@ -12,6 +12,7 @@ package thehotspotsresort;
 
 
 
+import java.awt.Color;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -26,6 +27,14 @@ import org.jdesktop.swingx.calendar.DateSelectionModel;
 import org.jdesktop.swingx.calendar.DateSpan;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import static java.nio.file.Files.lines;
+import static java.nio.file.Files.lines;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
@@ -42,18 +51,26 @@ public class MyJXMonthViewCalendar extends JFrame {
     private static Calendar[] stayCal;
     private static boolean acceptDates;
     private static JXMonthView monthView;
+    private static List<Date> allOfFile;
+    
+    private static int count;
+    private static int length;
+    private static Date[] unselectable;// = new Date[length];
    
     
     public MyJXMonthViewCalendar()
     {
+        this.count = count;
+        this.length = length;
         this.eCal = eCal;
         this.sCal = sCal;
         this.span = span;
         this.numOfDays = numOfDays;
         this.stayCal = new Calendar[numOfDays];
+        unselectable = new Date[2000];
         this.acceptDates = false;
-
         initComponents();  
+        
         
     }
 
@@ -113,11 +130,120 @@ public class MyJXMonthViewCalendar extends JFrame {
         sCal = asCal;
     }
     
-    
-    
+    /**
+     * This method is used for to print already book dates to the monthveiw
+     * calendar. The flagged dates will be in red. It does this by reading 
+     * each rooms text file and returning all of the lines from the specified 
+     * file then splits the lines by the '!' delimeter the start dates of each 
+     * stay and also the numOfDays the guest is staying. Is  passed to 
+     * listAllDates() where the dates are converted the setFlaggedDates method 
+     * is used to set the dates then the foreground text for those date are
+     */
+   public void printDatesToCalendar() {
+        File file = null;
+        try {
+            if(RoomGUI.one == true) {
+                file = new File(WriteReservationToFile.getRoom1Path());
+            }
+            if(RoomGUI.two == true) {
+                file = new File(WriteReservationToFile.getRoom2Path());
+            }
+            if(RoomGUI.three == true) {
+                file = new File(WriteReservationToFile.getRoom3Path());
+            }
+            if(RoomGUI.four == true) {
+                file = new File(WriteReservationToFile.getRoom4Path());
+            }
+            if(RoomGUI.five == true) {
+                file = new File(WriteReservationToFile.getRoom5Path());
+            }
+            if(RoomGUI.six == true) {
+                file = new File(WriteReservationToFile.getRoom6Path());
+            }
+            
+            List<String> lines = Files.readAllLines(file.toPath());
+            count = 0;
+
+            for(String line: lines) {
+                if(!line.equals("")) {
+                    String[] array = line.split("!");
+                    SimpleDateFormat dateFormatter = new SimpleDateFormat(
+                            "EE- MMM d- yyyy"
+                    );
+                    Date startDate = dateFormatter.parse(array[2]);
+                    int num = Integer.parseInt(array[4]);
+                    length += (num -1);
+                    listAllDates(startDate, num);
+                }
+
+            }
+        }
+        catch (IOException ex) {
+            Logger.getLogger(MyJXMonthViewCalendar.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(MyJXMonthViewCalendar.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    /**
+     * start dates of each 
+     * stay and also the numOfDays the guest is staying. Is  passed to 
+     * listAllDates() where the dates are converted the setFlaggedDates method 
+     * is used to set the dates then the foreground text for those dates to red.
+     * First the date is broken up into into month day and year by using the 
+     * simpledateformatter to format to the string version of each one. The 
+     * day and year are parsed into ints and the I use an array of months to get
+     * the proper month by using the index location.
+     * @param sDate
+     * @param num 
+     */
+     public static void listAllDates(Date sDate, int num)
+    {
+        int sMonth, sDay, sYear;  
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM");
+        SimpleDateFormat dayFormat = new SimpleDateFormat("d");
+        SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
+        String startMonth = monthFormat.format(sDate);
+        String startDay = dayFormat.format(sDate);
+        String startYear = yearFormat.format(sDate);
+            //formated eDate stored in local string end MOnth, day , year
+                                 //parse sDay, sYear from string to int
+        sDay = Integer.parseInt(startDay);
+        sYear = Integer.parseInt(startYear);
+        System.out.println(" -- sDay = " + sDay + " sYear = "+ sYear);
+
+                                    //parse eDay, eYear from string to int
+                 //used to get int representation of month index locaion
+                    //location + 1 is equal to month needed to set Calendar
+        String[] monthInYear = { "January", "February", "March", "April", 
+                    "May", "June", "July", "August", "September", "October", 
+                                                   "November", "December" };
+     //this line goes to the above array and gets its index locations number
+                         //and adds one to get correct month nubmer		 				
+        sMonth = (Arrays.asList(monthInYear).indexOf(startMonth));
+                            //print to console to test wont show when 
+                            //system acutally runs
+        System.out.println(" -- sMonth = " + sMonth);
+        int i = 0;
+        while(i < num)
+        {
+            Calendar cal = Calendar.getInstance();      //get calendar instance 
+            cal.set(sYear, sMonth, sDay+i);
+            //allOfFile.add(cal.getTime());
+            System.out.println("calendar cal = "+ cal);
+            
+            monthView.addFlaggedDates(cal.getTime());
+            unselectable[count++] = cal.getTime();
+            //count++;
+            i++;
+        }   
+        
+    }
     
     private void initComponents() {
-        
+       
         setLookAndFeel();
                       //intialize DateSpan variable
                                  //instantiate a JFrame Object with title room 1
@@ -128,13 +254,25 @@ public class MyJXMonthViewCalendar extends JFrame {
         frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
         
         //Install a month view componet. It instantiates a calendar view
-        JXMonthView monthView = new JXMonthView();
+        monthView = new JXMonthView();
             //set the monthview component to a 2 by 2 grid and allow user 
             //to select multiple days and then prints them and returns the datespan
         monthView.setPreferredColumnCount(2);
+        
+       
+        
+ 
         monthView.setPreferredRowCount(2);  
         monthView.setSelectionMode(  //single interval allow to select mult days
                     DateSelectionModel.SelectionMode.SINGLE_INTERVAL_SELECTION);
+        
+        printDatesToCalendar();
+        monthView.setFlaggedDayForeground(Color.red); //set date text to red
+        Date[] temp = new Date[count]; //new array size of flagged dates
+        for(int i = 0; i < count; i++) {   
+            temp[i] = unselectable[i];   //puts only dates and not null into
+        }                               //temp so we only have good dates
+        monthView.setUnselectableDates(temp);   //makes dates unselectable
         frame.getContentPane().add(monthView);
         frame.pack();  //allow frame to set all component at or above their 
                         //prefered size
@@ -161,8 +299,17 @@ public class MyJXMonthViewCalendar extends JFrame {
                 System.out.println("Selected Start Date = "
                         + getSpan().getEndAsDate());
                 numOfDays();
-                CalculateCost cost = new CalculateCost(); 
-                rememberChk(span.getStartAsDate(), span.getEndAsDate());
+                CalculateCost cost = new CalculateCost();
+               /* if(monthView.isFlaggedDate(span.getStartAsDate()) || monthView.isFlaggedDate(span.getEndAsDate())) &&
+                        (monthView.isFlaggedDate(span.getStartAsDate().after(
+                                        null)) || monthView.isFlaggedDate(span.getEndAsDate()))*/
+               // if(span.contains((DateSpan) monthView.getFlaggedDates())) {
+                 //   System.out.println("repick your dates room is book");
+                /*if(monthView.getSelectionForeground() == Color.red) {
+                    System.out.println("Repick not available");
+                }else {*/
+                    rememberChk(span.getStartAsDate(), span.getEndAsDate());
+                
             }
         };
         monthView.addActionListener(a);  //adds actionListener to monthView
@@ -239,33 +386,13 @@ public class MyJXMonthViewCalendar extends JFrame {
         eCal.set(eYear, eMonth, eDay);      //set eCal(Year,month, day)
         sCal.set(sYear, sMonth, sDay);      //set sCal(Year, month, day)
         System.out.println("sCal = " + sCal + " -- eCal = " + eCal);
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
+       SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
         System.out.println(dateFormatter.format(span.getStartAsDate()) + "," 
             + dateFormatter.format(span.getEndAsDate()) + "," + numOfDays);
 
     }
     
-    public static void listAllDatesAsString()
-    {
-          
-        try
-        {
-            Calendar dateStart = (Calendar)sCal.clone();
-            int i = 0;
-            while(i <= numOfDays)
-            {
-                dateStart.add(Calendar.DAY_OF_MONTH, 1);
-                //monthView.setFlaggedDates(dateStart, new Date());
-                stayCal[i] = dateStart;
-                i++;
-            }
-        
-            System.out.println("num of day = " + numOfDays);
-        }
-        catch(NullPointerException npe){}
-        
-        
-    }
+   
     
     public static void numOfDays()
     {
@@ -330,17 +457,13 @@ public class MyJXMonthViewCalendar extends JFrame {
             //the next line sets the look and feel
             UIManager.setLookAndFeel(GuiLook);
             //multiCatch so you don't have to call all of them
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(MyJXMonthViewCalendar.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | 
+                IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(
+                    MyJXMonthViewCalendar.class.getName()).
+                    log(Level.SEVERE, null, ex);
         }
         
     }
-   /* @Override
-    public String toString() {
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
-        
-        return dateFormatter.format(span.getStartAsDate()) + "," 
-                + dateFormatter.format(span.getEndAsDate()) + "," + numOfDays;
-    }*/
-    
+  
 }
