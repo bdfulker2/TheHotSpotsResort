@@ -131,11 +131,13 @@ public class LoginGUI extends javax.swing.JFrame {
         loginPasswordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         lookUpButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HOT SPOT RESORT LOGIN");
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         headerTitleJLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -208,21 +210,24 @@ public class LoginGUI extends javax.swing.JFrame {
                 .addGap(190, 190, 190))
         );
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thehotspotsresort/HotSpotLow.JPG"))); // NOI18N
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(355, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(323, 323, 323))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(440, 440, 440)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1240, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(306, 306, 306)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addGap(310, 310, 310)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -264,6 +269,7 @@ public class LoginGUI extends javax.swing.JFrame {
     protected static javax.swing.JTextField einTextField;
     private javax.swing.JLabel headerTitleJLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     protected static javax.swing.JButton loginButton;
     protected static javax.swing.JPasswordField loginPasswordField;
