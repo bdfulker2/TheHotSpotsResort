@@ -13,9 +13,9 @@ public class CalculateCost {
     
     private static int sumOfStay;
     private static int sumForReport;
-    private static final int ROOM_1_AND_2_COST = 150;
-    private static final int ROOM_3_AND_4_COST = 150;
-    private static final int ROOM_5_AND_6_COST = 200;
+    protected static final int ROOM_1_AND_2_COST = 150;
+    protected static final int ROOM_3_AND_4_COST = 150;
+    protected static final int ROOM_5_AND_6_COST = 200;
     
     public CalculateCost() {
         this. sumOfStay = sumOfStay;
@@ -50,12 +50,8 @@ public class CalculateCost {
     public static void setSumForReport(int aSumForReport) {
         sumForReport = aSumForReport;
     }
-    
-    
-  
-    
-    
-     public static void costForStay() {
+     
+    public static void costForStay() {
         if((RoomGUI.one == true) || (RoomGUI.two == true) || (GuestInfo.getConfirmationNum() >= 10000000 && GuestInfo.getConfirmationNum() < 30000000 ) ) {
             sumOfStay = ROOM_1_AND_2_COST*MyJXMonthViewCalendar.getNumOfDays();
         }
@@ -65,6 +61,5 @@ public class CalculateCost {
         else if((RoomGUI.five == true) || (RoomGUI.six == true) || (GuestInfo.getConfirmationNum() >= 50000000 && GuestInfo.getConfirmationNum() < 70000000 )) {
             sumOfStay = ROOM_5_AND_6_COST*MyJXMonthViewCalendar.getNumOfDays();
         }
-    }
-    
+    }    
 }

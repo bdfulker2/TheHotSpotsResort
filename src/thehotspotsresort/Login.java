@@ -169,7 +169,7 @@ public class Login extends LoginGUI
             {                       //if EIN and Passsword match do this
                                     //I haven't decided where to go 
                 System.out.println("match = true :" + match);
-                AdminGUI admin = new AdminGUI();
+                AdminGUI admin = new AdminGUI(); 
                 admin.setVisible(true);
                
             }
