@@ -30,6 +30,8 @@ public class RoomGUI extends javax.swing.JFrame {
         this.five = false;
         this.six = false;
         initComponents();
+        setLookAndFeel();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -41,88 +43,95 @@ public class RoomGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        room3JButton = new javax.swing.JButton();
-        room2JButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         room1JButton = new javax.swing.JButton();
+        room2JButton = new javax.swing.JButton();
+        room3JButton = new javax.swing.JButton();
         room4JButton = new javax.swing.JButton();
         room5JButton = new javax.swing.JButton();
         room6JButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 0, 0));
+        setFocusCycleRoot(false);
+        setMaximumSize(new java.awt.Dimension(485, 294));
+        setMinimumSize(new java.awt.Dimension(485, 294));
 
-        room3JButton.setText("3");
-        room3JButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                room3JButtonActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 10, true));
+        jPanel1.setMaximumSize(new java.awt.Dimension(485, 294));
+        jPanel1.setMinimumSize(new java.awt.Dimension(485, 294));
+        jPanel1.setLayout(new java.awt.GridLayout(2, 3, 8, 8));
 
-        room2JButton.setText("2");
-        room2JButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                room2JButtonActionPerformed(evt);
-            }
-        });
-
+        room1JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room1JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room1JButton.setText("1");
         room1JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room1JButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(room1JButton);
 
+        room2JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room2JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
+        room2JButton.setText("2");
+        room2JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                room2JButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(room2JButton);
+
+        room3JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room3JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
+        room3JButton.setText("3");
+        room3JButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                room3JButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(room3JButton);
+
+        room4JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room4JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room4JButton.setText("4");
         room4JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room4JButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(room4JButton);
 
+        room5JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room5JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room5JButton.setText("5");
         room5JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room5JButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(room5JButton);
 
+        room6JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room6JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room6JButton.setText("6");
         room6JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room6JButtonActionPerformed(evt);
             }
         });
+        jPanel1.add(room6JButton);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(room4JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(room5JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(room1JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(room2JButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(room3JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(room6JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(room2JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
-                    .addComponent(room1JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(room3JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(room4JButton, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                    .addComponent(room5JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(room6JButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
         );
 
         pack();
@@ -193,6 +202,7 @@ public class RoomGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton room1JButton;
     private javax.swing.JButton room2JButton;
     private javax.swing.JButton room3JButton;

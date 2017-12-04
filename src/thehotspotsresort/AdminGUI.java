@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This is the AdminGUI it is pulled up only when an admin logs in. It is a 
+ * JFrame with components that give the Admin their capabilities and access 
+ * to everything they have permission to access
  */
 package thehotspotsresort;
 
@@ -23,6 +23,7 @@ public class AdminGUI extends javax.swing.JFrame {
     public AdminGUI() {
         initComponents();
         setLookAndFeel();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -32,6 +33,7 @@ public class AdminGUI extends javax.swing.JFrame {
      */
     
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -43,73 +45,71 @@ public class AdminGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin GUI");
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 8));
         jPanel2.setAutoscrolls(true);
         jPanel2.setFocusCycleRoot(true);
         jPanel2.setFocusTraversalPolicyProvider(true);
+        jPanel2.setMaximumSize(new java.awt.Dimension(330, 332));
+        jPanel2.setMinimumSize(new java.awt.Dimension(330, 332));
+        jPanel2.setLayout(new java.awt.GridLayout(2, 2, 8, 8));
 
+        adminCancelButton.setBackground(new java.awt.Color(255, 0, 0));
         adminCancelButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         adminCancelButton.setText("Cancel Reservation");
         adminCancelButton.setFocusable(false);
+        adminCancelButton.setMaximumSize(new java.awt.Dimension(150, 150));
+        adminCancelButton.setMinimumSize(new java.awt.Dimension(150, 150));
+        adminCancelButton.setPreferredSize(new java.awt.Dimension(150, 150));
         adminCancelButton.setSelected(true);
         adminCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminCancelButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(adminCancelButton);
 
+        adminBookingButton.setBackground(new java.awt.Color(255, 0, 0));
         adminBookingButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         adminBookingButton.setText("Book A  Room");
+        adminBookingButton.setMaximumSize(new java.awt.Dimension(150, 150));
+        adminBookingButton.setMinimumSize(new java.awt.Dimension(150, 150));
+        adminBookingButton.setPreferredSize(new java.awt.Dimension(150, 150));
         adminBookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminBookingButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(adminBookingButton);
 
+        adminLookUpButton.setBackground(new java.awt.Color(255, 0, 0));
+        adminLookUpButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         adminLookUpButton.setText("Admin Look UP");
+        adminLookUpButton.setMaximumSize(new java.awt.Dimension(150, 150));
+        adminLookUpButton.setMinimumSize(new java.awt.Dimension(150, 150));
+        adminLookUpButton.setPreferredSize(new java.awt.Dimension(150, 150));
         adminLookUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 adminLookUpButtonActionPerformed(evt);
             }
         });
+        jPanel2.add(adminLookUpButton);
 
+        printReportButton.setBackground(new java.awt.Color(255, 0, 0));
+        printReportButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         printReportButton.setText("Print Report");
+        printReportButton.setMaximumSize(new java.awt.Dimension(150, 150));
+        printReportButton.setMinimumSize(new java.awt.Dimension(150, 150));
+        printReportButton.setPreferredSize(new java.awt.Dimension(150, 150));
+        printReportButton.setRequestFocusEnabled(false);
         printReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printReportButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(adminLookUpButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminBookingButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(printReportButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminCancelButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adminBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(printReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adminLookUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel2.add(printReportButton);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,18 +127,17 @@ public class AdminGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void adminBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminBookingButtonActionPerformed
+    private void adminBookingButtonActionPerformed(
+		java.awt.event.ActionEvent evt
+	) {//GEN-FIRST:event_adminBookingButtonActionPerformed
        RoomGUI roomGui = new RoomGUI();
        roomGui.setVisible(true);
     }//GEN-LAST:event_adminBookingButtonActionPerformed
 
-    private void adminCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminCancelButtonActionPerformed
-        // TODO add your handling code here:
-      /*   try {
-            TheHotSpotsResort.cancelButtonClick();
-        } catch (IOException ex) {
-            Logger.getLogger(BookCancelLookUpGUI.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+    private void adminCancelButtonActionPerformed(
+		java.awt.event.ActionEvent evt
+	) {//GEN-FIRST:event_adminCancelButtonActionPerformed
+
         if(evt.getSource() == AdminGUI.adminCancelButton) {
             cancelButton = true;
             LookUpGUI adminEditLookUPGUI = new LookUpGUI();
@@ -147,7 +146,9 @@ public class AdminGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_adminCancelButtonActionPerformed
 
-    private void adminLookUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLookUpButtonActionPerformed
+    private void adminLookUpButtonActionPerformed(
+		java.awt.event.ActionEvent evt
+	) {//GEN-FIRST:event_adminLookUpButtonActionPerformed
         // TODO add your handling code here:
         if(evt.getSource() == AdminGUI.adminLookUpButton) {
             LookUpGUI adminLookUPGUI = new LookUpGUI();
@@ -155,40 +156,12 @@ public class AdminGUI extends javax.swing.JFrame {
             adminLookUPGUI.setVisible(true);
                  boolean check = false;
         }
-       /* try {
-            // TODO add your handling code here:
-            
-            LookUp.setfName(LookUpGUI.getfNameJTextField().getText());
-            LookUp.setConfirmationNum(LookUpGUI.getConfirmNumJTextField().getText());
-            LookUp.setlName(LookUpGUI.getlNameJTextField().getText());
-            LookUp look = new LookUp(LookUp.getfName(), LookUp.getlName(), LookUp.getConfirmationNum());
-            ReadFromFile read = new ReadFromFile();
-            check = read.reading();
-            if(check == true)
-            {
-                DefaultTableModel resTable = (DefaultTableModel) LookUpGUI.jTable1.getModel();
-              
-                String adminLookUp[] = new String[]  {
-                    "Confirmation Number", "Booked On Date", "Check In Date",
-                    "Check Out Date", "Stay Length", "First Name", "Last Name"
-                };
-                for(String line : LookUpGUI.getLinesOfReservations())
-                {
-                    System.out.println("line ======================= " + line);
-                    resTable.addRow(line.split("!"));
-                }
-            }
-        } catch (IOException | NullPointerException ex) {
-            Logger.getLogger(LookUpGUI.class.getName()).log(Level.SEVERE, null,
-                    ex);
-        }*/
-       // System.out.println("boolean check in lookUPGuI = " + check);   
-        
-                  
-        
+      
     }//GEN-LAST:event_adminLookUpButtonActionPerformed
 
-    private void printReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printReportButtonActionPerformed
+    private void printReportButtonActionPerformed(
+		java.awt.event.ActionEvent evt) {
+		//GEN-FIRST:event_printReportButtonActionPerformed
         // TODO add your handling code here:
         PrintReportGUI report = new PrintReportGUI();
         report.setVisible(true);
@@ -199,25 +172,33 @@ public class AdminGUI extends javax.swing.JFrame {
      */
     public static void setLookAndFeel() {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        /* If Nimbus (introduced in Java SE 6) is not available, 
+		 * stay with the default look and feel.
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : 
+		javax.swing.UIManager.getInstalledLookAndFeels())  {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(
+				AdminGUI.class.getName()
+			).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(
+				AdminGUI.class.getName()
+			).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(
+				AdminGUI.class.getName()
+			).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(	
+				AdminGUI.class.getName()
+			).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

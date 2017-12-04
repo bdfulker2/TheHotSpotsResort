@@ -151,6 +151,8 @@ public class LoginGUI extends javax.swing.JFrame {
 
         loginPasswordField.setText("jPasswordFiel");
 
+        loginButton.setBackground(new java.awt.Color(255, 0, 0));
+        loginButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +160,8 @@ public class LoginGUI extends javax.swing.JFrame {
             }
         });
 
+        lookUpButton.setBackground(new java.awt.Color(255, 0, 0));
+        lookUpButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
         lookUpButton.setText("Look Up Reservation");
         lookUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,7 +247,13 @@ public class LoginGUI extends javax.swing.JFrame {
             try {    //and setEIN value for Login.EIN
                 Login.setPassword(String.copyValueOf(loginPasswordField.getPassword()));
                 Login.setEIN(einTextField.getText());
+                LoginGUI.jPanel1.setEnabled(false);
+                LoginGUI.jPanel1.setOpaque(true);
+                LoginGUI.jPanel1.setVisible(false);         
+                LoginGUI.jPanel1.revalidate();
+                repaint();
                 Login login = new Login(Login.getEIN(), Login.getPassword());
+                
             } 
             catch (IOException ex) {
                 Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -256,6 +266,11 @@ public class LoginGUI extends javax.swing.JFrame {
          //LoginGUI log = new LoginGUI();
          //log.setVisible(false);
         if(evt.getSource() == lookUpButton) {
+            LoginGUI.jPanel1.setEnabled(false);
+            LoginGUI.jPanel1.setOpaque(true);
+            LoginGUI.jPanel1.setVisible(false);         
+            LoginGUI.jPanel1.revalidate();
+            repaint();
             LookUpGUI look = new LookUpGUI();
             look.setVisible(true);
         }
@@ -270,7 +285,7 @@ public class LoginGUI extends javax.swing.JFrame {
     private javax.swing.JLabel headerTitleJLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    protected static javax.swing.JPanel jPanel1;
     protected static javax.swing.JButton loginButton;
     protected static javax.swing.JPasswordField loginPasswordField;
     private javax.swing.JButton lookUpButton;

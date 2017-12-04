@@ -63,7 +63,7 @@ public class PrintReportGUI extends JFrame implements ActionListener {
         room6JCheckBox.addActionListener(this);
         startJXDatePicker.addActionListener(this);
         endJXDatePicker.addActionListener(this);  
-        
+        this.setLocationRelativeTo(null);
         
     }
 

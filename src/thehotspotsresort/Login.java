@@ -19,7 +19,7 @@ import javax.swing.JTextField;
  * isn't 7 chars and the if the first char isn't an 's' or an 'a'
  * @author bdfulker2
  */
-public class Login extends LoginGUI
+public class Login extends LoginGUI 
 {
     /**
      *below are protected attributes that pull data from the LoginGUI called
@@ -113,6 +113,10 @@ public class Login extends LoginGUI
     public Login(String EIN, String password) throws IOException    
     {
         //super();
+        
+        
+        
+                //repaint();
         Login.Admin = false;
         Login.match = false;
         Login.EIN = EIN;                
@@ -169,8 +173,10 @@ public class Login extends LoginGUI
             {                       //if EIN and Passsword match do this
                                     //I haven't decided where to go 
                 System.out.println("match = true :" + match);
+               
                 AdminGUI admin = new AdminGUI(); 
                 admin.setVisible(true);
+                
                
             }
             else
