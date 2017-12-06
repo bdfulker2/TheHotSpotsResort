@@ -126,10 +126,16 @@ public class AdminGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     private void adminBookingButtonActionPerformed(
 		java.awt.event.ActionEvent evt
 	) {//GEN-FIRST:event_adminBookingButtonActionPerformed
+       
+        setVisible(false);
+        //JFrame.AdminGUI.setOpaque(true);
+        setEnabled(false);
+        revalidate();
+        repaint();
+       
        RoomGUI roomGui = new RoomGUI();
        roomGui.setVisible(true);
     }//GEN-LAST:event_adminBookingButtonActionPerformed
@@ -140,6 +146,11 @@ public class AdminGUI extends javax.swing.JFrame {
 
         if(evt.getSource() == AdminGUI.adminCancelButton) {
             cancelButton = true;
+            setVisible(false);
+            //JFrame.AdminGUI.setOpaque(true);
+            setEnabled(false);
+            revalidate();
+            repaint();
             LookUpGUI adminEditLookUPGUI = new LookUpGUI();
             adminEditLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             adminEditLookUPGUI.setVisible(true);
@@ -151,10 +162,15 @@ public class AdminGUI extends javax.swing.JFrame {
 	) {//GEN-FIRST:event_adminLookUpButtonActionPerformed
         // TODO add your handling code here:
         if(evt.getSource() == AdminGUI.adminLookUpButton) {
+            setVisible(false);
+            //JFrame.AdminGUI.setOpaque(true);
+            setEnabled(false);
+            revalidate();
+            repaint();
             LookUpGUI adminLookUPGUI = new LookUpGUI();
             adminLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             adminLookUPGUI.setVisible(true);
-                 boolean check = false;
+            boolean check = false;
         }
       
     }//GEN-LAST:event_adminLookUpButtonActionPerformed
@@ -163,6 +179,11 @@ public class AdminGUI extends javax.swing.JFrame {
 		java.awt.event.ActionEvent evt) {
 		//GEN-FIRST:event_printReportButtonActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        //JFrame.AdminGUI.setOpaque(true);
+        setEnabled(false);
+        revalidate();
+        repaint();
         PrintReportGUI report = new PrintReportGUI();
         report.setVisible(true);
     }//GEN-LAST:event_printReportButtonActionPerformed
@@ -200,22 +221,7 @@ public class AdminGUI extends javax.swing.JFrame {
 				AdminGUI.class.getName()
 			).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BookCancelLookUpGUI().setVisible(true);
-            }
-        //</editor-fold>
-
-        /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BookCancelLookUpGUI().setVisible(true);
-            }
-        });*/
-        
   
     }
     protected static boolean cancelButton = false;
