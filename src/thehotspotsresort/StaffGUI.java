@@ -82,7 +82,7 @@ public class StaffGUI extends javax.swing.JFrame {
 
         staffLookUpButton.setBackground(new java.awt.Color(255, 0, 0));
         staffLookUpButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
-        staffLookUpButton.setText("Admin Look UP");
+        staffLookUpButton.setText("Staff Look UP");
         staffLookUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 staffLookUpButtonActionPerformed(evt);
