@@ -1,11 +1,13 @@
 package thehotspotsresort;
 
-/*******************************************************RemoveAppointmentFromFile************************************************************
- ************************************Benjamin Fulker *** October 20 *** JAVA -- COP 2800 *** Final Project **********************************
- *This Class reads the ApptFile.txt for input put in by the user for an appointment to be removed from the file. It reads the file look for**
- *a match to the input and it copies every line that doesn't match to a temp file named TempApptFile.txt which will then gives us the temp***
- *file with all the appointments accept the one that was to be removed. In the next class it copies the temp file back to the original file**
- *******************************************************************************************************************************************/
+/**********************RemoveReservationFromFile*******************************
+ * This class is for removing a reservation from a .txt file. The way it does it
+ * is that once a line/reservation has been selected. This class is instantiated
+ * and it finds the matching line in the specified file. Java can't remove a
+ * line from a file. So we copy all the lines except the one that we want to 
+ * remove to a templtxt file then they are all oopeid back to the original file
+ * The fileIO and also buffered reader 
+ */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,25 +26,34 @@ public class RemoveReservationFromFile
 {
                   //final static variables paths for reservation .txt databases
     private static final String room1Path = 
+            
             "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\" +
             "src\\thehotspotsresort\\roomOne.txt";
+           /* "src\\thehotspotsresort\\roomTwo.txt";*/
     private static final String room2Path =
             "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
             "\\thehotspotsresort\\roomTwo.txt";
+           // "src\\thehotspotsresort\\roomTwo.txt";
     private static final String room3Path =
+            //"src\\thehotspotsresort\\roomThree.txt";
             "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
             "\\thehotspotsresort\\roomThree.txt";
     private static final String room4Path =
+            //"src\\thehotspotsresort\\roomFour.txt";
             "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
             "\\thehotspotsresort\\roomFour.txt";
     private static final String room5Path =
+            //"src\\thehotspotsresort\\roomFive.txt";
             "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
             "\\thehotspotsresort\\roomFive.txt";
     private static final String room6Path =
+            //"src\\thehotspotsresort\\roomSix.txt";
             "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
             "\\thehotspotsresort\\roomSix.txt";
     
-    private static final String tempFilePath ="C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\TempReservationFile.txt";
+    private static final String tempFilePath =
+            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\TempReservationFile.txt";
    
     RemoveReservationFromFile()
     {
@@ -100,12 +112,12 @@ public class RemoveReservationFromFile
         }
         catch(NullPointerException npe)
         {
-                System.out.println("Null Pointer Exception Has Been thrown" +
+                System.err.println("Null Pointer Exception Has Been thrown" +
                             " program continues on though" + npe.getMessage());
         }
         catch(FileNotFoundException fne)
         {
-                System.out.println("File Not Found " + fne.getMessage());
+                System.err.println("File Not Found " + fne.getMessage());
         }
         finally
         {

@@ -1,7 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class is a GUI JFrame Class used to look up reservations saved in the
+ * systems .txt file databases. It pulls data from the .txt file and puts onto
+ * a JTable. For the Admin and Staff Level LookUp if show all of users 
+ * reservation and payment data. At the guest level it only shows basic date
  */
 package thehotspotsresort;
 
@@ -25,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class LookUpGUI extends javax.swing.JFrame {
 
-    private static ArrayList<String> linesOfReservations;
+    //////////Getters and Setters needed for Attributes////////////
 
     /**
      * @return the linesOfReservations
@@ -42,6 +43,49 @@ public class LookUpGUI extends javax.swing.JFrame {
         linesOfReservations = aLinesOfReservations;
     }
 
+    /**
+     * @return the reservationTable
+     */
+    public JTable getReservationTable() {
+        return reservationTable;
+    }
+
+    /**
+     * @param reservationTable the reservationTable to set
+     */
+    public void setReservationTable(JTable reservationTable) {
+        this.reservationTable = reservationTable;
+    }
+
+    /**
+     * @return the lookUpReservationJButton
+     */
+    public javax.swing.JButton getLookUpReservationJButton() {
+        return lookUpReservationJButton;
+    }
+
+    /**
+     * @param lookUpReservationJButton the lookUpReservationJButton to set
+     */
+    public void setLookUpReservationJButton(
+            javax.swing.JButton lookUpReservationJButton) {
+        this.lookUpReservationJButton = lookUpReservationJButton;
+    }
+
+    /**
+     * @return the tableModelForJPanel
+     */
+    public javax.swing.JPanel getTableModelForJPanel() {
+        return tableModelForJPanel;
+    }
+
+    /**
+     * @param tableModelForJPanel the tableModelForJPanel to set
+     */
+    public void setTableModelForJPanel(javax.swing.JPanel tableModelForJPanel) {
+        this.tableModelForJPanel = tableModelForJPanel;
+    }
+    
     /**
      * @return the confirmNumJTextField
      */
@@ -86,8 +130,6 @@ public class LookUpGUI extends javax.swing.JFrame {
             javax.swing.JTextField alNameJTextField) {
         lNameJTextField = alNameJTextField;
     }
-    private JTable reservationTable;
-    private static DefaultTableModel tableModel;
     
      public static DefaultTableModel getTableModel() {
         return tableModel;
@@ -101,7 +143,11 @@ public class LookUpGUI extends javax.swing.JFrame {
         tableModel = aTableModel;
     }
     /**
-     * Creates new form LookUpGUI
+     * Creates new form LookUpGUI 
+     * it also pulls the selected data from when user has selected the cancel
+     * reservation option on the AdminGuI. It pulls each value from the selected
+     * row and each specified cell is put into the GuestGUI textbox that
+     * corresponds to that cell. 
      */
     public LookUpGUI() {
         this.linesOfReservations = new ArrayList<String>();
@@ -109,13 +155,19 @@ public class LookUpGUI extends javax.swing.JFrame {
         setUpLookAndFeel();
         this.setLocationRelativeTo(null);
         if(AdminGUI.cancelButton == true) {
-            jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            jTable1.getSelectionModel().addListSelectionListener(
+                                                   new ListSelectionListener() {
 
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
                     //get value as adjusting keeps it from invoking 2 times
                     //otherwise it will open 2 GuestInfoGUI's
                     if(e.getValueIsAdjusting() ) {
+                        //this is for admin guest info editing
+                        setVisible(false);  //makes current AdminGUI frame to invisible
+                        setEnabled(false);  //disables the AdminGUI frame
+                        revalidate();       //revalidates componenets
+                        repaint();          //rpaints the frame
                         GuestInfoGUI editGuestInfo = new GuestInfoGUI();
                         editGuestInfo.setDefaultCloseOperation(
                                                         JFrame.EXIT_ON_CLOSE);
@@ -162,6 +214,7 @@ public class LookUpGUI extends javax.swing.JFrame {
                                 jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 9).toString()
                         );
+                       
                         GuestInfoGUI.creditJTextField.setText((String)
                                 jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 10).toString()
@@ -187,21 +240,67 @@ public class LookUpGUI extends javax.swing.JFrame {
                                         jTable1.getSelectedRow(), 16).toString()
                         );
                     }
-                            
-                    /*int row = jTable1.getSelectedRow();
-                    int column = jTable1.getColumnCount();
-                    for(int i = 0; i < column; i++) {
-                        System.out.println(jTable1.getValueAt(row, i));
-                    }*/
                 }
-
-           
-        });
+            });
+        }
+        
+        if(StaffGUI.cancelButton == true) {
+            jTable1.getSelectionModel().addListSelectionListener(
+                                                   new ListSelectionListener() {
+                                               
+                @Override
+                public void valueChanged(ListSelectionEvent e) {
+                    if(e.getValueIsAdjusting() ) {
+                        setVisible(false);  //makes current AdminGUI frame to invisible
+                        setEnabled(false);  //disables the AdminGUI frame
+                        revalidate();       //revalidates componenets
+                        repaint();          //rpaints the frame
+                        GuestInfoGUI editGuestInfo = new GuestInfoGUI();
+                        editGuestInfo.setDefaultCloseOperation(
+                                                        JFrame.EXIT_ON_CLOSE);
+                        editGuestInfo.setVisible(true);
+                        long confirmationPass = Long.parseLong(
+                                jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 0).toString()
+                        );
+                         GuestInfo.setConfirmationNum(confirmationPass);
+                        
+                        String resMade = (String)jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 1).toString();
+                        GuestInfoGUI.resMadeDateJTextField.setText(resMade);
+                        
+                        GuestInfoGUI.checkInDateJTextField1.setText((String)
+                                jTable1.getValueAt(
+                                       jTable1.getSelectedRow(), 2).toString()
+                        );
+                        GuestInfoGUI.checkOutDateJTextField.setText((String)
+                                jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 3).toString()
+                        );
+                        GuestInfo.setStayLength((String)
+                                jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 4).toString()
+                        ); 
+                        GuestInfoGUI.firstNameJTextField.setText((String)
+                                jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 5).toString()
+                        );
+                        GuestInfoGUI.lastNameJTextField.setText((String)
+                                jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 6).toString()
+                        );
+                        
+                    }
+                }
+            });
+            
         }
     }
 
     /**
      * This method is called from within the constructor to initialize the form.
+     * This is GUI builder generated code sets the code based on programmers
+     * guidance in the GUI Builder
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
@@ -317,14 +416,15 @@ public class LookUpGUI extends javax.swing.JFrame {
             inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inputsJPanelLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(fNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(lNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmNumJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lookUpReservationJButton))
+                .addGroup(inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lookUpReservationJButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
+                        .addComponent(fNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addComponent(lNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(confirmNumJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -359,27 +459,29 @@ public class LookUpGUI extends javax.swing.JFrame {
                 LookUp.setfName(fNameJTextField.getText());
                 LookUp.setConfirmationNum(confirmNumJTextField.getText());
                 LookUp.setlName(lNameJTextField.getText());
-                LookUp look = new LookUp(LookUp.getfName(), LookUp.getlName(), LookUp.getConfirmationNum());
+                LookUp look = new LookUp(
+                        LookUp.getfName(), 
+                        LookUp.getlName(), 
+                        LookUp.getConfirmationNum()
+                );
                 ReadFromFile read = new ReadFromFile();
                 check = read.reading();
                 if(check == true)
                 {
-                    //DefaultTableModel resTable = (DefaultTableModel) jTable1.getModel();
                     resTable = (DefaultTableModel) jTable1.getModel();
                     for(String line : linesOfReservations)
                     {
-                        System.out.println("line ======================= " + line);
                         resTable.addRow(line.split("!"));
                     }
                 }
             } catch (IOException | NullPointerException ex) {
-                Logger.getLogger(LookUpGUI.class.getName()).log(Level.SEVERE, null,
-                        ex);
+                Logger.getLogger(
+                        LookUpGUI.class.getName()).log(Level.SEVERE, null,ex
+                );
             }
-            System.out.println("boolean check in lookUPGuI = " + check);  
         }
     }//GEN-LAST:event_lookUpReservationJButtonActionPerformed
-    DefaultTableModel resTable;
+  
     
     public static void setUpLookAndFeel() {
         /* Set the Nimbus look and feel */
@@ -413,6 +515,11 @@ public class LookUpGUI extends javax.swing.JFrame {
         /* Create and display the form */
        
     }
+    ///////// Start of Variable and Attributes declaration////////////////
+    private JTable reservationTable;
+    private static DefaultTableModel tableModel;
+    private static ArrayList<String> linesOfReservations;
+    DefaultTableModel resTable;
     private static JButton CancelOrEditJButton;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JTextField confirmNumJTextField;
@@ -428,46 +535,4 @@ public class LookUpGUI extends javax.swing.JFrame {
     private javax.swing.JPanel tableModelForJPanel;
     // End of variables declaration//GEN-END:variables
 
-    /**
-     * @return the reservationTable
-     */
-    public JTable getReservationTable() {
-        return reservationTable;
-    }
-
-    /**
-     * @param reservationTable the reservationTable to set
-     */
-    public void setReservationTable(JTable reservationTable) {
-        this.reservationTable = reservationTable;
-    }
-
-    /**
-     * @return the lookUpReservationJButton
-     */
-    public javax.swing.JButton getLookUpReservationJButton() {
-        return lookUpReservationJButton;
-    }
-
-    /**
-     * @param lookUpReservationJButton the lookUpReservationJButton to set
-     */
-    public void setLookUpReservationJButton(
-            javax.swing.JButton lookUpReservationJButton) {
-        this.lookUpReservationJButton = lookUpReservationJButton;
-    }
-
-    /**
-     * @return the tableModelForJPanel
-     */
-    public javax.swing.JPanel getTableModelForJPanel() {
-        return tableModelForJPanel;
-    }
-
-    /**
-     * @param tableModelForJPanel the tableModelForJPanel to set
-     */
-    public void setTableModelForJPanel(javax.swing.JPanel tableModelForJPanel) {
-        this.tableModelForJPanel = tableModelForJPanel;
-    }
 }

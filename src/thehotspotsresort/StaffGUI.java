@@ -23,6 +23,7 @@ public class StaffGUI extends javax.swing.JFrame {
     public StaffGUI() {
         initComponents();
         setLookAndFeel();
+        this.setLocationRelativeTo(null);   //Centers the AdminGUI frame
     }
 
     /**
@@ -98,7 +99,12 @@ public class StaffGUI extends javax.swing.JFrame {
     private void staffBookingButtonActionPerformed(
 		java.awt.event.ActionEvent evt
 	) {//GEN-FIRST:event_adminBookingButtonActionPerformed
-       RoomGUI roomGui = new RoomGUI();
+       
+        setVisible(false);  //makes current AdminGUI frame to invisible
+        setEnabled(false);  //disables the AdminGUI frame
+        revalidate();       //revalidates componenets
+        repaint();          //rpaints the frame
+        RoomGUI roomGui = new RoomGUI();
        roomGui.setVisible(true);
     }//GEN-LAST:event_adminBookingButtonActionPerformed
 
@@ -108,6 +114,10 @@ public class StaffGUI extends javax.swing.JFrame {
 
         if(evt.getSource() == StaffGUI.staffCancelButton) {
             cancelButton = true;
+            setVisible(false);  //makes current AdminGUI frame to invisible
+            setEnabled(false);  //disables the AdminGUI frame
+            revalidate();       //revalidates componenets
+            repaint();          //rpaints the frame
             LookUpGUI adminEditLookUPGUI = new LookUpGUI();
             adminEditLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             adminEditLookUPGUI.setVisible(true);
@@ -119,6 +129,10 @@ public class StaffGUI extends javax.swing.JFrame {
 	) {//GEN-FIRST:event_adminLookUpButtonActionPerformed
         // TODO add your handling code here:
         if(evt.getSource() == StaffGUI.staffLookUpButton) {
+            setVisible(false);  //makes current AdminGUI frame to invisible
+            setEnabled(false);  //disables the AdminGUI frame
+            revalidate();       //revalidates componenets
+            repaint();          //rpaints the frame
             LookUpGUI adminLookUPGUI = new LookUpGUI();
             adminLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             adminLookUPGUI.setVisible(true);

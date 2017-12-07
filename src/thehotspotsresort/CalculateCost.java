@@ -52,13 +52,22 @@ public class CalculateCost {
     }
      
     public static void costForStay() {
-        if((RoomGUI.one == true) || (RoomGUI.two == true) || (GuestInfo.getConfirmationNum() >= 10000000 && GuestInfo.getConfirmationNum() < 30000000 ) ) {
+        if((RoomGUI.one == true) || 
+                (RoomGUI.two == true) || 
+                (GuestInfo.getConfirmationNum() >= 10000000 && 
+                GuestInfo.getConfirmationNum() < 30000000 ) ) {
             sumOfStay = ROOM_1_AND_2_COST*MyJXMonthViewCalendar.getNumOfDays();
         }
-        else if((RoomGUI.three == true) || (RoomGUI.four == true) || (GuestInfo.getConfirmationNum() >= 30000000 && GuestInfo.getConfirmationNum() < 50000000 )) {
+        else if((RoomGUI.three == true) || 
+                (RoomGUI.four == true) || 
+                (GuestInfo.getConfirmationNum() >= 30000000 && 
+                GuestInfo.getConfirmationNum() < 50000000 )) {
             sumOfStay = ROOM_3_AND_4_COST*MyJXMonthViewCalendar.getNumOfDays();
         }
-        else if((RoomGUI.five == true) || (RoomGUI.six == true) || (GuestInfo.getConfirmationNum() >= 50000000 && GuestInfo.getConfirmationNum() < 70000000 )) {
+        else if((RoomGUI.five == true) || 
+                (RoomGUI.six == true) || 
+                (GuestInfo.getConfirmationNum() >= 50000000 && 
+                GuestInfo.getConfirmationNum() < 70000000 )) {
             sumOfStay = ROOM_5_AND_6_COST*MyJXMonthViewCalendar.getNumOfDays();
         }
     }    

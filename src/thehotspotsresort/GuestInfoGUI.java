@@ -196,7 +196,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         //so the deleteReservation button is disabled and set to opaque. It 
         //also will pull the date from the JXmonthview and put it onto 
         //guest info GUI
-        if(AdminGUI.cancelButton == false) {
+        if(AdminGUI.cancelButton == false && StaffGUI.cancelButton == false) {
             deleteReservationJButton.setEnabled(false);
             deleteReservationJButton.setOpaque(false);
             deleteReservationJButton.setVisible(false);
@@ -557,7 +557,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
 
             ImageIcon icon = new ImageIcon("C:\\Users\\bdfulker2\\Desktop\\" +
                 "CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\" +
-                "Images\\hotspot(1).png");
+                "thehotspotresort.Images\\hotspot(1).png");
             String str = String.format(
                 "\n Guest Name-------: %s, %s" +
                 "\n Check In Date-----: %s " +
@@ -598,12 +598,18 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
            
             if(input == 0)
             {
-                
+                setVisible(false);  //makes current AdminGUI frame to invisible
+                setEnabled(false);  //disables the AdminGUI frame
+                revalidate();       //revalidates componenets
+                repaint();          //rpaints the frame
+                dispose();
+    
                 GuestInfo guest = new GuestInfo(GuestInfo.getFirstName(),
                     GuestInfo.getLastName(), GuestInfo.getStreetAddress(),
                     GuestInfo.getAptNum(), GuestInfo.getZipCode(),
                     GuestInfo.getCreditCard(), GuestInfo.getTwoDigMonth(),
-                    GuestInfo.getTwoDigYear(), GuestInfo.getCvv2());
+                    GuestInfo.getTwoDigYear(), GuestInfo.getCvv2()
+                );
 
             }
         }
@@ -623,67 +629,117 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     private void deleteReservationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteReservationJButtonActionPerformed
          if(evt.getSource() == deleteReservationJButton)
         {
-            deleteFromFile = true;
-            GuestInfo.setFirstName(firstNameJTextField.getText());
-            GuestInfo.setLastName(lastNameJTextField.getText());
-            GuestInfo.setStreetAddress(streetAddJTextField.getText());
-            GuestInfo.setAptNum(AptNumJTextField.getText());
-            GuestInfo.setZipCode(zipCodeJTextField.getText());
-            GuestInfo.setCreditCard(creditJTextField.getText());
-            GuestInfo.setTwoDigMonth(monthJTextField.getText());
-            GuestInfo.setTwoDigYear(yearJTextField.getText());
-            GuestInfo.setCvv2(cvv2JTextField.getText());
-            GuestInfo.setDateResMade(resMadeDateJTextField.getText());
-            GuestInfo.setDateCheckIn(checkInDateJTextField1.getText());
-            GuestInfo.setDateCheckOut(checkOutDateJTextField.getText());
-            GuestInfo.setPriceForStay(
-                    Integer.parseInt(costJTextField.getText())
-            );
-            ImageIcon icon = new ImageIcon("C:\\Users\\bdfulker2\\Desktop\\" +
-                "CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\" +
-                "Images\\hotspot(1).png");
-            String str = String.format(
-                "\n Guest Name-------: %s, %s" +
-                "\n Check In Date-----: %s " +
-                "\n Check Out Date---: %s " +
-                "\n Staying For---------: %s" +
-                "\n Card Ending------: %s" +
-                "\n Expiration Month-: %s"+
-                "\n Expiration Year---: %s" +
-                "\n CVV2 Code--------: %s" +
-                "\n Address------------: %s" +
-                "\n Apartment---------: %s" +
-                "\n 5 Digit Zip-Code-: %s" +
-                "\n Date Reserved---: %s" +
-                "\n Cost of Stay---: %s" +
-                "\n CONFIRMATION--: %s",
-                GuestInfo.getLastName(), GuestInfo.getFirstName(),
-                GuestInfo.getDateCheckIn(),
-                GuestInfo.getDateCheckOut(),
-                MyJXMonthViewCalendar.getNumOfDays(),
-                GuestInfo.getCreditCard(),
-                GuestInfo.getTwoDigMonth(),
-                GuestInfo.getTwoDigYear(),
-                GuestInfo.getCvv2(),
-                GuestInfo.getStreetAddress(),
-                GuestInfo.getAptNum(),
-                GuestInfo.getZipCode(),
-                GuestInfo.getDateOfReservation(),
-                GuestInfo.getPriceForStay(),
-                GuestInfo.getConfirmationNum());
-            int input = JOptionPane.showConfirmDialog(new GuestInfoGUI(),str, 
-                    "Click Ok To Delete this Reservation",
-                JOptionPane.OK_CANCEL_OPTION, 
-                JOptionPane.INFORMATION_MESSAGE, icon);
-            if(input == 0)
-            {
-                
-                GuestInfo guest = new GuestInfo(GuestInfo.getFirstName(),
-                    GuestInfo.getLastName(), GuestInfo.getStreetAddress(),
-                    GuestInfo.getAptNum(), GuestInfo.getZipCode(),
-                    GuestInfo.getCreditCard(), GuestInfo.getTwoDigMonth(),
-                    GuestInfo.getTwoDigYear(), GuestInfo.getCvv2());
+            if(AdminGUI.cancelButton == true) {
+                deleteFromFile = true;
+                GuestInfo.setFirstName(firstNameJTextField.getText());
+                GuestInfo.setLastName(lastNameJTextField.getText());
+                GuestInfo.setStreetAddress(streetAddJTextField.getText());
+                GuestInfo.setAptNum(AptNumJTextField.getText());
+                GuestInfo.setZipCode(zipCodeJTextField.getText());
+                GuestInfo.setCreditCard(creditJTextField.getText());
+                GuestInfo.setTwoDigMonth(monthJTextField.getText());
+                GuestInfo.setTwoDigYear(yearJTextField.getText());
+                GuestInfo.setCvv2(cvv2JTextField.getText());
+                GuestInfo.setDateResMade(resMadeDateJTextField.getText());
+                GuestInfo.setDateCheckIn(checkInDateJTextField1.getText());
+                GuestInfo.setDateCheckOut(checkOutDateJTextField.getText());
+                GuestInfo.setPriceForStay(
+                        Integer.parseInt(costJTextField.getText())
+                );
+                ImageIcon icon = new ImageIcon("src\\thehotspotsresort\\" +
+                    ".Images\\hotspot(1).png");
+                String str = String.format(
+                    "\n Guest Name-------: %s, %s" +
+                    "\n Check In Date-----: %s " +
+                    "\n Check Out Date---: %s " +
+                    "\n Staying For---------: %s" +
+                    "\n Card Ending------: %s" +
+                    "\n Expiration Month-: %s"+
+                    "\n Expiration Year---: %s" +
+                    "\n CVV2 Code--------: %s" +
+                    "\n Address------------: %s" +
+                    "\n Apartment---------: %s" +
+                    "\n 5 Digit Zip-Code-: %s" +
+                    "\n Date Reserved---: %s" +
+                    "\n Cost of Stay---: %s" +
+                    "\n CONFIRMATION--: %s",
+                    GuestInfo.getLastName(), GuestInfo.getFirstName(),
+                    GuestInfo.getDateCheckIn(),
+                    GuestInfo.getDateCheckOut(),
+                    MyJXMonthViewCalendar.getNumOfDays(),
+                    GuestInfo.getCreditCard(),
+                    GuestInfo.getTwoDigMonth(),
+                    GuestInfo.getTwoDigYear(),
+                    GuestInfo.getCvv2(),
+                    GuestInfo.getStreetAddress(),
+                    GuestInfo.getAptNum(),
+                    GuestInfo.getZipCode(),
+                    GuestInfo.getDateOfReservation(),
+                    GuestInfo.getPriceForStay(),
+                    GuestInfo.getConfirmationNum());
+                int input = JOptionPane.showConfirmDialog(new GuestInfoGUI(),str, 
+                        "Click Ok To Delete this Reservation",
+                    JOptionPane.OK_CANCEL_OPTION, 
+                    JOptionPane.INFORMATION_MESSAGE, icon);
+                if(input == 0)
+                {
+                    setVisible(false);  //makes current AdminGUI frame to invisible
+                    setEnabled(false);  //disables the AdminGUI frame
+                    revalidate();       //revalidates componenets
+                    repaint();          //rpaints the frame
+                    dispose();
+                    
+                    GuestInfo guest = new GuestInfo(GuestInfo.getFirstName(),
+                        GuestInfo.getLastName(), GuestInfo.getStreetAddress(),
+                        GuestInfo.getAptNum(), GuestInfo.getZipCode(),
+                        GuestInfo.getCreditCard(), GuestInfo.getTwoDigMonth(),
+                        GuestInfo.getTwoDigYear(), GuestInfo.getCvv2()
+                    );
 
+                }
+            }
+            if(StaffGUI.cancelButton == true) {
+                deleteFromFile = true;
+                GuestInfo.setFirstName(firstNameJTextField.getText());
+                GuestInfo.setLastName(lastNameJTextField.getText());
+                GuestInfo.setDateResMade(resMadeDateJTextField.getText());
+                GuestInfo.setDateCheckIn(checkInDateJTextField1.getText());
+                GuestInfo.setDateCheckOut(checkOutDateJTextField.getText());
+                
+                ImageIcon icon = new ImageIcon("src\\thehotspotsresort\\" +
+                    ".Images\\hotspot(1).png");
+                String str = String.format(
+                    "\n Guest Name-------: %s, %s" +
+                    "\n Check In Date-----: %s " +
+                    "\n Check Out Date---: %s " +
+                    "\n Staying For---------: %s" +
+                    "\n Date Reserved---: %s" +
+                    "\n CONFIRMATION--: %s",
+                    GuestInfo.getLastName(), GuestInfo.getFirstName(),
+                    GuestInfo.getDateCheckIn(),
+                    GuestInfo.getDateCheckOut(),
+                    GuestInfo.getStayLength(),
+                    GuestInfo.getDateOfReservation(),
+                    GuestInfo.getConfirmationNum());
+                int input = JOptionPane.showConfirmDialog(new GuestInfoGUI(),str, 
+                        "Click Ok To Delete this Reservation",
+                    JOptionPane.OK_CANCEL_OPTION, 
+                    JOptionPane.INFORMATION_MESSAGE, icon);
+                if(input == 0)
+                { 
+                    
+                    setVisible(false);  //makes current AdminGUI frame to invisible
+                    setEnabled(false);  //disables the AdminGUI frame
+                    revalidate();       //revalidates componenets
+                    repaint();          //rpaints the frame
+                    dispose();
+                    GuestInfo guest = new GuestInfo(GuestInfo.getFirstName(),
+                        GuestInfo.getLastName());
+                   
+
+                }
+                
+                
             }
         }
         
