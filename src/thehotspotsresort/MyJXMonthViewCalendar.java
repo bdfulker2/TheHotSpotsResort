@@ -44,7 +44,7 @@ import javax.swing.JOptionPane;
  */
 public class MyJXMonthViewCalendar extends JFrame {
     
-    
+    private static JFrame frame;
     private static DateSpan span;
     private static int numOfDays;
     private static Calendar eCal, sCal;
@@ -52,24 +52,30 @@ public class MyJXMonthViewCalendar extends JFrame {
     private static boolean acceptDates;
     private static JXMonthView monthView;
     private static List<Date> allOfFile;
-    
+    private String roomTitle;
     private static int count;
     private static int length;
     private static Date[] unselectable;// = new Date[length];
    
     
-    public MyJXMonthViewCalendar()
+    public MyJXMonthViewCalendar(String roomTitle)
     {
+        this.roomTitle = roomTitle;
         this.count = count;
         this.length = length;
         this.eCal = eCal;
         this.sCal = sCal;
+        this.frame = frame;
         this.span = span;
         this.numOfDays = numOfDays;
         this.stayCal = new Calendar[numOfDays];
+                            //probably will never reach this amount of 2000
+                            //but Its beeter to set the array size and not use
         unselectable = new Date[2000];
         this.acceptDates = false;
+        
         initComponents();  
+      
         
         
     }
@@ -245,9 +251,10 @@ public class MyJXMonthViewCalendar extends JFrame {
     private void initComponents() {
        
         setLookAndFeel();
+        
                       //intialize DateSpan variable
                                  //instantiate a JFrame Object with title room 1
-        JFrame frame = new JFrame(" Room 1 ");
+        frame = new JFrame(roomTitle);
         
         //Tell application to automatically exit when the user selects the Close
         //menu item from the frame window’s system menu.
@@ -276,6 +283,7 @@ public class MyJXMonthViewCalendar extends JFrame {
         frame.getContentPane().add(monthView);
         frame.pack();  //allow frame to set all component at or above their 
                         //prefered size
+        frame.setLocationRelativeTo(null); //set frame to center
         frame.setVisible(true); //display GUI and start event dispatching thread
        // monthView.setFlaggedDate
         //lamda function used in place of compilier updated to a lamda fucntion
@@ -438,6 +446,11 @@ public class MyJXMonthViewCalendar extends JFrame {
         else if ( ((yesNoSelection == JOptionPane.YES_OPTION) && 
                                                        (acceptDates == true)) ) {
             System.out.println("Shouldn't be heree when cancel button");
+            frame.setVisible(false);  //make current frame invisible
+            //JFrame.AdminGUI.setOpaque(true);
+            frame.setEnabled(false); //disable current frame
+            frame.revalidate();
+            frame.repaint();
             GuestInfoGUI guestGUI = new GuestInfoGUI();
             guestGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     

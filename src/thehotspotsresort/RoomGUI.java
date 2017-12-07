@@ -139,38 +139,69 @@ public class RoomGUI extends javax.swing.JFrame {
 
     private void room1JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room1JButtonActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        //JFrame.AdminGUI.setOpaque(true);
+        setEnabled(false);
+        revalidate();
+        repaint();
         one = true;
-        MyJXMonthViewCalendar roomOneCalendar = new MyJXMonthViewCalendar();
+        MyJXMonthViewCalendar roomOneCalendar = new MyJXMonthViewCalendar("Room 1");
+        
     }//GEN-LAST:event_room1JButtonActionPerformed
 
     private void room2JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room2JButtonActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        //JFrame.AdminGUI.setOpaque(true);
+        setEnabled(false);
+        revalidate();
+        repaint();
         two = true;
-        MyJXMonthViewCalendar roomTwoCalendar = new MyJXMonthViewCalendar();
+        MyJXMonthViewCalendar roomTwoCalendar = new MyJXMonthViewCalendar("Room 2");
     }//GEN-LAST:event_room2JButtonActionPerformed
 
     private void room3JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room3JButtonActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        //JFrame.AdminGUI.setOpaque(true);
+        setEnabled(false);
+        revalidate();
+        repaint();
         three = true;
-        MyJXMonthViewCalendar roomThreeCalendar = new MyJXMonthViewCalendar();
+        MyJXMonthViewCalendar roomThreeCalendar = new MyJXMonthViewCalendar("Room 3");
     }//GEN-LAST:event_room3JButtonActionPerformed
 
     private void room4JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room4JButtonActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        //JFrame.AdminGUI.setOpaque(true);
+        setEnabled(false);
+        revalidate();
+        repaint();
         four = true;
-        MyJXMonthViewCalendar roomFourCalendar = new MyJXMonthViewCalendar();
+        MyJXMonthViewCalendar roomFourCalendar = new MyJXMonthViewCalendar("Room 4");
     }//GEN-LAST:event_room4JButtonActionPerformed
 
     private void room5JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room5JButtonActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        //JFrame.AdminGUI.setOpaque(true);
+        setEnabled(false);
+        revalidate();
+        repaint();
         five = true;
-        MyJXMonthViewCalendar roomFiveCalendar = new MyJXMonthViewCalendar();
+        MyJXMonthViewCalendar roomFiveCalendar = new MyJXMonthViewCalendar("Room 5");
     }//GEN-LAST:event_room5JButtonActionPerformed
 
     private void room6JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room6JButtonActionPerformed
         // TODO add your handling code here:
+        setVisible(false);
+        //JFrame.AdminGUI.setOpaque(true);
+        setEnabled(false);
+        revalidate();
+        repaint();
         six = true;
-        MyJXMonthViewCalendar roomSixCalendar = new MyJXMonthViewCalendar();
+        MyJXMonthViewCalendar roomSixCalendar = new MyJXMonthViewCalendar("Room 6");
     }//GEN-LAST:event_room6JButtonActionPerformed
                   
 
