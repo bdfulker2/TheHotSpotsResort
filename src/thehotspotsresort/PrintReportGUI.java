@@ -104,23 +104,42 @@ public class PrintReportGUI extends JFrame implements ActionListener {
 
         checkBoxPanel.setLayout(new java.awt.GridLayout(3, 2));
 
+        room1JCheckBox.setBackground(new java.awt.Color(0, 153, 204));
         room1JCheckBox.setText("Room 1");
+        room1JCheckBox.setToolTipText("Room 1 JCheckBox when checked all day that the room is booked within that range ");
         checkBoxPanel.add(room1JCheckBox);
 
+        room4JCheckBox.setBackground(new java.awt.Color(0, 153, 204));
         room4JCheckBox.setText("Room 4 ");
+        room4JCheckBox.setToolTipText("Room 4 JCheckBox when checked all day that the room is booked within that range ");
         checkBoxPanel.add(room4JCheckBox);
 
+        room2JCheckBox.setBackground(new java.awt.Color(0, 153, 204));
         room2JCheckBox.setText("Room 2");
+        room2JCheckBox.setToolTipText("Room 2 JCheckBox when checked all day that the room is booked within that range ");
         checkBoxPanel.add(room2JCheckBox);
 
+        room5CheckBox.setBackground(new java.awt.Color(0, 153, 204));
         room5CheckBox.setText("Room 5");
+        room5CheckBox.setToolTipText("Room 5 JCheckBox when checked all day that the room is booked within that range ");
         checkBoxPanel.add(room5CheckBox);
 
+        room3JCheckBox.setBackground(new java.awt.Color(0, 153, 204));
         room3JCheckBox.setText("Room 3");
+        room3JCheckBox.setToolTipText("Room 3 JCheckBox when checked all day that the room is booked within that range ");
         checkBoxPanel.add(room3JCheckBox);
 
+        room6JCheckBox.setBackground(new java.awt.Color(0, 153, 204));
         room6JCheckBox.setText("Room 6");
+        room6JCheckBox.setToolTipText("Room 6 JCheckBox when checked all day that the room is booked within that range ");
         checkBoxPanel.add(room6JCheckBox);
+
+        datePickerJPanel.setBackground(new java.awt.Color(0, 153, 204));
+        datePickerJPanel.setToolTipText("Panel for holding the JXDatepickers");
+
+        startJXDatePicker.setToolTipText("JXDatePicker for picking the start date for the print reprot");
+
+        endJXDatePicker.setToolTipText("JXDatePicker this is for selectoing an individjly ");
 
         jLabel1.setText("Start Date");
 
@@ -203,8 +222,11 @@ public class PrintReportGUI extends JFrame implements ActionListener {
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
-        printReportJButton.setBackground(new java.awt.Color(0, 102, 102));
+        printReportJButton.setBackground(new java.awt.Color(0, 153, 204));
+        printReportJButton.setFont(new java.awt.Font("Gisha", 1, 24)); // NOI18N
         printReportJButton.setText("Print Report");
+        printReportJButton.setToolTipText("");
+        printReportJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         printReportJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printReportJButtonActionPerformed(evt);
@@ -254,13 +276,11 @@ public class PrintReportGUI extends JFrame implements ActionListener {
      */
     public static void setLookAndFeel() {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.
+            for (javax.swing.UIManager.LookAndFeelInfo info : 
+                    javax.swing.UIManager.
                     getInstalledLookAndFeels()) {
+                
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
@@ -279,14 +299,7 @@ public class PrintReportGUI extends JFrame implements ActionListener {
             java.util.logging.Logger.getLogger(PrintReportGUI.class.getName()).
                     log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
-   /*     java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PrintReportGUI().setVisible(true);
-            }
-        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

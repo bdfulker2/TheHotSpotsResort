@@ -58,9 +58,11 @@ public class AdminGUI extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(330, 332));
         jPanel2.setLayout(new java.awt.GridLayout(2, 2, 8, 8));
 
-        adminCancelButton.setBackground(new java.awt.Color(255, 0, 0));
+        adminCancelButton.setBackground(new java.awt.Color(0, 153, 204));
         adminCancelButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         adminCancelButton.setText("Cancel Reservation");
+        adminCancelButton.setToolTipText("This button enables the Admin to edit or cancel reservations by opening a selectable Jtable");
+        adminCancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         adminCancelButton.setFocusable(false);
         adminCancelButton.setMaximumSize(new java.awt.Dimension(150, 150));
         adminCancelButton.setMinimumSize(new java.awt.Dimension(150, 150));
@@ -73,9 +75,11 @@ public class AdminGUI extends javax.swing.JFrame {
         });
         jPanel2.add(adminCancelButton);
 
-        adminBookingButton.setBackground(new java.awt.Color(255, 0, 0));
+        adminBookingButton.setBackground(new java.awt.Color(0, 153, 204));
         adminBookingButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         adminBookingButton.setText("Book A  Room");
+        adminBookingButton.setToolTipText("This button is for booking a new reservation. When clicked it opens another GUI for selecting a room");
+        adminBookingButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         adminBookingButton.setMaximumSize(new java.awt.Dimension(150, 150));
         adminBookingButton.setMinimumSize(new java.awt.Dimension(150, 150));
         adminBookingButton.setPreferredSize(new java.awt.Dimension(150, 150));
@@ -86,9 +90,11 @@ public class AdminGUI extends javax.swing.JFrame {
         });
         jPanel2.add(adminBookingButton);
 
-        adminLookUpButton.setBackground(new java.awt.Color(255, 0, 0));
+        adminLookUpButton.setBackground(new java.awt.Color(0, 153, 204));
         adminLookUpButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         adminLookUpButton.setText("Admin Look UP");
+        adminLookUpButton.setToolTipText("This is the for the Admin to look up reservation.");
+        adminLookUpButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         adminLookUpButton.setMaximumSize(new java.awt.Dimension(150, 150));
         adminLookUpButton.setMinimumSize(new java.awt.Dimension(150, 150));
         adminLookUpButton.setPreferredSize(new java.awt.Dimension(150, 150));
@@ -99,9 +105,11 @@ public class AdminGUI extends javax.swing.JFrame {
         });
         jPanel2.add(adminLookUpButton);
 
-        printReportButton.setBackground(new java.awt.Color(255, 0, 0));
+        printReportButton.setBackground(new java.awt.Color(0, 153, 204));
         printReportButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         printReportButton.setText("Print Report");
+        printReportButton.setToolTipText("This button is for looking up reservation information. It show all reservation data including payment information as only Admin has access ");
+        printReportButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         printReportButton.setMaximumSize(new java.awt.Dimension(150, 150));
         printReportButton.setMinimumSize(new java.awt.Dimension(150, 150));
         printReportButton.setPreferredSize(new java.awt.Dimension(150, 150));
@@ -136,7 +144,7 @@ public class AdminGUI extends javax.swing.JFrame {
             setEnabled(false);  //disables the AdminGUI frame
             revalidate();       //revalidates componenets
             repaint();          //rpaints the frame
-
+            dispose();
             RoomGUI roomGui = new RoomGUI();
             roomGui.setVisible(true);
         }
@@ -152,6 +160,7 @@ public class AdminGUI extends javax.swing.JFrame {
             setEnabled(false);  //disables the AdminGUI frame
             revalidate();       //revalidates componenets
             repaint();          //rpaints the frame
+            dispose();
             LookUpGUI adminEditLookUPGUI = new LookUpGUI();
             adminEditLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             adminEditLookUPGUI.setVisible(true);
@@ -167,6 +176,7 @@ public class AdminGUI extends javax.swing.JFrame {
             setEnabled(false);  //disables the AdminGUI frame
             revalidate();       //revalidates componenets
             repaint();          //rpaints the frame
+            dispose();
             LookUpGUI adminLookUPGUI = new LookUpGUI();
             adminLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             adminLookUPGUI.setVisible(true);
@@ -184,6 +194,7 @@ public class AdminGUI extends javax.swing.JFrame {
             setEnabled(false);  //disables the AdminGUI frame
             revalidate();       //revalidates componenets
             repaint();          //rpaints the frame
+            dispose();
             PrintReportGUI report = new PrintReportGUI(); //instantiates print
             report.setVisible(true);        //reportGUI and set visible to true
         }

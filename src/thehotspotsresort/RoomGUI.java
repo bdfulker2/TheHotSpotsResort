@@ -63,9 +63,11 @@ public class RoomGUI extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(485, 294));
         jPanel1.setLayout(new java.awt.GridLayout(2, 3, 8, 8));
 
-        room1JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room1JButton.setBackground(new java.awt.Color(0, 153, 204));
         room1JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room1JButton.setText("1");
+        room1JButton.setToolTipText("Room 1 buttong for opening the speciified room");
+        room1JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room1JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room1JButtonActionPerformed(evt);
@@ -73,9 +75,11 @@ public class RoomGUI extends javax.swing.JFrame {
         });
         jPanel1.add(room1JButton);
 
-        room2JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room2JButton.setBackground(new java.awt.Color(0, 153, 204));
         room2JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room2JButton.setText("2");
+        room2JButton.setToolTipText("Room 2 buttong for opening the speciified room");
+        room2JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room2JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room2JButtonActionPerformed(evt);
@@ -83,9 +87,11 @@ public class RoomGUI extends javax.swing.JFrame {
         });
         jPanel1.add(room2JButton);
 
-        room3JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room3JButton.setBackground(new java.awt.Color(0, 153, 204));
         room3JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room3JButton.setText("3");
+        room3JButton.setToolTipText("Room 3 button for opening the speciified room");
+        room3JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room3JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room3JButtonActionPerformed(evt);
@@ -93,9 +99,11 @@ public class RoomGUI extends javax.swing.JFrame {
         });
         jPanel1.add(room3JButton);
 
-        room4JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room4JButton.setBackground(new java.awt.Color(0, 153, 204));
         room4JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room4JButton.setText("4");
+        room4JButton.setToolTipText("Room  buttong for opening the speciified room");
+        room4JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room4JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room4JButtonActionPerformed(evt);
@@ -103,9 +111,11 @@ public class RoomGUI extends javax.swing.JFrame {
         });
         jPanel1.add(room4JButton);
 
-        room5JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room5JButton.setBackground(new java.awt.Color(0, 153, 204));
         room5JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room5JButton.setText("5");
+        room5JButton.setToolTipText("Room 5 buttong for opening the speciified room");
+        room5JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room5JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room5JButtonActionPerformed(evt);
@@ -113,9 +123,11 @@ public class RoomGUI extends javax.swing.JFrame {
         });
         jPanel1.add(room5JButton);
 
-        room6JButton.setBackground(new java.awt.Color(255, 0, 0));
+        room6JButton.setBackground(new java.awt.Color(0, 153, 204));
         room6JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room6JButton.setText("6");
+        room6JButton.setToolTipText("Room 6 buttong for opening the speciified room");
+        room6JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room6JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 room6JButtonActionPerformed(evt);
@@ -139,69 +151,81 @@ public class RoomGUI extends javax.swing.JFrame {
 
     private void room1JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room1JButtonActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        //JFrame.AdminGUI.setOpaque(true);
-        setEnabled(false);
-        revalidate();
-        repaint();
+        setVisible(false);  //makes current AdminGUI frame to invisible
+        setEnabled(false);  //disables the AdminGUI frame
+        revalidate();       //revalidates componenets
+        repaint();          //rpaints the frame
+        dispose();          //disposes of the current frame
         one = true;
-        MyJXMonthViewCalendar roomOneCalendar = new MyJXMonthViewCalendar("Room 1");
+        MyJXMonthViewCalendar roomOneCalendar = new MyJXMonthViewCalendar(
+                "Room 1"
+        );
         
     }//GEN-LAST:event_room1JButtonActionPerformed
 
     private void room2JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room2JButtonActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        //JFrame.AdminGUI.setOpaque(true);
-        setEnabled(false);
-        revalidate();
-        repaint();
+        setVisible(false);  //makes current AdminGUI frame to invisible
+        setEnabled(false);  //disables the AdminGUI frame
+        revalidate();       //revalidates componenets
+        repaint();          //rpaints the frame
+        dispose();          //disposes of the current frame
         two = true;
-        MyJXMonthViewCalendar roomTwoCalendar = new MyJXMonthViewCalendar("Room 2");
+        MyJXMonthViewCalendar roomTwoCalendar = new MyJXMonthViewCalendar(
+                "Room 2"
+        );
     }//GEN-LAST:event_room2JButtonActionPerformed
 
     private void room3JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room3JButtonActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        //JFrame.AdminGUI.setOpaque(true);
-        setEnabled(false);
-        revalidate();
-        repaint();
+        setVisible(false);  //makes current AdminGUI frame to invisible
+        setEnabled(false);  //disables the AdminGUI frame
+        revalidate();       //revalidates componenets
+        repaint();          //rpaints the frame
+        dispose();          //disposes of the current frame
         three = true;
-        MyJXMonthViewCalendar roomThreeCalendar = new MyJXMonthViewCalendar("Room 3");
+        MyJXMonthViewCalendar roomThreeCalendar = new MyJXMonthViewCalendar(
+                "Room 3"
+        );
     }//GEN-LAST:event_room3JButtonActionPerformed
 
     private void room4JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room4JButtonActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        //JFrame.AdminGUI.setOpaque(true);
-        setEnabled(false);
-        revalidate();
-        repaint();
+        setVisible(false);  //makes current AdminGUI frame to invisible
+        setEnabled(false);  //disables the AdminGUI frame
+        revalidate();       //revalidates componenets
+        repaint();          //rpaints the frame
+        dispose();          //disposes of the current frame
         four = true;
-        MyJXMonthViewCalendar roomFourCalendar = new MyJXMonthViewCalendar("Room 4");
+        MyJXMonthViewCalendar roomFourCalendar = new MyJXMonthViewCalendar(
+                "Room 4"
+        );
     }//GEN-LAST:event_room4JButtonActionPerformed
 
     private void room5JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room5JButtonActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        //JFrame.AdminGUI.setOpaque(true);
-        setEnabled(false);
-        revalidate();
-        repaint();
+        setVisible(false);  //makes current AdminGUI frame to invisible
+        setEnabled(false);  //disables the AdminGUI frame
+        revalidate();       //revalidates componenets
+        repaint();          //rpaints the frame
+        dispose();          //disposes of the current frame
         five = true;
-        MyJXMonthViewCalendar roomFiveCalendar = new MyJXMonthViewCalendar("Room 5");
+        MyJXMonthViewCalendar roomFiveCalendar = new MyJXMonthViewCalendar(
+                "Room 5"
+        );
     }//GEN-LAST:event_room5JButtonActionPerformed
 
     private void room6JButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_room6JButtonActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
-        //JFrame.AdminGUI.setOpaque(true);
-        setEnabled(false);
-        revalidate();
-        repaint();
+        setVisible(false);  //makes current AdminGUI frame to invisible
+        setEnabled(false);  //disables the AdminGUI frame
+        revalidate();       //revalidates componenets
+        repaint();          //rpaints the frame
+        dispose();          //disposes of the current frame
         six = true;
-        MyJXMonthViewCalendar roomSixCalendar = new MyJXMonthViewCalendar("Room 6");
+        MyJXMonthViewCalendar roomSixCalendar = new MyJXMonthViewCalendar(
+                "Room 6"
+        );
     }//GEN-LAST:event_room6JButtonActionPerformed
                   
 

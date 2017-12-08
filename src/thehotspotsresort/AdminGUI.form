@@ -71,12 +71,18 @@
         <Component class="javax.swing.JButton" name="adminCancelButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
+              <Color blue="cc" green="99" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gloucester MT Extra Condensed" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cancel Reservation"/>
+            <Property name="toolTipText" type="java.lang.String" value="This button enables the Admin to edit or cancel reservations by opening a selectable Jtable"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[150, 150]"/>
@@ -99,12 +105,18 @@
         <Component class="javax.swing.JButton" name="adminBookingButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
+              <Color blue="cc" green="99" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gloucester MT Extra Condensed" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Book A  Room"/>
+            <Property name="toolTipText" type="java.lang.String" value="This button is for booking a new reservation. When clicked it opens another GUI for selecting a room"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[150, 150]"/>
             </Property>
@@ -125,12 +137,18 @@
         <Component class="javax.swing.JButton" name="adminLookUpButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
+              <Color blue="cc" green="99" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gloucester MT Extra Condensed" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Admin Look UP"/>
+            <Property name="toolTipText" type="java.lang.String" value="This is the for the Admin to look up reservation."/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[150, 150]"/>
             </Property>
@@ -151,12 +169,18 @@
         <Component class="javax.swing.JButton" name="printReportButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
+              <Color blue="cc" green="99" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gloucester MT Extra Condensed" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Print Report"/>
+            <Property name="toolTipText" type="java.lang.String" value="This button is for looking up reservation information. It show all reservation data including payment information as only Admin has access "/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[150, 150]"/>
             </Property>

@@ -159,6 +159,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="confirmNumJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Confirmation Number used to look up ireservation by contact number"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
@@ -174,6 +182,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="fNameJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="First Name Look Up used for looking up reservations by first "/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
@@ -189,6 +205,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="lNameJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Last Name Look Up used for looking up reservations by last name"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
@@ -196,12 +220,18 @@
         <Component class="javax.swing.JButton" name="lookUpReservationJButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
+              <Color blue="cc" green="99" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Gloucester MT Extra Condensed" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Look Up Reservation"/>
+            <Property name="toolTipText" type="java.lang.String" value="Look Up Reservation information from text file and bring it to this form and puts it in a JTable"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lookUpReservationJButtonActionPerformed"/>

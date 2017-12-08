@@ -164,14 +164,19 @@ public class LookUpGUI extends javax.swing.JFrame {
                     //otherwise it will open 2 GuestInfoGUI's
                     if(e.getValueIsAdjusting() ) {
                         //this is for admin guest info editing
-                        setVisible(false);  //makes current AdminGUI frame to invisible
+                        setVisible(false);  //current AdminGUI set to invisible
                         setEnabled(false);  //disables the AdminGUI frame
                         revalidate();       //revalidates componenets
                         repaint();          //rpaints the frame
+                        dispose();
                         GuestInfoGUI editGuestInfo = new GuestInfoGUI();
                         editGuestInfo.setDefaultCloseOperation(
                                                         JFrame.EXIT_ON_CLOSE);
                         editGuestInfo.setVisible(true);
+                        
+                        //easch the following data from the row of cells of the 
+                        //jtable displays it in the GuestInfoGUI to its 
+                        //corresponding textField
                         long confirmationPass = Long.parseLong(
                                 jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 0).toString()
@@ -251,14 +256,22 @@ public class LookUpGUI extends javax.swing.JFrame {
                 @Override
                 public void valueChanged(ListSelectionEvent e) {
                     if(e.getValueIsAdjusting() ) {
-                        setVisible(false);  //makes current AdminGUI frame to invisible
+                        setVisible(false); //current AdminGUI frame to invisible
                         setEnabled(false);  //disables the AdminGUI frame
                         revalidate();       //revalidates componenets
                         repaint();          //rpaints the frame
+                        dispose();
+                        
+                        //instance of GuesInfoGUI() 
                         GuestInfoGUI editGuestInfo = new GuestInfoGUI();
                         editGuestInfo.setDefaultCloseOperation(
                                                         JFrame.EXIT_ON_CLOSE);
                         editGuestInfo.setVisible(true);
+                        
+                        //easch the following data from the row of cells of the 
+                        //jtable displays it in the GuestInfoGUI to its 
+                        //corresponding textField
+                        
                         long confirmationPass = Long.parseLong(
                                 jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 0).toString()
@@ -369,19 +382,30 @@ public class LookUpGUI extends javax.swing.JFrame {
         jLabel1.setText("Confirmation Number");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        confirmNumJTextField.setToolTipText("Confirmation Number used to look up ireservation by contact number");
+        confirmNumJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         jLabel2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("First Name");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        fNameJTextField.setToolTipText("First Name Look Up used for looking up reservations by first ");
+        fNameJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Last Name");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        lookUpReservationJButton.setBackground(new java.awt.Color(255, 0, 0));
+        lNameJTextField.setToolTipText("Last Name Look Up used for looking up reservations by last name");
+        lNameJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lookUpReservationJButton.setBackground(new java.awt.Color(0, 153, 204));
         lookUpReservationJButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         lookUpReservationJButton.setText("Look Up Reservation");
+        lookUpReservationJButton.setToolTipText("Look Up Reservation information from text file and bring it to this form and puts it in a JTable");
+        lookUpReservationJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lookUpReservationJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lookUpReservationJButtonActionPerformed(evt);

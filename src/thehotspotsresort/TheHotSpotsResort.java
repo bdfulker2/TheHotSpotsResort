@@ -28,6 +28,7 @@ public class TheHotSpotsResort extends LoginGUI
        
         //MyJXMonthViewCalendar myCal = new MyJXMonthViewCalendar();
         LoginGUI logGUI = new LoginGUI();
+        //makeFrameFullSize(this);
         logGUI.setVisible(true);
         
     }

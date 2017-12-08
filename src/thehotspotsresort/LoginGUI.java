@@ -1,7 +1,9 @@
 package thehotspotsresort;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -13,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -32,18 +35,36 @@ public class LoginGUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
+    
     public LoginGUI()
     {
-
+  
         initComponents(); //initializes all components from GUI editor
-        setLookAndFeel(); //set the systems OS look and feel if available
-        this.setLocationRelativeTo(null);
-        
+       // this.setLocationRelativeTo(null);
+        setLookAndFeel(); //set the systems OS look and feel if 
+        ImageIcon imageIcon = new ImageIcon(
+                "src/thehotspotsresort/HotSpotLow.JPG"
+        ); // load the image to a imageIcon
+        Image image = imageIcon.getImage(); // transform it 
+        Image newimg = image.getScaledInstance(
+                (int)Toolkit.getDefaultToolkit().getScreenSize().getWidth(), 
+                (int)Toolkit.getDefaultToolkit().getScreenSize().getHeight(),  
+                java.awt.Image.SCALE_SMOOTH
+        ); // scale it the smooth way  
+       //set JLabel2 icon with the scalled image
+       jLabel2.setIcon(new javax.swing.ImageIcon(newimg)); // NOI18N
+            //call to method that uses the tool kit to get the users screen size
+            //sets the frame to full screen and the the JLabel too. 
+       makeLabelFullSize(jLabel2);
+       makeFrameFullSize(this);
+  //     revalidate();
+    //   repaint();
+      
+       this.setLocationRelativeTo(null);
        
         
         
-        
-        //access SimpleDocumentListener Interface exttends docuementLIstener
+
         einTextField.getDocument().addDocumentListener((SimpleDocumentListener) 
                                                   new SimpleDocumentListener() {
                         //overrides update method from Interface
@@ -59,14 +80,7 @@ public class LoginGUI extends javax.swing.JFrame {
                 }
             }
         });
-       /* ActionListener action = new ActionListener()
-        {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               
-            }
-        };*/
+ 
         FocusListener clearText = new FocusListener()
         {
           
@@ -91,29 +105,48 @@ public class LoginGUI extends javax.swing.JFrame {
     public static void setLookAndFeel() //throws IOException
     {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+       
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : 
+                    javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | 
+                InstantiationException | 
+                IllegalAccessException | 
+                javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(
+                    LoginGUI.class.getName()
+            )
+            .log(
+                    java.util.logging.Level.SEVERE, 
+                    null, 
+                    ex
+            );
         }
-        //</editor-fold>
-        /* Create and display the form */
-       /* java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginGUI().setVisible(true);
-            }
-        });*/
-        
+    
     }
+    
+    //gets user screen size and sets background frame to full screen with the
+    //backgournd image to the full screen size
+    private void makeFrameFullSize(JFrame aFrame)
+    {       //calls the tookkit to get the computers screen size and 
+            //sets the frame based on that size
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        aFrame.setSize(screenSize.width, screenSize.height);
+    }
+    //gets user screen size and sets background image in jLabel2 screen with the
+    //backgournd image to full screen based on the user od and computer
+    private void makeLabelFullSize(JLabel label)
+    {       //calls the tool kit to get the computers screen size and 
+            //sets the label based on that size
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        label.setSize(screenSize.width, screenSize.height);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -136,6 +169,7 @@ public class LoginGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HOT SPOT RESORT LOGIN");
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -145,24 +179,31 @@ public class LoginGUI extends javax.swing.JFrame {
         headerTitleJLabel.setText("HOT SPOT LOGIN");
         headerTitleJLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        einTextField.setToolTipText("This box is for you to enter your EIN Employment Identification Nubmer");
+
         einLabel.setText("EIN");
 
         jLabel1.setText("PASSWORD");
 
         loginPasswordField.setText("jPasswordFiel");
+        loginPasswordField.setToolTipText("This text field is for entering your password");
 
-        loginButton.setBackground(new java.awt.Color(255, 0, 0));
+        loginButton.setBackground(new java.awt.Color(0, 153, 204));
         loginButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
         loginButton.setText("Login");
+        loginButton.setToolTipText("This is the Login button. Click this button after you enter you EIN and Password to Login");
+        loginButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
             }
         });
 
-        lookUpButton.setBackground(new java.awt.Color(255, 0, 0));
+        lookUpButton.setBackground(new java.awt.Color(0, 153, 204));
         lookUpButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
         lookUpButton.setText("Look Up Reservation");
+        lookUpButton.setToolTipText("This Button is for looking up reservation information at the Guest login level. The lowest leve of access");
+        lookUpButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         lookUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lookUpButtonActionPerformed(evt);
@@ -174,12 +215,8 @@ public class LoginGUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(165, 165, 165)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lookUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
@@ -188,12 +225,22 @@ public class LoginGUI extends javax.swing.JFrame {
                         .addComponent(einLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(einTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(258, 258, 258))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(headerTitleJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(headerTitleJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lookUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {loginButton, lookUpButton});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -208,31 +255,19 @@ public class LoginGUI extends javax.swing.JFrame {
                     .addComponent(loginPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lookUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lookUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(190, 190, 190))
         );
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thehotspotsresort/HotSpotLow.JPG"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {loginButton, lookUpButton});
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(440, 440, 440)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1240, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(310, 310, 310)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 350, 383, 189));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thehotspotsresort/HotSpotLow.JPG"))); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(128888888, 128888832));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -245,7 +280,9 @@ public class LoginGUI extends javax.swing.JFrame {
         if(evt.getSource() == loginButton)  //set Login.password with whats in
         {            //the loginPasswordField and get value einTextField 
             try {    //and setEIN value for Login.EIN
-                Login.setPassword(String.copyValueOf(loginPasswordField.getPassword()));
+                Login.setPassword(
+                        String.copyValueOf(loginPasswordField.getPassword())
+                );
                 Login.setEIN(einTextField.getText());
                 LoginGUI.jPanel1.setEnabled(false);
                 LoginGUI.jPanel1.setOpaque(true);
@@ -256,7 +293,13 @@ public class LoginGUI extends javax.swing.JFrame {
                 
             } 
             catch (IOException ex) {
-                Logger.getLogger(LoginGUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(
+                        LoginGUI.class.getName()
+                ).log(
+                    Level.SEVERE, 
+                    null,
+                    ex
+                );
             }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
@@ -275,9 +318,7 @@ public class LoginGUI extends javax.swing.JFrame {
             look.setVisible(true);
         }
     }//GEN-LAST:event_lookUpButtonActionPerformed
-
-   
-    
+  
     protected static boolean logGUI = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel einLabel;

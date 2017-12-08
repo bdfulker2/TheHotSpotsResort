@@ -89,37 +89,67 @@
           <SubComponents>
             <Component class="javax.swing.JCheckBox" name="room1JCheckBox">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="99" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Room 1"/>
+                <Property name="toolTipText" type="java.lang.String" value="Room 1 JCheckBox when checked all day that the room is booked within that range "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="room4JCheckBox">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="99" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Room 4 "/>
+                <Property name="toolTipText" type="java.lang.String" value="Room 4 JCheckBox when checked all day that the room is booked within that range "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="room2JCheckBox">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="99" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Room 2"/>
+                <Property name="toolTipText" type="java.lang.String" value="Room 2 JCheckBox when checked all day that the room is booked within that range "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="room5CheckBox">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="99" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Room 5"/>
+                <Property name="toolTipText" type="java.lang.String" value="Room 5 JCheckBox when checked all day that the room is booked within that range "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="room3JCheckBox">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="99" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Room 3"/>
+                <Property name="toolTipText" type="java.lang.String" value="Room 3 JCheckBox when checked all day that the room is booked within that range "/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="room6JCheckBox">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="99" red="0" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Room 6"/>
+                <Property name="toolTipText" type="java.lang.String" value="Room 6 JCheckBox when checked all day that the room is booked within that range "/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="datePickerJPanel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="99" red="0" type="rgb"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Panel for holding the JXDatepickers"/>
+          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -165,8 +195,14 @@
           </Layout>
           <SubComponents>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="startJXDatePicker">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="JXDatePicker for picking the start date for the print reprot"/>
+              </Properties>
             </Component>
             <Component class="org.jdesktop.swingx.JXDatePicker" name="endJXDatePicker">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="JXDatePicker this is for selectoing an individjly "/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
@@ -225,9 +261,18 @@
         <Component class="javax.swing.JButton" name="printReportJButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="66" green="66" red="0" type="rgb"/>
+              <Color blue="cc" green="99" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Gisha" size="24" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Print Report"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printReportJButtonActionPerformed"/>

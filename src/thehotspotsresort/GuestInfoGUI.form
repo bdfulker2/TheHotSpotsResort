@@ -187,16 +187,35 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="checkOutDateJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="This fied is not an editable field. It holds or will have the check out date"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="resMadeDateJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="This fied not and editable field. It hold the date the reservation was made"/>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="checkInDateJTextField1">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="This fied is not an editable field. It holds or will have the check in date"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -316,6 +335,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="firstNameJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="First Name text field is for first name only. You can only enter alpha numeric keys. Most special characters are not allowed except the apostrophe and hyphen. The text is red and will only turn green when the input is the correct length and format."/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -326,11 +353,27 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="lastNameJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Last Name text field is for the user to type the last name. Alpha numeric keys and an apostrophes and hypens only. No other special character will be consumed by the system. The text is red and will only turn green when the input is the correct length and format."/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="AptNumJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="This text field is for the user to type the user apartment number. Alpha numeric keys and an apostrophes and hypens only. No other special character will be consumed by the system. The text is red and will only turn green when the input is the correct length and format."/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -341,6 +384,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="streetAddJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Street Address text field is for the user to type the street address. Alpha numeric keys and an apostrophes and hypens only. No other special character will be consumed by the system. The text is red and will only turn green when the input is the correct length and format."/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -356,6 +407,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="creditJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Credit Card text field enter in the guests credit card number. This field will only allow the user to tyep number. The text is red and will only turn green when the input is the correct length and format."/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -366,6 +425,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="zipCodeJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Zip-code text field enter in the guests zipcode. This field will only allow the user to tyep numberut all other characters will be deleteThe text is red until the input is the correct legnth and properly formattted"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -373,23 +440,45 @@
             <Component class="javax.swing.JButton" name="saveInfoJButton">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                  <Color blue="cc" green="99" red="0" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Gisha" size="14" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Save Guest Data"/>
+                <Property name="toolTipText" type="java.lang.String" value="This Button save guest information. On new reservations it is only enabled when all data is filled in correctly in all text fields. When editing a reservation it can be used as soon as the data is edited"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveInfoJButtonActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="cvv2JTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="CVV2 text field accepts 3 or 4 digit cvv2 numbers. The text is red and will only turn green when the input is the correct length and format."/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="yearJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Year text field accepts a 2 digits year. The text field only takes numeric input. The text is red and will only turn green when the input is the correct length and format."/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -405,6 +494,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="monthJTextField">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Month Text field takes a 2 - digit text field from 1 - 12. This text field will only allows for numeric input all other characters will be deleted. The text is red until the input is the correct legnth and properly formattted"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                    <EtchetBorder/>
+                  </Border>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
               </AuxValues>
@@ -440,6 +537,14 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="costJTextField">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value="Cost text field is an uneditable field that is passed the cs"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="12"/>
           </AuxValues>

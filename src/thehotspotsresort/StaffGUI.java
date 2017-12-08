@@ -59,9 +59,11 @@ public class StaffGUI extends javax.swing.JFrame {
         jPanel2.setMinimumSize(new java.awt.Dimension(330, 332));
         jPanel2.setLayout(new java.awt.GridLayout(0, 1, 15, 5));
 
-        staffBookingButton.setBackground(new java.awt.Color(255, 0, 0));
+        staffBookingButton.setBackground(new java.awt.Color(0, 153, 204));
         staffBookingButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         staffBookingButton.setText("Book A  Room");
+        staffBookingButton.setToolTipText("Book A Room button for staff. Opens room GuI for sleecting a room");
+        staffBookingButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         staffBookingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 staffBookingButtonActionPerformed(evt);
@@ -69,9 +71,11 @@ public class StaffGUI extends javax.swing.JFrame {
         });
         jPanel2.add(staffBookingButton);
 
-        staffCancelButton.setBackground(new java.awt.Color(255, 0, 0));
+        staffCancelButton.setBackground(new java.awt.Color(0, 153, 204));
         staffCancelButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         staffCancelButton.setText("Cancel Reservation");
+        staffCancelButton.setToolTipText("Cancel A reservation button. Used by staff to remove reservation from databse");
+        staffCancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         staffCancelButton.setFocusable(false);
         staffCancelButton.setSelected(true);
         staffCancelButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,9 +85,11 @@ public class StaffGUI extends javax.swing.JFrame {
         });
         jPanel2.add(staffCancelButton);
 
-        staffLookUpButton.setBackground(new java.awt.Color(255, 0, 0));
+        staffLookUpButton.setBackground(new java.awt.Color(0, 153, 204));
         staffLookUpButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         staffLookUpButton.setText("Staff Look UP");
+        staffLookUpButton.setToolTipText("Staff look up button used by staff level login to look up reservations with only basic attriubutes");
+        staffLookUpButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         staffLookUpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 staffLookUpButtonActionPerformed(evt);
@@ -104,6 +110,7 @@ public class StaffGUI extends javax.swing.JFrame {
         setEnabled(false);  //disables the AdminGUI frame
         revalidate();       //revalidates componenets
         repaint();          //rpaints the frame
+        dispose();          //disposes of the current frame
         RoomGUI roomGui = new RoomGUI();
        roomGui.setVisible(true);
     }//GEN-LAST:event_adminBookingButtonActionPerformed
@@ -118,6 +125,7 @@ public class StaffGUI extends javax.swing.JFrame {
             setEnabled(false);  //disables the AdminGUI frame
             revalidate();       //revalidates componenets
             repaint();          //rpaints the frame
+            dispose();
             LookUpGUI adminEditLookUPGUI = new LookUpGUI();
             adminEditLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             adminEditLookUPGUI.setVisible(true);
@@ -133,6 +141,7 @@ public class StaffGUI extends javax.swing.JFrame {
             setEnabled(false);  //disables the AdminGUI frame
             revalidate();       //revalidates componenets
             repaint();          //rpaints the frame
+            dispose();
             LookUpGUI adminLookUPGUI = new LookUpGUI();
             adminLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             adminLookUPGUI.setVisible(true);

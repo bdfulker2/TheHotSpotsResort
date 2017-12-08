@@ -303,6 +303,14 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         checkOutNonChangingJLabel.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
         checkOutNonChangingJLabel.setText("Date :  Check - Out");
 
+        checkOutDateJTextField.setToolTipText("This fied is not an editable field. It holds or will have the check out date");
+        checkOutDateJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        resMadeDateJTextField.setToolTipText("This fied not and editable field. It hold the date the reservation was made");
+
+        checkInDateJTextField1.setToolTipText("This fied is not an editable field. It holds or will have the check in date");
+        checkInDateJTextField1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -344,28 +352,57 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
 
         jLabel1.setText("        First Name");
 
+        firstNameJTextField.setToolTipText("First Name text field is for first name only. You can only enter alpha numeric keys. Most special characters are not allowed except the apostrophe and hyphen. The text is red and will only turn green when the input is the correct length and format.");
+        firstNameJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         jLabel2.setText("        Last Name");
 
+        lastNameJTextField.setToolTipText("Last Name text field is for the user to type the last name. Alpha numeric keys and an apostrophes and hypens only. No other special character will be consumed by the system. The text is red and will only turn green when the input is the correct length and format.");
+        lastNameJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        AptNumJTextField.setToolTipText("This text field is for the user to type the user apartment number. Alpha numeric keys and an apostrophes and hypens only. No other special character will be consumed by the system. The text is red and will only turn green when the input is the correct length and format.");
+        AptNumJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         jLabel5.setText("               Apt #");
+
+        streetAddJTextField.setToolTipText("Street Address text field is for the user to type the street address. Alpha numeric keys and an apostrophes and hypens only. No other special character will be consumed by the system. The text is red and will only turn green when the input is the correct length and format.");
+        streetAddJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel3.setText("   Street Adress");
 
         jLabel6.setText("      Credit Card ");
 
+        creditJTextField.setToolTipText("Credit Card text field enter in the guests credit card number. This field will only allow the user to tyep number. The text is red and will only turn green when the input is the correct length and format.");
+        creditJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         jLabel4.setText("5 digit Zip-Code");
 
-        saveInfoJButton.setBackground(new java.awt.Color(255, 0, 0));
+        zipCodeJTextField.setToolTipText("Zip-code text field enter in the guests zipcode. This field will only allow the user to tyep numberut all other characters will be deleteThe text is red until the input is the correct legnth and properly formattted");
+        zipCodeJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        saveInfoJButton.setBackground(new java.awt.Color(0, 153, 204));
         saveInfoJButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
         saveInfoJButton.setText("Save Guest Data");
+        saveInfoJButton.setToolTipText("This Button save guest information. On new reservations it is only enabled when all data is filled in correctly in all text fields. When editing a reservation it can be used as soon as the data is edited");
+        saveInfoJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         saveInfoJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveInfoJButtonActionPerformed(evt);
             }
         });
 
+        cvv2JTextField.setToolTipText("CVV2 text field accepts 3 or 4 digit cvv2 numbers. The text is red and will only turn green when the input is the correct length and format.");
+        cvv2JTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        yearJTextField.setToolTipText("Year text field accepts a 2 digits year. The text field only takes numeric input. The text is red and will only turn green when the input is the correct length and format.");
+        yearJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         jLabel8.setText("  YY");
 
         jLabel7.setText(" MM");
+
+        monthJTextField.setToolTipText("Month Text field takes a 2 - digit text field from 1 - 12. This text field will only allows for numeric input all other characters will be deleted. The text is red until the input is the correct legnth and properly formattted");
+        monthJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel9.setText("CVV2");
 
@@ -462,6 +499,9 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 deleteReservationJButtonActionPerformed(evt);
             }
         });
+
+        costJTextField.setToolTipText("Cost text field is an uneditable field that is passed the cs");
+        costJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
