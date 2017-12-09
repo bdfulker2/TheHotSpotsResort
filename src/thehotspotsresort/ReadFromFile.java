@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +22,7 @@ public class ReadFromFile {
     private static final String room1Path = 
             "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\" +
             "src\\thehotspotsresort\\roomOne.txt";
+           // Paths.get(AbsolutePath(), "roomOne.txt");
     private static final String room2Path =
             "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
             "\\thehotspotsresort\\roomTwo.txt";
@@ -137,26 +139,27 @@ public class ReadFromFile {
             try
             {
                 //getClass().getResource(filePath);
-                reading = new BufferedReader(new FileReader(filePath));		//creates and instance of the filereader with the filePath inside a bufferedreader
-                System.out.println("reading = " + reading);
-                //line = null;
-                /*if(line == null)
-                {
-                    match = false;
-                }*/
+                reading = new BufferedReader(new FileReader(filePath));		
+//creates and instance of filereader with the filePath inside a bufferedreader
+               
+               
                 while((line = reading.readLine()) != null)
                 {
-                    System.out.println("line = " + line);
+                   /* System.out.println("line = " + line);
                     System.out.println("last Name = " + LookUp.getlName() +
                             "============= first name = " + LookUp.getfName() + 
                             "================= vondirmation number = " + 
                             LookUp.getConfirmationNum() 
                     );
-                    if(line.contains(LookUp.getConfirmationNum()) || 
+                 /*   if(line.contains(LookUp.getConfirmationNum()) || 
                             line.contains(LookUp.getlName()) || 
                             line.contains(LookUp.getfName())
+                        )*/
+                /*    if(line.startsWith(LookUp.getConfirmationNum()) || 
+                            line.startsWith(LookUp.getlName()) || 
+                            line.startsWith(LookUp.getfName())
                         )
-                    {
+                    {*/
                          
                         //reservations[count] = line;
                         LookUpGUI.getLinesOfReservations().add(count, line);
@@ -165,9 +168,9 @@ public class ReadFromFile {
                         count++;
                         match = true;
      
-                        System.out.println("Match = true in reader and count is " + count);
+                     //   System.out.println("Match = true in reader and count is " + count);
                        
-                    }
+                   // }
                     
                 }
             }

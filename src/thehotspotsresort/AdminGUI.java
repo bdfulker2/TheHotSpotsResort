@@ -22,6 +22,9 @@ public class AdminGUI extends javax.swing.JFrame {
      */
     public AdminGUI() {
         initComponents();                   //initiates the componentx
+        adminCancelButton.setText("<html>Cancel or Edit<br /> Reservation</html>");
+        revalidate();
+        repaint();
         setLookAndFeel();                   //sets the look and feel
         this.setLocationRelativeTo(null);   //Centers the AdminGUI frame
     }
@@ -56,11 +59,10 @@ public class AdminGUI extends javax.swing.JFrame {
         jPanel2.setFocusTraversalPolicyProvider(true);
         jPanel2.setMaximumSize(new java.awt.Dimension(330, 332));
         jPanel2.setMinimumSize(new java.awt.Dimension(330, 332));
-        jPanel2.setLayout(new java.awt.GridLayout(2, 2, 8, 8));
 
         adminCancelButton.setBackground(new java.awt.Color(0, 153, 204));
         adminCancelButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
-        adminCancelButton.setText("Cancel Reservation");
+        adminCancelButton.setText("Cancel or Edit Reservation");
         adminCancelButton.setToolTipText("This button enables the Admin to edit or cancel reservations by opening a selectable Jtable");
         adminCancelButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         adminCancelButton.setFocusable(false);
@@ -73,7 +75,6 @@ public class AdminGUI extends javax.swing.JFrame {
                 adminCancelButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(adminCancelButton);
 
         adminBookingButton.setBackground(new java.awt.Color(0, 153, 204));
         adminBookingButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
@@ -88,7 +89,6 @@ public class AdminGUI extends javax.swing.JFrame {
                 adminBookingButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(adminBookingButton);
 
         adminLookUpButton.setBackground(new java.awt.Color(0, 153, 204));
         adminLookUpButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
@@ -103,7 +103,6 @@ public class AdminGUI extends javax.swing.JFrame {
                 adminLookUpButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(adminLookUpButton);
 
         printReportButton.setBackground(new java.awt.Color(0, 153, 204));
         printReportButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
@@ -119,7 +118,31 @@ public class AdminGUI extends javax.swing.JFrame {
                 printReportButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(printReportButton);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(adminCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(adminBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(adminLookUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(printReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(adminCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adminBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(adminLookUpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(printReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,6 +169,9 @@ public class AdminGUI extends javax.swing.JFrame {
             repaint();          //rpaints the frame
             dispose();
             RoomGUI roomGui = new RoomGUI();
+            roomGui.setAlwaysOnTop(true);
+            roomGui.setAutoRequestFocus(true);
+            roomGui.setFocusTraversalKeysEnabled(false);           
             roomGui.setVisible(true);
         }
     }//GEN-LAST:event_adminBookingButtonActionPerformed
@@ -163,6 +189,9 @@ public class AdminGUI extends javax.swing.JFrame {
             dispose();
             LookUpGUI adminEditLookUPGUI = new LookUpGUI();
             adminEditLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            adminEditLookUPGUI.setAlwaysOnTop(true);
+            adminEditLookUPGUI.setAutoRequestFocus(true);
+            adminEditLookUPGUI.setFocusTraversalKeysEnabled(false);           
             adminEditLookUPGUI.setVisible(true);
         }
     }//GEN-LAST:event_adminCancelButtonActionPerformed
@@ -179,6 +208,9 @@ public class AdminGUI extends javax.swing.JFrame {
             dispose();
             LookUpGUI adminLookUPGUI = new LookUpGUI();
             adminLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            adminLookUPGUI.setAlwaysOnTop(true);
+            adminLookUPGUI.setAutoRequestFocus(true);
+            adminLookUPGUI.setFocusTraversalKeysEnabled(false);           
             adminLookUPGUI.setVisible(true);
             boolean check = false;
         }
@@ -196,6 +228,9 @@ public class AdminGUI extends javax.swing.JFrame {
             repaint();          //rpaints the frame
             dispose();
             PrintReportGUI report = new PrintReportGUI(); //instantiates print
+            report.setAlwaysOnTop(true);
+            report.setAutoRequestFocus(true);
+            report.setFocusTraversalKeysEnabled(false);           
             report.setVisible(true);        //reportGUI and set visible to true
         }
     }//GEN-LAST:event_printReportButtonActionPerformed

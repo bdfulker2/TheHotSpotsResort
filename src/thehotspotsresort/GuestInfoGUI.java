@@ -200,6 +200,9 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
             deleteReservationJButton.setEnabled(false);
             deleteReservationJButton.setOpaque(false);
             deleteReservationJButton.setVisible(false);
+            buttonJPanel.remove(deleteReservationJButton);
+            revalidate();
+            repaint();
             //deleteReservationJButton.setText("");
             deleteReservationJButton.revalidate();
             repaint();
@@ -250,7 +253,6 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel10 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         dateCheckInNonChangingJLabel = new javax.swing.JLabel();
@@ -272,25 +274,32 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         creditJTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         zipCodeJTextField = new javax.swing.JTextField();
-        saveInfoJButton = new javax.swing.JButton();
         cvv2JTextField = new javax.swing.JTextField();
         yearJTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         monthJTextField = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        deleteReservationJButton = new javax.swing.JButton();
         costJTextField = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-
-        jLabel10.setText("jLabel10");
+        jLabel11 = new javax.swing.JLabel();
+        buttonJPanel = new javax.swing.JPanel();
+        deleteReservationJButton = new javax.swing.JButton();
+        saveInfoJButton1 = new javax.swing.JButton();
+        saveInfoJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusTraversalPolicyProvider(true);
+        setMaximumSize(new java.awt.Dimension(489, 390));
+        setMinimumSize(new java.awt.Dimension(489, 390));
+        setPreferredSize(new java.awt.Dimension(489, 390));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setMaximumSize(new java.awt.Dimension(489, 364));
+        jPanel1.setMinimumSize(new java.awt.Dimension(489, 364));
+        jPanel1.setPreferredSize(new java.awt.Dimension(489, 364));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -318,20 +327,21 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(resMadeNonChangingJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
+                    .addComponent(resMadeNonChangingJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(resMadeDateJTextField))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(dateCheckInNonChangingJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                    .addComponent(checkInDateJTextField1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(checkOutDateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(checkOutNonChangingJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(checkInDateJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateCheckInNonChangingJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkOutDateJTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkOutNonChangingJLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {checkInDateJTextField1, checkOutDateJTextField, checkOutNonChangingJLabel, dateCheckInNonChangingJLabel, resMadeDateJTextField, resMadeNonChangingJLabel});
+
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -340,13 +350,15 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                     .addComponent(resMadeNonChangingJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateCheckInNonChangingJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkOutNonChangingJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(checkOutDateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(resMadeDateJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkInDateJTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {checkInDateJTextField1, checkOutDateJTextField, checkOutNonChangingJLabel, dateCheckInNonChangingJLabel, resMadeDateJTextField, resMadeNonChangingJLabel});
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -380,17 +392,6 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         zipCodeJTextField.setToolTipText("Zip-code text field enter in the guests zipcode. This field will only allow the user to tyep numberut all other characters will be deleteThe text is red until the input is the correct legnth and properly formattted");
         zipCodeJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        saveInfoJButton.setBackground(new java.awt.Color(0, 153, 204));
-        saveInfoJButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
-        saveInfoJButton.setText("Save Guest Data");
-        saveInfoJButton.setToolTipText("This Button save guest information. On new reservations it is only enabled when all data is filled in correctly in all text fields. When editing a reservation it can be used as soon as the data is edited");
-        saveInfoJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        saveInfoJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveInfoJButtonActionPerformed(evt);
-            }
-        });
-
         cvv2JTextField.setToolTipText("CVV2 text field accepts 3 or 4 digit cvv2 numbers. The text is red and will only turn green when the input is the correct length and format.");
         cvv2JTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -406,12 +407,19 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
 
         jLabel9.setText("CVV2");
 
+        costJTextField.setToolTipText("Cost text field is an uneditable field that is passed the cs");
+        costJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("$");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -453,8 +461,12 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cvv2JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14)
-                        .addComponent(saveInfoJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(costJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -476,7 +488,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(creditJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(monthJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -484,12 +496,16 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cvv2JTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(saveInfoJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(costJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         jLabel11.setFont(new java.awt.Font("Sitka Display", 1, 24)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Guest Information");
+
+        buttonJPanel.setLayout(new java.awt.GridLayout(1, 0, 5, 8));
 
         deleteReservationJButton.setBackground(new java.awt.Color(255, 0, 0));
         deleteReservationJButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
@@ -499,38 +515,51 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 deleteReservationJButtonActionPerformed(evt);
             }
         });
+        buttonJPanel.add(deleteReservationJButton);
 
-        costJTextField.setToolTipText("Cost text field is an uneditable field that is passed the cs");
-        costJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        saveInfoJButton1.setBackground(new java.awt.Color(0, 153, 204));
+        saveInfoJButton1.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
+        saveInfoJButton1.setText("Back");
+        saveInfoJButton1.setToolTipText("This Button save guest information. On new reservations it is only enabled when all data is filled in correctly in all text fields. When editing a reservation it can be used as soon as the data is edited");
+        saveInfoJButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        saveInfoJButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveInfoJButton1ActionPerformed(evt);
+            }
+        });
+        buttonJPanel.add(saveInfoJButton1);
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel12.setText("$");
+        saveInfoJButton.setBackground(new java.awt.Color(0, 153, 204));
+        saveInfoJButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
+        saveInfoJButton.setText("Save Guest Data");
+        saveInfoJButton.setToolTipText("This Button save guest information. On new reservations it is only enabled when all data is filled in correctly in all text fields. When editing a reservation it can be used as soon as the data is edited");
+        saveInfoJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        saveInfoJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveInfoJButtonActionPerformed(evt);
+            }
+        });
+        buttonJPanel.add(saveInfoJButton);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(costJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(deleteReservationJButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(119, 119, 119)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(buttonJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -542,16 +571,10 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteReservationJButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel12)
-                        .addComponent(costJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(31, 31, 31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {costJTextField, deleteReservationJButton});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -788,6 +811,10 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         
     }//GEN-LAST:event_deleteReservationJButtonActionPerformed
 
+    private void saveInfoJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInfoJButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saveInfoJButton1ActionPerformed
+
     /**
      * Set the systems look and feel based on the operating system.
      * @param args the command line arguments
@@ -827,6 +854,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     private boolean creditCheck, cvv2Check, monthCheck, zipCodeCheck, yearCheck;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JTextField AptNumJTextField;
+    private javax.swing.JPanel buttonJPanel;
     protected static javax.swing.JTextField checkInDateJTextField1;
     protected static javax.swing.JTextField checkOutDateJTextField;
     private javax.swing.JLabel checkOutNonChangingJLabel;
@@ -837,7 +865,6 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     private javax.swing.JButton deleteReservationJButton;
     protected static javax.swing.JTextField firstNameJTextField;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -856,6 +883,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     protected static javax.swing.JTextField resMadeDateJTextField;
     private javax.swing.JLabel resMadeNonChangingJLabel;
     private javax.swing.JButton saveInfoJButton;
+    private javax.swing.JButton saveInfoJButton1;
     protected static javax.swing.JTextField streetAddJTextField;
     protected static javax.swing.JTextField yearJTextField;
     protected static javax.swing.JTextField zipCodeJTextField;

@@ -22,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -96,6 +97,7 @@ public class PrintReportGUI extends JFrame implements ActionListener {
         printJTextArea = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         printReportJButton = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -220,7 +222,7 @@ public class PrintReportGUI extends JFrame implements ActionListener {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel2.setLayout(new java.awt.BorderLayout());
+        jPanel2.setLayout(new java.awt.GridLayout(1, 2));
 
         printReportJButton.setBackground(new java.awt.Color(0, 153, 204));
         printReportJButton.setFont(new java.awt.Font("Gisha", 1, 24)); // NOI18N
@@ -232,7 +234,19 @@ public class PrintReportGUI extends JFrame implements ActionListener {
                 printReportJButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(printReportJButton, java.awt.BorderLayout.CENTER);
+        jPanel2.add(printReportJButton);
+
+        backJButton.setBackground(new java.awt.Color(0, 153, 204));
+        backJButton.setFont(new java.awt.Font("Gisha", 1, 24)); // NOI18N
+        backJButton.setText("Back");
+        backJButton.setToolTipText("");
+        backJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+        jPanel2.add(backJButton);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -263,13 +277,39 @@ public class PrintReportGUI extends JFrame implements ActionListener {
         // TODO add your handling code here:
         //If source is printReportJButton JOptionPane message that it printed
          if(evt.getSource()==printReportJButton) {
-            JOptionPane.showConfirmDialog(null,
+             setAlwaysOnTop(false);
+            final JDialog dialog = new JDialog();
+            dialog.setAlwaysOnTop(true);
+            JOptionPane.showConfirmDialog(
+                null,
                 "Report Sent To Printer", 
                 "Confirm Reservation Information",
                 JOptionPane.OK_CANCEL_OPTION, 
-                JOptionPane.INFORMATION_MESSAGE,null);
+                JOptionPane.INFORMATION_MESSAGE,
+                null
+            );
+            
+            
+            
         }
     }//GEN-LAST:event_printReportJButtonActionPerformed
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == backJButton ) {
+                setVisible(false);  //makes printReportGUI frameinvisible
+                setEnabled(false);  //disables the AdminGUI frame
+                revalidate();       //revalidates componenets
+                repaint();          //rpaints the frame
+                dispose();
+                AdminGUI admin = new AdminGUI();   
+                admin.setAlwaysOnTop(true);
+                admin.setAutoRequestFocus(true);
+                admin.setFocusTraversalKeysEnabled(false);           
+                admin.setVisible(true);
+                
+            }
+    }//GEN-LAST:event_backJButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +343,7 @@ public class PrintReportGUI extends JFrame implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
     private javax.swing.JPanel checkBoxPanel;
     private javax.swing.JPanel datePickerJPanel;
     private org.jdesktop.swingx.JXDatePicker endJXDatePicker;

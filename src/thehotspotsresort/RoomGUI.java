@@ -66,7 +66,7 @@ public class RoomGUI extends javax.swing.JFrame {
         room1JButton.setBackground(new java.awt.Color(0, 153, 204));
         room1JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room1JButton.setText("1");
-        room1JButton.setToolTipText("Room 1 buttong for opening the speciified room");
+        room1JButton.setToolTipText("Room 1 is a Double Queen bed room for $150");
         room1JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room1JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +78,7 @@ public class RoomGUI extends javax.swing.JFrame {
         room2JButton.setBackground(new java.awt.Color(0, 153, 204));
         room2JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room2JButton.setText("2");
-        room2JButton.setToolTipText("Room 2 buttong for opening the speciified room");
+        room2JButton.setToolTipText("Room 2 is a Double Queen bed room for $150");
         room2JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room2JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +90,7 @@ public class RoomGUI extends javax.swing.JFrame {
         room3JButton.setBackground(new java.awt.Color(0, 153, 204));
         room3JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room3JButton.setText("3");
-        room3JButton.setToolTipText("Room 3 button for opening the speciified room");
+        room3JButton.setToolTipText("Room 3 is a single King bed room for $150");
         room3JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room3JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +102,7 @@ public class RoomGUI extends javax.swing.JFrame {
         room4JButton.setBackground(new java.awt.Color(0, 153, 204));
         room4JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room4JButton.setText("4");
-        room4JButton.setToolTipText("Room  buttong for opening the speciified room");
+        room4JButton.setToolTipText("Room 4 is a single King bed room for $150");
         room4JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room4JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,7 +114,7 @@ public class RoomGUI extends javax.swing.JFrame {
         room5JButton.setBackground(new java.awt.Color(0, 153, 204));
         room5JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room5JButton.setText("5");
-        room5JButton.setToolTipText("Room 5 buttong for opening the speciified room");
+        room5JButton.setToolTipText("Room 5 is a suite with 2 bedroom. One king, One queen bed and a pull out couch for $200");
         room5JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room5JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +126,7 @@ public class RoomGUI extends javax.swing.JFrame {
         room6JButton.setBackground(new java.awt.Color(0, 153, 204));
         room6JButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 48)); // NOI18N
         room6JButton.setText("6");
-        room6JButton.setToolTipText("Room 6 buttong for opening the speciified room");
+        room6JButton.setToolTipText("Room 6 is a suite with 2 bedroom. One king, One queen bed and a pull out couch for $200");
         room6JButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         room6JButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

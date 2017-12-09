@@ -27,6 +27,7 @@ public class LookUp {
      * @return the fName
      */
     public static String getfName() {
+        System.out.println("fName = " + fName);
         return fName;
     }
 
@@ -41,6 +42,7 @@ public class LookUp {
      * @return the lName
      */
     public static String getlName() {
+        System.out.println("lName = " + lName);
         return lName;
     }
 
@@ -55,6 +57,7 @@ public class LookUp {
      * @return the confirmationNum
      */
     public static String getConfirmationNum() {
+        System.out.println("getConfirMationNum = " + confirmationNum);
         return confirmationNum;
     } 
 

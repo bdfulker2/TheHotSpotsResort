@@ -112,7 +112,7 @@ public class StaffGUI extends javax.swing.JFrame {
         repaint();          //rpaints the frame
         dispose();          //disposes of the current frame
         RoomGUI roomGui = new RoomGUI();
-       roomGui.setVisible(true);
+        roomGui.setVisible(true);
     }//GEN-LAST:event_adminBookingButtonActionPerformed
 
     private void staffCancelButtonActionPerformed(
@@ -145,7 +145,7 @@ public class StaffGUI extends javax.swing.JFrame {
             LookUpGUI adminLookUPGUI = new LookUpGUI();
             adminLookUPGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             adminLookUPGUI.setVisible(true);
-                 boolean check = false;
+            boolean check = false;
         }
       
     }//GEN-LAST:event_adminLookUpButtonActionPerformed

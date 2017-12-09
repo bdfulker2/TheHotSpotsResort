@@ -29,7 +29,8 @@ public class Login extends LoginGUI
     //Static call to LoginGUI textFields to get the text in them
     //protected static String password = LoginGUI.passwordTextField.getText(); 
     //testing with a passwordFiled instead of a text field
-    private static String password;// = String.copyValueOf(LoginGUI.loginPasswordField.getPassword());
+    private static String password;
+    // = String.copyValueOf(LoginGUI.loginPasswordField.getPassword());
 
     private static String EIN;// = LoginGUI.einTextField.getText();
     private static boolean Admin;     //static boolean for Admin
@@ -112,11 +113,6 @@ public class Login extends LoginGUI
     */
     public Login(String EIN, String password) throws IOException    
     {
-        //super();
-        
-        
-        
-                //repaint();
         Login.Admin = false;
         Login.match = false;
         Login.EIN = EIN;                
@@ -152,7 +148,6 @@ public class Login extends LoginGUI
         }
 
     }
-    
     /*
         can throw an IOException checkEIN and password match, but only if the 
         EIN starts with the 'a' or 's' character and the lengths have been 
@@ -167,7 +162,8 @@ public class Login extends LoginGUI
                                     //what password file to check
             ReadFromFile reader = new ReadFromFile(); //creates an instance of
            // match = reader.read(Admin); //of ReadFromFile class and reads .txt 
-            match = reader.read2(Admin, "admin"); //of ReadFromFile class and reads .txt 
+            match = reader.read2(Admin, "admin");
+                                        //of ReadFromFile class and reads .txt 
                                         //AdminPassword.txt file
             if(match == true)
             {                       //if EIN and Passsword match do this
@@ -175,16 +171,22 @@ public class Login extends LoginGUI
                 System.out.println("match = true :" + match);
                
                 AdminGUI admin = new AdminGUI(); 
-                admin.setVisible(true);
-                
+                admin.setAlwaysOnTop(true);
+                admin.setAutoRequestFocus(true);
+                admin.setFocusTraversalKeysEnabled(false);
                
+                admin.setVisible(true);
+               // AltTabStopper stop = new AltTabStopper(admin);
+                //stop.run();
+                    //admin.setVisible(true);   
             }
             else
             {
-              //  LoginGUI.einTextField.setBackground(Color.red);
+                //LoginGUI.einTextField.setBackground(Color.red);
                 JOptionPane.showMessageDialog(null, 
-                      "Your EIN or Password or both doesn't match our records");
-               System.exit(0);
+                      "Your EIN or Password or both doesn't match our records"
+                );
+                System.exit(0);
             }
         }
         else if(EIN.charAt(0) == 's')
@@ -205,16 +207,17 @@ public class Login extends LoginGUI
             else
             {
                 JOptionPane.showMessageDialog(null, 
-                      "Your EIN or Password or both doesn't match our records");
+                      "Your EIN or Password or both doesn't match our records"
+                );
                 System.exit(0);
             }
         }
         else
         {//if EIN doesn't start with an 'a' or 'a' then it was wrong and restart
             JOptionPane.showMessageDialog(null, 
-                             "You EIN doesn't start with the right characters");
+                "You EIN doesn't start with the right characters"
+            );
                 System.exit(0);
-             
         }
     }  
 }

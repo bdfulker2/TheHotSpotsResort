@@ -332,6 +332,7 @@ public class LookUpGUI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         lNameJTextField = new javax.swing.JTextField();
         lookUpReservationJButton = new javax.swing.JButton();
+        backToGUIJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 102));
@@ -412,6 +413,17 @@ public class LookUpGUI extends javax.swing.JFrame {
             }
         });
 
+        backToGUIJButton.setBackground(new java.awt.Color(0, 153, 204));
+        backToGUIJButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
+        backToGUIJButton.setText("Back");
+        backToGUIJButton.setToolTipText("Returns User to Home Screen");
+        backToGUIJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backToGUIJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToGUIJButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout inputsJPanelLayout = new javax.swing.GroupLayout(inputsJPanel);
         inputsJPanel.setLayout(inputsJPanelLayout);
         inputsJPanelLayout.setHorizontalGroup(
@@ -421,17 +433,19 @@ public class LookUpGUI extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(confirmNumJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(fNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(91, 91, 91)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lookUpReservationJButton)
-                .addGap(45, 45, 45))
+                .addComponent(lookUpReservationJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(backToGUIJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
 
         inputsJPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {confirmNumJTextField, fNameJTextField, lNameJTextField});
@@ -440,19 +454,23 @@ public class LookUpGUI extends javax.swing.JFrame {
             inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inputsJPanelLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lookUpReservationJButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel2)
-                        .addComponent(fNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addComponent(lNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(confirmNumJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(fNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(lNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(confirmNumJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputsJPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backToGUIJButton)
+                    .addComponent(lookUpReservationJButton))
+                .addContainerGap())
         );
 
-        inputsJPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {fNameJTextField, lNameJTextField});
+        inputsJPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {backToGUIJButton, confirmNumJTextField, fNameJTextField, lNameJTextField, lookUpReservationJButton});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -475,27 +493,66 @@ public class LookUpGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lookUpReservationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lookUpReservationJButtonActionPerformed
-        if(lookUpReservationJButton == evt.getSource()) {
+        /**if the source is lookUpReservationJButton set boolean flag to false
+         * Then check if resTable is null if not clear it and then if ArrayList
+         * is not empty then clear. pull values from LookUPGUI text field and
+         * pass to LookUp class.  Then if restable is null or the rowCount is
+         * less than 0 go to ReadFromFile class and enter .reading() method
+         * reading() returns true set count to zero then get the table model
+         * and store it in resTable then iterate through ArrayList 
+         * linesOfReservations and split each line by the ! delimeter and check 
+         * each line against the value user enters
+         * into JTextFields on the LookUpGUI frame if any of the lines contain
+         * the same value any in the perspective array elements from the CSV 
+         * like .txt file. If the data is contained then add a diff value to
+         * each cell of the table. Guest and Staff get the same basic data, but
+         * Admin gets every value including payment infor on their lookup screen
+        */
+        if(lookUpReservationJButton == evt.getSource()) { 
             boolean check = false;
+            if(resTable != null) {
+                while(resTable.getRowCount() > 0) {
+                            resTable.setRowCount(0);
+                            revalidate();
+                }
+                if(!linesOfReservations.isEmpty()) {
+                    linesOfReservations.clear();
+                }
+            }
             try {
+                
                 // TODO add your handling code here:
-
+                //sets values on LookUP class
                 LookUp.setfName(fNameJTextField.getText());
                 LookUp.setConfirmationNum(confirmNumJTextField.getText());
                 LookUp.setlName(lNameJTextField.getText());
-                LookUp look = new LookUp(
+                LookUp look = new LookUp(  //initializes LookUp Class
                         LookUp.getfName(), 
                         LookUp.getlName(), 
                         LookUp.getConfirmationNum()
                 );
-                ReadFromFile read = new ReadFromFile();
-                check = read.reading();
+                if(resTable == null || resTable.getRowCount() <= 0) {
+                    ReadFromFile read = new ReadFromFile();  //reads from file
+                    check = read.reading();    //call to .reading which returns a
+                                               //boolean value if boolean is true
+                }
+                                           //
                 if(check == true)
                 {
+                    int count = 0;
                     resTable = (DefaultTableModel) jTable1.getModel();
                     for(String line : linesOfReservations)
                     {
-                        resTable.addRow(line.split("!"));
+                        if(!line.isEmpty()) {  
+                            String[] array = line.split("!");
+                            if(array[0].contains(LookUp.getConfirmationNum()) &&
+                               array[5].contains(LookUp.getfName())           &&
+                               array[6].contains(LookUp.getlName())) {
+                                    resTable.addRow(line.split("!"));
+                                    count++;
+                            }
+                        }
+     
                     }
                 }
             } catch (IOException | NullPointerException ex) {
@@ -505,6 +562,60 @@ public class LookUpGUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lookUpReservationJButtonActionPerformed
+/**
+ * if user is admin this button will return them to the AdminGUI so they can
+ * start over and select any of the screens. If user is Staff it will return 
+ * them to the StaffGUI. If user is a guest it makes the JPANEL of the LoginGUI
+ * enabled as it it disabled and the frame is uesd as the background for the 
+ * whole project.
+ * @param evt 
+ */
+    private void backToGUIJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToGUIJButtonActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == backToGUIJButton) {
+            if(Login.isAdmin() == true) {
+                setVisible(false);  //makes current AdminGUI frame to invisible
+                setEnabled(false);  //disables the AdminGUI frame
+                revalidate();       //revalidates componenets
+                repaint();          //rpaints the frame
+                dispose();
+                AdminGUI admin = new AdminGUI();   
+                admin.setAlwaysOnTop(true);
+                admin.setAutoRequestFocus(true);
+                admin.setFocusTraversalKeysEnabled(false);           
+                admin.setVisible(true);
+            }
+            
+            if(Login.isStaff() == true) {
+                setVisible(false);  //makes current AdminGUI frame to invisible
+                setEnabled(false);  //disables the AdminGUI frame
+                revalidate();       //revalidates componenets
+                repaint();          //rpaints the frame
+                dispose();
+                StaffGUI staff = new StaffGUI();  //instantiates a new StaffGUI
+                staff.setAlwaysOnTop(true);       //so users 
+                staff.setAutoRequestFocus(true);
+                staff.setFocusTraversalKeysEnabled(false);           
+                staff.setVisible(true);
+            }
+            
+            if(Login.isAdmin() == false && Login.isStaff() == false) {
+                setVisible(false);  //makes current AdminGUI frame to invisible
+                setEnabled(false);  //disables the AdminGUI frame
+                revalidate();       //revalidates componenets
+                repaint();          //rpaints the frame
+                dispose();
+                LoginGUI.jPanel1.setEnabled(true);  //reEnables JPanel with 
+                LoginGUI.jPanel1.setOpaque(true);   //Login components
+                LoginGUI.jPanel1.setVisible(true);         
+                LoginGUI.jPanel1.revalidate();
+                repaint();
+               
+            }
+        }
+        
+       
+    }//GEN-LAST:event_backToGUIJButtonActionPerformed
   
     
     public static void setUpLookAndFeel() {
@@ -546,6 +657,7 @@ public class LookUpGUI extends javax.swing.JFrame {
     DefaultTableModel resTable;
     private static JButton CancelOrEditJButton;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backToGUIJButton;
     private static javax.swing.JTextField confirmNumJTextField;
     private static javax.swing.JTextField fNameJTextField;
     private javax.swing.JPanel inputsJPanel;

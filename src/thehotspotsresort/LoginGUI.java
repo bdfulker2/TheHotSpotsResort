@@ -40,7 +40,8 @@ public class LoginGUI extends javax.swing.JFrame {
     {
   
         initComponents(); //initializes all components from GUI editor
-       // this.setLocationRelativeTo(null);
+       // this.setLocationRelativeTo(null
+        
         setLookAndFeel(); //set the systems OS look and feel if 
         ImageIcon imageIcon = new ImageIcon(
                 "src/thehotspotsresort/HotSpotLow.JPG"
@@ -315,6 +316,8 @@ public class LoginGUI extends javax.swing.JFrame {
             LoginGUI.jPanel1.revalidate();
             repaint();
             LookUpGUI look = new LookUpGUI();
+            look.setAlwaysOnTop(true);
+            look.setAutoRequestFocus(true);
             look.setVisible(true);
         }
     }//GEN-LAST:event_lookUpButtonActionPerformed
