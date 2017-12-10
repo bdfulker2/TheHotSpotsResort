@@ -42,8 +42,20 @@ public class LoginGUI extends javax.swing.JFrame {
     {
        
         initComponents(); //initializes all components from GUI editor
-       
-        setLookAndFeel(); //set the systems OS look and feel if 
+       setLookAndFeel();
+        
+        //set the systems OS look and feel if 
+        
+     /** Image citation 
+      * Monniaux, David. Resorts Combine a Hotel and a Variety of Recreations, 
+      * Such as Swimming Pools, as Shown Here in San Diego, California. Digital 
+      * image. Wikipedia. N.p., 10 Jan. 2006. Web. 9 Dec. 2017.
+      * 
+      * image URL 
+  https://en.wikipedia.org/wiki/Resort#/media/File:Town_and_Country_fh000023.jpg
+      */
+        
+        
         ImageIcon imageIcon = new ImageIcon(
                 "src/thehotspotsresort/HotSpotLow.JPG"
         ); // load the image to a imageIcon
