@@ -53,8 +53,10 @@ public class MyJXMonthViewCalendar extends JFrame {
     private static JXMonthView monthView;
     private static List<Date> allOfFile;
     private String roomTitle;
+    private static boolean datesClear;
     private static int count;
     private static int length;
+    private static Date[] temp;
     private static Date[] unselectable;// = new Date[length];
    
     
@@ -68,6 +70,7 @@ public class MyJXMonthViewCalendar extends JFrame {
         this.frame = frame;
         this.span = span;
         this.numOfDays = numOfDays;
+        this.datesClear = false;
         this.stayCal = new Calendar[numOfDays];
                             //probably will never reach this amount of 2000
                             //but Its beeter to set the array size and not use
@@ -75,9 +78,6 @@ public class MyJXMonthViewCalendar extends JFrame {
         this.acceptDates = false;
         
         initComponents();  
-      
-        
-        
     }
 
     /**
@@ -258,12 +258,12 @@ public class MyJXMonthViewCalendar extends JFrame {
         
         //Tell application to automatically exit when the user selects the Close
         //menu item from the frame window’s system menu.
-        frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-        
+        //frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
+        frame.setUndecorated(true);
         //Install a month view componet. It instantiates a calendar view
         monthView = new JXMonthView();
-            //set the monthview component to a 2 by 2 grid and allow user 
-            //to select multiple days and then prints them and returns the datespan
+         //set the monthview component to a 2 by 2 grid and allow user 
+         //to select multiple days and then prints them and returns the datespan
         monthView.setPreferredColumnCount(2);
         
        
@@ -271,11 +271,12 @@ public class MyJXMonthViewCalendar extends JFrame {
  
         monthView.setPreferredRowCount(2);  
         monthView.setSelectionMode(  //single interval allow to select mult days
-                    DateSelectionModel.SelectionMode.SINGLE_INTERVAL_SELECTION);
+                    DateSelectionModel.SelectionMode.SINGLE_INTERVAL_SELECTION
+        );
         
         printDatesToCalendar();
         monthView.setFlaggedDayForeground(Color.red); //set date text to red
-        Date[] temp = new Date[count]; //new array size of flagged dates
+        temp = new Date[count]; //new array size of flagged dates
         for(int i = 0; i < count; i++) {   
             temp[i] = unselectable[i];   //puts only dates and not null into
         }                               //temp so we only have good dates
@@ -283,6 +284,7 @@ public class MyJXMonthViewCalendar extends JFrame {
         frame.getContentPane().add(monthView);
         frame.pack();  //allow frame to set all component at or above their 
                         //prefered size
+        
         frame.setLocationRelativeTo(null); //set frame to center
         frame.setVisible(true); //display GUI and start event dispatching thread
        // monthView.setFlaggedDate
@@ -296,27 +298,71 @@ public class MyJXMonthViewCalendar extends JFrame {
         {
             public void actionPerformed(ActionEvent e)
             {
-                MyJXMonthViewCalendar.setSpan(new DateSpan(monthView.getFirstSelectionDate(),
-                        monthView.getLastSelectionDate()));
+                //Returns calendar instance of FirstSelectedDate method from
+                //printReportGUI
+                Calendar pickerEnd = PrintReportGUI.dateToCalendar(
+                    monthView.getLastSelectionDate()
+                );
+                    //Returns calendar instance of FirstSelectedDate
+                Calendar pickerStart = PrintReportGUI.dateToCalendar(
+                    monthView.getFirstSelectionDate()
+                );
+                    //subtract one frome JXpicker start and add 1 to end so 
+                    //when the range is checked the actual start and end date 
+                    //are included then converted to a date instance of each
+                pickerStart.add(Calendar.DAY_OF_MONTH, -1);
+                pickerEnd.add(Calendar.DAY_OF_MONTH, 1);
+                Date pStart = pickerStart.getTime();
+                Date pEnd = pickerEnd.getTime();
                 
-                dateTypeToCalendarType(getSpan());
-                ///////////////////////////////////////////////////////////
-                System.out.println("span = " + getSpan());
-                System.out.println("Selected Start Date = "
-                        + getSpan().getStartAsDate());
-                System.out.println("Selected Start Date = "
-                        + getSpan().getEndAsDate());
-                numOfDays();
-                CalculateCost cost = new CalculateCost();
-               /* if(monthView.isFlaggedDate(span.getStartAsDate()) || monthView.isFlaggedDate(span.getEndAsDate())) &&
-                        (monthView.isFlaggedDate(span.getStartAsDate().after(
-                                        null)) || monthView.isFlaggedDate(span.getEndAsDate()))*/
-               // if(span.contains((DateSpan) monthView.getFlaggedDates())) {
-                 //   System.out.println("repick your dates room is book");
-                /*if(monthView.getSelectionForeground() == Color.red) {
-                    System.out.println("Repick not available");
-                }else {*/
+                for(int i = 0; i < temp.length - 1; i++) { 
+                                                    //date instancestartDate
+                    Calendar cal = PrintReportGUI.dateToCalendar(
+                        temp[i]     //temp is array of already booked dates
+                    );
+                    Date inRange = cal.getTime();   //sets cal to date
+                                                //formats date 
+                    SimpleDateFormat dateFormatter = new SimpleDateFormat(
+                            "EE, MMM d, yyyy"
+                    );
+                              //inRange is in Date Range from JXPicker +- 1
+                    if(inRange.after(pStart) && inRange.before(pEnd)) {
+                        //resets numOfDays clear date selection sets datesClear
+                        numOfDays = 0;          //to false and breaks the loop
+                        monthView.clearSelection(); //as only one date in the 
+                        datesClear = true; //range is needed to be a bad range
+                        break;
+                    }
+                }
+                /**if selected dates are not null basically if dates span get
+                 * cleared tthe selected dates are null so to avoid a null
+                 * pointter exception
+                 */
+                if(monthView.getFirstSelectionDate() != null &&
+                   monthView.getLastSelectionDate()  != null) {
+                    //sets the datespan by getting the monthView first sleected
+                    //date and the lastSelected date from the JXmonthView
+                    MyJXMonthViewCalendar.setSpan(
+                        new DateSpan(
+                            monthView.getFirstSelectionDate(),
+                            monthView.getLastSelectionDate()
+                        )
+                    );
+                    //sends dateSpan to to dateType to Calendar of first day in
+                    //span so it can be used in numOfDays to get number of days
+                    //in reservation
+                    dateTypeToCalendarType(getSpan());
+                    numOfDays();
+                    ///////////////////////////////////////////////////////////
+                                            //calculates the cost of the stay
+                    CalculateCost cost = new CalculateCost();
+                       /*call to remeberChck which is for JOption dialog for
+                        user to checkBox and select yes if they are the correct
+                        date
+                       */                     
                     rememberChk(span.getStartAsDate(), span.getEndAsDate());
+                }
+                
                 
             }
         };
@@ -425,26 +471,34 @@ public class MyJXMonthViewCalendar extends JFrame {
     
     public void rememberChk(Date start, Date end)
     {//this method is only enterd to verify the user wants these dates
+        
         int yesNoSelection;
         SimpleDateFormat dateFormatter;
         dateFormatter = new SimpleDateFormat("EEEE, MMMM d, yyyy");	
-                   //creates a message box that user can validate date selection 
+               //creates a message box that user can validate date selection 
         JCheckBox rememberChk = new JCheckBox("Check This Box If You Wish To " +
                                                        "Keep This Appointment");	
 //selection is remembered serves as confirmation for the system from the user
         String msg = ("Your selected checkin date is " +
                dateFormatter.format(start) + " - " + dateFormatter.format(end));
         Object[] msgContent = {msg, rememberChk};
-        yesNoSelection = JOptionPane.showConfirmDialog ( null,  msgContent,  
-                                            "Title", JOptionPane.YES_NO_OPTION);
+        yesNoSelection = JOptionPane.showConfirmDialog ( 
+                null,  
+                msgContent,  
+                "Reservation Date Confirmation ", 
+                JOptionPane.YES_NO_OPTION
+        );
         acceptDates = rememberChk.isSelected();
-        if((yesNoSelection == JOptionPane.NO_OPTION) || (acceptDates == false)){
+        if((yesNoSelection == JOptionPane.NO_OPTION) || 
+                !rememberChk.isSelected() /*(acceptDates == false)*/){
             numOfDays =0;
-            initComponents();
-           
+            monthView.clearSelection(); //clears selected dates
         }
-        else if ( ((yesNoSelection == JOptionPane.YES_OPTION) && 
-                                                       (acceptDates == true)) ) {
+        else if ( 
+                ((yesNoSelection == JOptionPane.YES_OPTION) && 
+                  rememberChk.isSelected()
+                 /*(acceptDates == true)*/) ) {
+
             System.out.println("Shouldn't be heree when cancel button");
             frame.setVisible(false);  //make current frame invisible
             //JFrame.AdminGUI.setOpaque(true);
@@ -453,10 +507,9 @@ public class MyJXMonthViewCalendar extends JFrame {
             frame.repaint();
             GuestInfoGUI guestGUI = new GuestInfoGUI();
             guestGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    
-            guestGUI.setVisible(true);
-        }
 
+            guestGUI.setVisible(true);
+        } 
     }
     /**
      * This method is set up to make that is native to the OS the system is run

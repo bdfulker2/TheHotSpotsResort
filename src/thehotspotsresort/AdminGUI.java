@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JRootPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,6 +23,8 @@ public class AdminGUI extends javax.swing.JFrame {
      */
     public AdminGUI() {
         initComponents();                   //initiates the componentx
+        
+      
         adminCancelButton.setText("<html>Cancel or Edit<br /> Reservation</html>");
         revalidate();
         repaint();
@@ -50,6 +53,7 @@ public class AdminGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Admin GUI");
+        setUndecorated(true);
         setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));

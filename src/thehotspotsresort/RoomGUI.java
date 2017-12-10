@@ -30,10 +30,14 @@ public class RoomGUI extends javax.swing.JFrame {
         this.five = false;
         this.six = false;
         initComponents();
+        
         setLookAndFeel();
         this.setLocationRelativeTo(null);
     }
-
+    public void setMyBorderLayout() {
+        getContentPane().add(jPanel2, java.awt.BorderLayout.SOUTH);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,12 +54,15 @@ public class RoomGUI extends javax.swing.JFrame {
         room4JButton = new javax.swing.JButton();
         room5JButton = new javax.swing.JButton();
         room6JButton = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        backJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 0, 0));
+        setBackground(new java.awt.Color(255, 255, 255));
         setFocusCycleRoot(false);
         setMaximumSize(new java.awt.Dimension(485, 294));
         setMinimumSize(new java.awt.Dimension(485, 294));
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 102), 10, true));
@@ -135,16 +142,44 @@ public class RoomGUI extends javax.swing.JFrame {
         });
         jPanel1.add(room6JButton);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel2.setPreferredSize(new java.awt.Dimension(485, 37));
+
+        backJButton.setBackground(new java.awt.Color(0, 153, 204));
+        backJButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
+        backJButton.setText("Back");
+        backJButton.setToolTipText("This Button save guest information. On new reservations it is only enabled when all data is filled in correctly in all text fields. When editing a reservation it can be used as soon as the data is edited");
+        backJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backJButton.setMaximumSize(new java.awt.Dimension(37, 22));
+        backJButton.setMinimumSize(new java.awt.Dimension(37, 22));
+        backJButton.setPreferredSize(new java.awt.Dimension(37, 22));
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backJButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(backJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(backJButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        /*
+
+        getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
+        */
+        setMyBorderLayout();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,6 +262,36 @@ public class RoomGUI extends javax.swing.JFrame {
                 "Room 6"
         );
     }//GEN-LAST:event_room6JButtonActionPerformed
+
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
+        // TODO add your handling code here:
+        if(evt.getSource() == backJButton) {
+            if(Login.isAdmin() == true) {
+                setVisible(false);  //makes current AdminGUI frame to invisible
+                setEnabled(false);  //disables the AdminGUI frame
+                revalidate();       //revalidates componenets
+                repaint();          //rpaints the frame
+                dispose();
+                AdminGUI admin = new AdminGUI();
+                admin.setAlwaysOnTop(true);
+                admin.setAutoRequestFocus(true);
+                admin.setFocusTraversalKeysEnabled(false);
+                admin.setVisible(true);
+            }
+            if(Login.isStaff() == true) {
+                setVisible(false);  //makes current AdminGUI frame to invisible
+                setEnabled(false);  //disables the AdminGUI frame
+                revalidate();       //revalidates componenets
+                repaint();          //rpaints the frame
+                dispose();
+                StaffGUI staff = new StaffGUI();
+                staff.setAlwaysOnTop(true);
+                staff.setAutoRequestFocus(true);
+                staff.setFocusTraversalKeysEnabled(false);
+                staff.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_backJButtonActionPerformed
                   
 
     /**
@@ -257,7 +322,9 @@ public class RoomGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backJButton;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton room1JButton;
     private javax.swing.JButton room2JButton;
     private javax.swing.JButton room3JButton;

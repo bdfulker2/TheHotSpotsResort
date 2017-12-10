@@ -100,6 +100,7 @@ public class PrintReportGUI extends JFrame implements ActionListener {
         backJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         mainPrintPanel.setBackground(new java.awt.Color(0, 102, 102));

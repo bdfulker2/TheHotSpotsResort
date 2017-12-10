@@ -7,6 +7,7 @@ package thehotspotsresort;
 
 import java.awt.Color;
 import java.io.IOException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -31,11 +32,12 @@ public class Login extends LoginGUI
     //testing with a passwordFiled instead of a text field
     private static String password;
     // = String.copyValueOf(LoginGUI.loginPasswordField.getPassword());
-
+    private static JFrame frame;
     private static String EIN;// = LoginGUI.einTextField.getText();
     private static boolean Admin;     //static boolean for Admin
     private static boolean match;   
     private static boolean Staff;
+    protected static boolean flag1, flag2;
 
     /**
      * @return the password
@@ -115,11 +117,15 @@ public class Login extends LoginGUI
     {
         Login.Admin = false;
         Login.match = false;
-        Login.EIN = EIN;                
+        Login.EIN = EIN;    
+        Login.flag1 = false;
+        Login.flag2 = false;
         Login.password = password;
      
-        checkPassAndEINLength();   //call to method to check EIN and Pass Length
-        checkEinAndPassword();      //call to see if EIN and Pass match database
+        /*checkPassAndEINLength();   //call to method to check EIN and Pass Length
+        if(flag1 = false) {         //to only make one frame
+            checkEinAndPassword();  //call to see if EIN and Pass match database
+        }*/
     }
     
    
@@ -134,19 +140,24 @@ public class Login extends LoginGUI
     *is an 7 - 12 digit alpha numeric string. If the EIN isn't 7 chars and the 
     *if the first char isn't an 's' or an 'a'
     */
-    private void checkPassAndEINLength() throws IOException {
+    public static boolean checkPassAndEINLength() throws IOException {
         if( (EIN.length() == 7) && (password.length() >= 7 
                                             && password.length() <= 12) )
         {    //print test will not show up when program runs on an actual system
             System.out.println("test passed EIN == 7 and Password is "
                                                         + "7 - 12 characters");
+            flag1 = false;
+            
         }
         else {           //if EIN or Pass are not the correct length start over
              JOptionPane.showMessageDialog(null, 
-                                "You EIN or Password isn't the correct length");
-            System.exit(0);
+                                "You EIN or Password isn't the correct length"
+             );
+            flag1 = true;
+            
+            
         }
-
+        return flag1;
     }
     /*
         can throw an IOException checkEIN and password match, but only if the 
@@ -155,70 +166,102 @@ public class Login extends LoginGUI
         ReadFromFile.java class. and checks if EIN and Password Match what is in
         our database (.txt file)
     */
-    private void checkEinAndPassword() throws IOException {
-        if(EIN.charAt(0) == 'a') {  //if EIN char at index 0 is an 'a'
-            System.out.println("You are an Admin");
-            Admin = true;           //sets boolean admin so the system knows
-                                    //what password file to check
-            ReadFromFile reader = new ReadFromFile(); //creates an instance of
-           // match = reader.read(Admin); //of ReadFromFile class and reads .txt 
-            match = reader.read2(Admin, "admin");
-                                        //of ReadFromFile class and reads .txt 
-                                        //AdminPassword.txt file
-            if(match == true)
-            {                       //if EIN and Passsword match do this
-                                    //I haven't decided where to go 
-                System.out.println("match = true :" + match);
+    public boolean checkEinAndPassword() throws IOException {
+        if (EIN.length() >0) {
+            if(EIN.charAt(0) == 'a') {  //if EIN char at index 0 is an 'a'
+                System.out.println("You are an Admin");
+                Admin = true;           //sets boolean admin so the system knows
+                                        //what password file to check
+                ReadFromFile reader = new ReadFromFile(); //creates an instance of
+               // match = reader.read(Admin); //of ReadFromFile class and reads .txt 
+                match = reader.read2(Admin, "admin");
+                                            //of ReadFromFile class and reads .txt 
+                                            //AdminPassword.txt file
+                if(match == true)
+                {                       //if EIN and Passsword match do this
+                                        //I haven't decided where to go 
+                    AdminGUI admin = new AdminGUI(); 
+                    admin.setAlwaysOnTop(true);
+                    admin.setAutoRequestFocus(true);
+                    admin.setFocusTraversalKeysEnabled(false);
+
+                    admin.setVisible(true);
+                    return false;
                
-                AdminGUI admin = new AdminGUI(); 
-                admin.setAlwaysOnTop(true);
-                admin.setAutoRequestFocus(true);
-                admin.setFocusTraversalKeysEnabled(false);
-               
-                admin.setVisible(true);
-               // AltTabStopper stop = new AltTabStopper(admin);
-                //stop.run();
-                    //admin.setVisible(true);   
+                }
+                else
+                {
+                    //LoginGUI.einTextField.setBackground(Color.red);
+                    JOptionPane.showMessageDialog(null, 
+                          "Your EIN or Password or both doesn't match our records"
+                    );
+                    flag2 = true;
+                }
+            }
+            else if(EIN.charAt(0) == 's' && !EIN.equals(""))
+            {
+                System.out.println("Welcome Staff Member");
+
+                ReadFromFile reader = new ReadFromFile();
+                //match = reader.read(Admin);
+                                            //of ReadFromFile class and reads .txt
+                 match = reader.read2(Admin, "staff"); 
+                if(match == true)
+                {
+                    Staff = true;
+                    StaffGUI staff = new StaffGUI();
+                    staff.setVisible(true);
+                    System.out.println("match = true :" + match);
+                    return false;
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, 
+                          "Your EIN or Password or both doesn't match our records"
+                    );
+                  
+                   flag2 = true;
+                //    addLoginPanelToFrame();
+                    //System.exit(0);
+                }
             }
             else
-            {
-                //LoginGUI.einTextField.setBackground(Color.red);
+            {//if EIN doesn't start with an 'a' or 'a' then it was wrong and restart
                 JOptionPane.showMessageDialog(null, 
-                      "Your EIN or Password or both doesn't match our records"
+                    "You EIN doesn't start with the right characters"
                 );
-                System.exit(0);
+                    
+                   flag2 = true;
+                 //   addLoginPanelToFrame();
+                    //System.exit(0);
+                   // System.exit(0);
             }
         }
-        else if(EIN.charAt(0) == 's')
-        {
-            System.out.println("Welcome Staff Member");
-            
-            ReadFromFile reader = new ReadFromFile();
-            //match = reader.read(Admin);
-                                        //of ReadFromFile class and reads .txt
-             match = reader.read2(Admin, "staff"); 
-            if(match == true)
-            {
-                Staff = true;
-                StaffGUI staff = new StaffGUI();
-                staff.setVisible(true);
-                System.out.println("match = true :" + match);
-            }
-            else
-            {
-                JOptionPane.showMessageDialog(null, 
-                      "Your EIN or Password or both doesn't match our records"
-                );
-                System.exit(0);
-            }
-        }
-        else
-        {//if EIN doesn't start with an 'a' or 'a' then it was wrong and restart
-            JOptionPane.showMessageDialog(null, 
-                "You EIN doesn't start with the right characters"
-            );
-                System.exit(0);
-        }
+        return true;
     }  
+    
+    public static void addLoginPanelToFrame() {
+        Login.setAdmin(false);
+        Login.setStaff(false);
+        Login.setEIN("");
+        Login.setPassword("");
+        frame = new JFrame();
+        frame.setLocationRelativeTo(LoginGUI.jLabel2);
+        frame.setUndecorated(true);
+        frame.setAlwaysOnTop(true);
+        frame.setAutoRequestFocus(true);
+        frame.setLocation(
+                LoginGUI.jLabel2.getWidth()/2-150, 
+                LoginGUI.jLabel2.getHeight()/2-100
+        );
+        frame.setSize(
+                LoginGUI.jPanel1.getWidth(), 
+                LoginGUI.jPanel1.getHeight()
+        );
+        frame.add(LoginGUI.jPanel1);
+      //  frame.revalidate();
+      //  frame.repaint();
+        frame.setVisible(true);
+    }
 }
 

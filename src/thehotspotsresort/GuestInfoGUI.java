@@ -40,6 +40,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
      */
      public GuestInfoGUI() {
         initComponents();       //initiate components with GUI built code
+        
         setLookAndFeel();       //sets look and feel of system running program
         this.setLocationRelativeTo(null);   //centers the frame on screen
                             
@@ -197,15 +198,15 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         //also will pull the date from the JXmonthview and put it onto 
         //guest info GUI
         if(AdminGUI.cancelButton == false && StaffGUI.cancelButton == false) {
-            deleteReservationJButton.setEnabled(false);
-            deleteReservationJButton.setOpaque(false);
-            deleteReservationJButton.setVisible(false);
-            buttonJPanel.remove(deleteReservationJButton);
-            revalidate();
-            repaint();
-            //deleteReservationJButton.setText("");
-            deleteReservationJButton.revalidate();
-            repaint();
+            deleteReservationJButton.setEnabled(false);  //disables delet button
+            deleteReservationJButton.setOpaque(false);  //set button to opaque
+            deleteReservationJButton.setVisible(false); //set not visible
+            deleteReservationJButton.revalidate(); //revalides button with above 
+            buttonJPanel.remove(deleteReservationJButton);  //removes from panel
+                                                            
+            revalidate();    //revalidates all of JFrame
+           
+            repaint();                                  //repaints frame
             checkInDateJTextField1.setText(
                     dateFormatter.format(
                             MyJXMonthViewCalendar.getSpan().getStartAsDate())
@@ -219,9 +220,19 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                     dateFormatter.format(today)
             );
            costJTextField.setText(String.valueOf(CalculateCost.getSumOfStay()));
-        } else {
+        } else if ( StaffGUI.cancelButton == false && 
+                    AdminGUI.cancelButton == true) {
+            
             deleteReservationJButton.setEnabled(true);
         }
+        
+        if(StaffGUI.cancelButton == true) {
+            buttonJPanel.remove(saveInfoJButton);
+            revalidate();
+            repaint();
+        }
+        
+        
     }
    
     /**
@@ -285,14 +296,16 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         jLabel11 = new javax.swing.JLabel();
         buttonJPanel = new javax.swing.JPanel();
         deleteReservationJButton = new javax.swing.JButton();
-        saveInfoJButton1 = new javax.swing.JButton();
+        backJButton = new javax.swing.JButton();
         saveInfoJButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setFocusTraversalPolicyProvider(true);
-        setMaximumSize(new java.awt.Dimension(489, 390));
-        setMinimumSize(new java.awt.Dimension(489, 390));
-        setPreferredSize(new java.awt.Dimension(489, 390));
+        setMaximumSize(new java.awt.Dimension(489, 364));
+        setMinimumSize(new java.awt.Dimension(489, 364));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(489, 364));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
@@ -509,7 +522,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
 
         deleteReservationJButton.setBackground(new java.awt.Color(255, 0, 0));
         deleteReservationJButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
-        deleteReservationJButton.setText("DELETE RESERVATION");
+        deleteReservationJButton.setText("DELETE RES");
         deleteReservationJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteReservationJButtonActionPerformed(evt);
@@ -517,17 +530,17 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         });
         buttonJPanel.add(deleteReservationJButton);
 
-        saveInfoJButton1.setBackground(new java.awt.Color(0, 153, 204));
-        saveInfoJButton1.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
-        saveInfoJButton1.setText("Back");
-        saveInfoJButton1.setToolTipText("This Button save guest information. On new reservations it is only enabled when all data is filled in correctly in all text fields. When editing a reservation it can be used as soon as the data is edited");
-        saveInfoJButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        saveInfoJButton1.addActionListener(new java.awt.event.ActionListener() {
+        backJButton.setBackground(new java.awt.Color(0, 153, 204));
+        backJButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
+        backJButton.setText("Back");
+        backJButton.setToolTipText("This Button save guest information. On new reservations it is only enabled when all data is filled in correctly in all text fields. When editing a reservation it can be used as soon as the data is edited");
+        backJButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveInfoJButton1ActionPerformed(evt);
+                backJButtonActionPerformed(evt);
             }
         });
-        buttonJPanel.add(saveInfoJButton1);
+        buttonJPanel.add(backJButton);
 
         saveInfoJButton.setBackground(new java.awt.Color(0, 153, 204));
         saveInfoJButton.setFont(new java.awt.Font("Gisha", 1, 14)); // NOI18N
@@ -811,9 +824,36 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         
     }//GEN-LAST:event_deleteReservationJButtonActionPerformed
 
-    private void saveInfoJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInfoJButton1ActionPerformed
+    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_saveInfoJButton1ActionPerformed
+        if(evt.getSource() == backJButton) {
+            if(Login.isAdmin() == true) {
+                setVisible(false);  //makes current AdminGUI frame to invisible
+                setEnabled(false);  //disables the AdminGUI frame
+                revalidate();       //revalidates componenets
+                repaint();          //rpaints the frame
+                dispose();
+                AdminGUI admin = new AdminGUI();   
+                admin.setAlwaysOnTop(true);
+                admin.setAutoRequestFocus(true);
+                admin.setFocusTraversalKeysEnabled(false);           
+                admin.setVisible(true);
+            }
+            
+            if(Login.isStaff() == true) {
+                setVisible(false);  //makes current AdminGUI frame to invisible
+                setEnabled(false);  //disables the AdminGUI frame
+                revalidate();       //revalidates componenets
+                repaint();          //rpaints the frame
+                dispose();
+                StaffGUI staff = new StaffGUI();  //instantiates a new StaffGUI
+                staff.setAlwaysOnTop(true);       //so users 
+                staff.setAutoRequestFocus(true);
+                staff.setFocusTraversalKeysEnabled(false);           
+                staff.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_backJButtonActionPerformed
 
     /**
      * Set the systems look and feel based on the operating system.
@@ -854,6 +894,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     private boolean creditCheck, cvv2Check, monthCheck, zipCodeCheck, yearCheck;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JTextField AptNumJTextField;
+    private javax.swing.JButton backJButton;
     private javax.swing.JPanel buttonJPanel;
     protected static javax.swing.JTextField checkInDateJTextField1;
     protected static javax.swing.JTextField checkOutDateJTextField;
@@ -883,7 +924,6 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     protected static javax.swing.JTextField resMadeDateJTextField;
     private javax.swing.JLabel resMadeNonChangingJLabel;
     private javax.swing.JButton saveInfoJButton;
-    private javax.swing.JButton saveInfoJButton1;
     protected static javax.swing.JTextField streetAddJTextField;
     protected static javax.swing.JTextField yearJTextField;
     protected static javax.swing.JTextField zipCodeJTextField;

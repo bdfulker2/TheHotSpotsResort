@@ -46,6 +46,7 @@ public class StaffGUI extends javax.swing.JFrame {
         setTitle("Staff GUI");
         setMaximumSize(new java.awt.Dimension(330, 332));
         setName("StaffFrame"); // NOI18N
+        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(330, 332));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -180,6 +181,7 @@ public class StaffGUI extends javax.swing.JFrame {
 			).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
+    protected static boolean guiFrameBool = false;
     protected static boolean cancelButton = false;
     protected static boolean bookButton;
     // Variables declaration - do not modify//GEN-BEGIN:variables

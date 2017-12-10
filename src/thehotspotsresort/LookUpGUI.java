@@ -336,6 +336,7 @@ public class LookUpGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 102));
+        setUndecorated(true);
         setResizable(false);
 
         tableModelForJPanel.setBackground(new java.awt.Color(0, 102, 102));

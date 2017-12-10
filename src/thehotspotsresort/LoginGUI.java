@@ -1,7 +1,9 @@
 package thehotspotsresort;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Event;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -35,13 +37,12 @@ public class LoginGUI extends javax.swing.JFrame {
     /**
      * Creates new form GUI
      */
-    
+   
     public LoginGUI()
     {
-  
+       
         initComponents(); //initializes all components from GUI editor
-       // this.setLocationRelativeTo(null
-        
+       
         setLookAndFeel(); //set the systems OS look and feel if 
         ImageIcon imageIcon = new ImageIcon(
                 "src/thehotspotsresort/HotSpotLow.JPG"
@@ -284,13 +285,43 @@ public class LoginGUI extends javax.swing.JFrame {
                 Login.setPassword(
                         String.copyValueOf(loginPasswordField.getPassword())
                 );
+                
                 Login.setEIN(einTextField.getText());
-                LoginGUI.jPanel1.setEnabled(false);
+               /* LoginGUI.jPanel1.setEnabled(false);
                 LoginGUI.jPanel1.setOpaque(true);
                 LoginGUI.jPanel1.setVisible(false);         
                 LoginGUI.jPanel1.revalidate();
+                repaint();*/
+                remove(jPanel1);
+                revalidate();
                 repaint();
+               
+                boolean checkEINandPass = false;
+                boolean checkEIN = false;
                 Login login = new Login(Login.getEIN(), Login.getPassword());
+                checkEINandPass = login.checkPassAndEINLength();
+               
+                if(checkEINandPass == false) {
+                    checkEIN = login.checkEinAndPassword();
+                    if(checkEIN == false) {
+                        LoginGUI.jPanel1.setEnabled(false);
+                        LoginGUI.jPanel1.setOpaque(true);
+                        LoginGUI.jPanel1.setVisible(false);         
+                        LoginGUI.jPanel1.revalidate();
+                        repaint();
+                    }
+                }
+                if(checkEINandPass == true || checkEIN == true) {
+                    setEnabled(false);
+                    setVisible(false);
+                    
+                    dispose();
+                    repaint();
+                    LoginGUI loginGUI = new LoginGUI();
+                    loginGUI.setVisible(true);
+                    
+                    
+                }
                 
             } 
             catch (IOException ex) {
@@ -305,6 +336,18 @@ public class LoginGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
+    public void yep() {
+        add(jPanel1);
+        revalidate();
+        repaint();
+    }
+    public static void helpMeExit() {
+         LoginGUI.jPanel1.setEnabled(true);  //reEnables JPanel with 
+         LoginGUI.jPanel1.setOpaque(true);   //Login components
+         LoginGUI.jPanel1.setVisible(true);         
+         LoginGUI.jPanel1.revalidate();
+          //      repaint();
+    }
     private void lookUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lookUpButtonActionPerformed
         // TODO add your handling code here:
          //LoginGUI log = new LoginGUI();
@@ -321,17 +364,22 @@ public class LoginGUI extends javax.swing.JFrame {
             look.setVisible(true);
         }
     }//GEN-LAST:event_lookUpButtonActionPerformed
-  
+
+ 
+    
+    protected static JFrame logFrame;
     protected static boolean logGUI = false;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel einLabel;
     protected static javax.swing.JTextField einTextField;
     private javax.swing.JLabel headerTitleJLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    protected static javax.swing.JLabel jLabel2;
     protected static javax.swing.JPanel jPanel1;
     protected static javax.swing.JButton loginButton;
     protected static javax.swing.JPasswordField loginPasswordField;
     private javax.swing.JButton lookUpButton;
     // End of variables declaration//GEN-END:variables
+
+   
 }
