@@ -6,6 +6,8 @@
  */
 package thehotspotsresort;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -150,8 +152,22 @@ public class LookUpGUI extends javax.swing.JFrame {
      * corresponds to that cell. 
      */
     public LookUpGUI() {
+        
         this.linesOfReservations = new ArrayList<String>();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenWidth = screenSize.width *3/4;
+        int screenHeight = screenSize.height *1/2;
+        //setBounds(0,0,screenWidth, screenHeight);
         initComponents();
+        
+        setPreferredSize(new Dimension(screenWidth, screenHeight));
+        setSize(screenWidth, screenHeight);
+       /* int jTw = jTable1.getSize().width;
+        int jTh = jTable1.getSize().height;
+        jTable1.setSize(jTh/screenWidth, jTh/screenHeight);
+        revalidate();
+        repaint()*/;
+      //  pack();
         setUpLookAndFeel();
         this.setLocationRelativeTo(null);
         if(AdminGUI.cancelButton == true) {
@@ -377,31 +393,41 @@ public class LookUpGUI extends javax.swing.JFrame {
 
         tableModelForJPanel.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
+        getContentPane().add(tableModelForJPanel, java.awt.BorderLayout.CENTER);
+
         inputsJPanel.setBackground(new java.awt.Color(0, 102, 102));
+        inputsJPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
+        inputsJPanel.setLayout(new java.awt.GridLayout(1, 0, 3, 6));
 
         jLabel1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Confirmation Number");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        inputsJPanel.add(jLabel1);
 
         confirmNumJTextField.setToolTipText("Confirmation Number used to look up ireservation by contact number");
         confirmNumJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        inputsJPanel.add(confirmNumJTextField);
 
         jLabel2.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("First Name");
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        inputsJPanel.add(jLabel2);
 
         fNameJTextField.setToolTipText("First Name Look Up used for looking up reservations by first ");
         fNameJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        inputsJPanel.add(fNameJTextField);
 
         jLabel3.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Last Name");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        inputsJPanel.add(jLabel3);
 
         lNameJTextField.setToolTipText("Last Name Look Up used for looking up reservations by last name");
         lNameJTextField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        inputsJPanel.add(lNameJTextField);
 
         lookUpReservationJButton.setBackground(new java.awt.Color(0, 153, 204));
         lookUpReservationJButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
@@ -413,6 +439,7 @@ public class LookUpGUI extends javax.swing.JFrame {
                 lookUpReservationJButtonActionPerformed(evt);
             }
         });
+        inputsJPanel.add(lookUpReservationJButton);
 
         backToGUIJButton.setBackground(new java.awt.Color(0, 153, 204));
         backToGUIJButton.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 1, 24)); // NOI18N
@@ -424,71 +451,9 @@ public class LookUpGUI extends javax.swing.JFrame {
                 backToGUIJButtonActionPerformed(evt);
             }
         });
+        inputsJPanel.add(backToGUIJButton);
 
-        javax.swing.GroupLayout inputsJPanelLayout = new javax.swing.GroupLayout(inputsJPanel);
-        inputsJPanel.setLayout(inputsJPanelLayout);
-        inputsJPanelLayout.setHorizontalGroup(
-            inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inputsJPanelLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(confirmNumJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(fNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lookUpReservationJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(backToGUIJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36))
-        );
-
-        inputsJPanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {confirmNumJTextField, fNameJTextField, lNameJTextField});
-
-        inputsJPanelLayout.setVerticalGroup(
-            inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inputsJPanelLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(fNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(lNameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirmNumJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, inputsJPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(inputsJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backToGUIJButton)
-                    .addComponent(lookUpReservationJButton))
-                .addContainerGap())
-        );
-
-        inputsJPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {backToGUIJButton, confirmNumJTextField, fNameJTextField, lNameJTextField, lookUpReservationJButton});
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(tableModelForJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1421, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(inputsJPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(inputsJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tableModelForJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        getContentPane().add(inputsJPanel, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
