@@ -607,7 +607,7 @@ public class LookUpGUI extends javax.swing.JFrame {
                 repaint();          //rpaints the frame
                 dispose();
                 LoginGUI.jPanel1.setEnabled(true);  //reEnables JPanel with 
-                LoginGUI.jPanel1.setOpaque(true);   //Login components
+                //LoginGUI.jPanel1.setOpaque(true);   //Login components
                 LoginGUI.jPanel1.setVisible(true);         
                 LoginGUI.jPanel1.revalidate();
                 repaint();

@@ -10,6 +10,8 @@
 package thehotspotsresort;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
@@ -18,6 +20,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -39,6 +42,8 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
      * Creates new form GuestInfoGUI
      */
      public GuestInfoGUI() {
+        saveToFile = false;
+        deleteFromFile = false;
         initComponents();       //initiate components with GUI built code
         
         setLookAndFeel();       //sets look and feel of system running program
@@ -59,7 +64,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         checkOutDateJTextField.setEditable(false);  //shoudn't be editable
         costJTextField.setEditable(false);
         resMadeDateJTextField.setEditable(false);
-            
+        saveInfoJButton.setEnabled(false);   
             //anonymous document listener there are 5 documentListeners with
             //almost same format. Some need different length digit amount
             //but other than that they are the same. Zipcode needs 5
@@ -613,7 +618,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     private void saveInfoJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveInfoJButtonActionPerformed
         // TODO add your handling code here:
         if(evt.getSource() == saveInfoJButton)
-        {
+        {                       //pulls the data from the textField on GUI
             saveToFile = true;
             GuestInfo.setFirstName(firstNameJTextField.getText());
             GuestInfo.setLastName(lastNameJTextField.getText());
@@ -630,10 +635,19 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
             GuestInfo.setPriceForStay(
                     Integer.parseInt(costJTextField.getText())
             );
-
-            ImageIcon icon = new ImageIcon("C:\\Users\\bdfulker2\\Desktop\\" +
-                "CEN-3031\\TheHotSpotsResort\\src\\thehotspotsresort\\" +
-                "thehotspotresort.Images\\hotspot(1).png");
+                //gets image path and stores in ImageIcon. Image icon.getImage()
+                //then it scales the image and set a new ImageIcon with the 
+                //scaled image
+            ImageIcon icon = new ImageIcon("hotspot1.jpg");
+            Image image = icon.getImage(); // transform it 
+            Image newimg = image.getScaledInstance(
+                80,
+                80,
+                java.awt.Image.SCALE_SMOOTH
+            ); // scale it the smooth way  
+            ImageIcon newIcon = new ImageIcon();
+            newIcon.setImage(newimg);
+            //sets print format of JOptionpane
             String str = String.format(
                 "\n Guest Name-------: %s, %s" +
                 "\n Check In Date-----: %s " +
@@ -662,17 +676,19 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 GuestInfo.getZipCode(),
                 GuestInfo.getDateOfReservation(),
                 GuestInfo.getPriceForStay(),
-                GuestInfo.getConfirmationNum());
+                GuestInfo.getConfirmationNum()
+            );
+            //joption pane with return dialog this has an image in it
             int input = JOptionPane.showConfirmDialog(
                     new GuestInfoGUI(),
                     str,
                     "Confirm Reservation Information",
                     JOptionPane.OK_CANCEL_OPTION, 
                     JOptionPane.INFORMATION_MESSAGE, 
-                    icon
+                    newIcon
             );
-           
-            if(input == 0)
+                        //if user selects ok on the JOptionPane set current
+            if(input == 0)  //fame to not visible and create GuestInfo Object
             {
                 setVisible(false);  //makes current AdminGUI frame to invisible
                 setEnabled(false);  //disables the AdminGUI frame
@@ -722,8 +738,19 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 GuestInfo.setPriceForStay(
                         Integer.parseInt(costJTextField.getText())
                 );
-                ImageIcon icon = new ImageIcon("src\\thehotspotsresort\\" +
-                    ".Images\\hotspot(1).png");
+                //gets image path and stores in ImageIcon. Image icon.getImage()
+                //then it scales the image and set a new ImageIcon with the 
+                //scaled image
+                ImageIcon icon = new ImageIcon("hotspot1.jpg");
+                Image image = icon.getImage(); // transform it 
+                Image newimg = image.getScaledInstance(
+                    80,
+                    80,
+                    java.awt.Image.SCALE_SMOOTH
+                ); // scale it the smooth way  
+                ImageIcon newIcon = new ImageIcon();
+                newIcon.setImage(newimg);
+                //sets print format of JOptionpane
                 String str = String.format(
                     "\n Guest Name-------: %s, %s" +
                     "\n Check In Date-----: %s " +
@@ -752,14 +779,21 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                     GuestInfo.getZipCode(),
                     GuestInfo.getDateOfReservation(),
                     GuestInfo.getPriceForStay(),
-                    GuestInfo.getConfirmationNum());
-                int input = JOptionPane.showConfirmDialog(new GuestInfoGUI(),str, 
-                        "Click Ok To Delete this Reservation",
+                    GuestInfo.getConfirmationNum()
+                );
+                //joption pane with return dialog this has an image in it
+                int input = JOptionPane.showConfirmDialog(
+                    new GuestInfoGUI(),
+                    str, 
+                    "Click Ok To Delete this Reservation",
                     JOptionPane.OK_CANCEL_OPTION, 
-                    JOptionPane.INFORMATION_MESSAGE, icon);
-                if(input == 0)
+                    JOptionPane.INFORMATION_MESSAGE, 
+                    newIcon
+                );
+                            //if user selects ok on the JOptionPane set current
+                if(input == 0) //fame to not visible and create GuestInfo Object
                 {
-                    setVisible(false);  //makes current AdminGUI frame to invisible
+                    setVisible(false);  //current AdminGUI frame to invisible
                     setEnabled(false);  //disables the AdminGUI frame
                     revalidate();       //revalidates componenets
                     repaint();          //rpaints the frame
@@ -773,7 +807,8 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                     );
 
                 }
-            }
+            }   //joptionpane to vefify that this is the reservation the user
+                //would like to cancel it show the per
             if(StaffGUI.cancelButton == true) {
                 deleteFromFile = true;
                 GuestInfo.setFirstName(firstNameJTextField.getText());
@@ -782,8 +817,19 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 GuestInfo.setDateCheckIn(checkInDateJTextField1.getText());
                 GuestInfo.setDateCheckOut(checkOutDateJTextField.getText());
                 
-                ImageIcon icon = new ImageIcon("src\\thehotspotsresort\\" +
-                    ".Images\\hotspot(1).png");
+                //gets image path and stores in ImageIcon. Image icon.getImage()
+                //then it scales the image and set a new ImageIcon with the 
+                //scaled image
+                ImageIcon icon = new ImageIcon("hotspot1.jpg");
+                Image image = icon.getImage(); // transform it 
+                Image newimg = image.getScaledInstance(
+                    80,
+                    80,
+                    java.awt.Image.SCALE_SMOOTH
+                ); // scale it the smooth way  
+                ImageIcon newIcon = new ImageIcon();
+                newIcon.setImage(newimg);
+                //sets print format of JOptionpane
                 String str = String.format(
                     "\n Guest Name-------: %s, %s" +
                     "\n Check In Date-----: %s " +
@@ -797,20 +843,28 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                     GuestInfo.getStayLength(),
                     GuestInfo.getDateOfReservation(),
                     GuestInfo.getConfirmationNum());
-                int input = JOptionPane.showConfirmDialog(new GuestInfoGUI(),str, 
-                        "Click Ok To Delete this Reservation",
+                //opens the JOptionPane with return dialog, but
+                int input = JOptionPane.showConfirmDialog(
+                    new GuestInfoGUI(),
+                    str, 
+                    "Click Ok To Delete this Reservation",
                     JOptionPane.OK_CANCEL_OPTION, 
-                    JOptionPane.INFORMATION_MESSAGE, icon);
+                    JOptionPane.INFORMATION_MESSAGE, newIcon
+                );
+                //if input is = 0 set current GUI to not visible and dispose
+                //and instantiate GuestInfo and prepare to remove from file
                 if(input == 0)
                 { 
                     
-                    setVisible(false);  //makes current AdminGUI frame to invisible
+                    setVisible(false);  //macurrent AdminGUI frame to invisible
                     setEnabled(false);  //disables the AdminGUI frame
                     revalidate();       //revalidates componenets
                     repaint();          //rpaints the frame
                     dispose();
-                    GuestInfo guest = new GuestInfo(GuestInfo.getFirstName(),
-                        GuestInfo.getLastName());
+                    GuestInfo guest = new GuestInfo(
+                            GuestInfo.getFirstName(),
+                            GuestInfo.getLastName()
+                    );
                    
 
                 }
@@ -887,8 +941,8 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     }
     
     //attribute and variable declarations 
-    protected static boolean saveToFile = false;
-    protected static boolean deleteFromFile = false;
+    protected static boolean saveToFile;// = false;
+    protected static boolean deleteFromFile;// = false;
     private static final Date today = Calendar.getInstance().getTime();
     SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
     private boolean creditCheck, cvv2Check, monthCheck, zipCodeCheck, yearCheck;

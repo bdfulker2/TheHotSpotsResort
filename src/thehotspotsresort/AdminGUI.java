@@ -24,7 +24,7 @@ public class AdminGUI extends javax.swing.JFrame {
     public AdminGUI() {
         initComponents();                   //initiates the componentx
         
-      
+        cancelButton = false;
         adminCancelButton.setText("<html>Cancel or Edit<br /> Reservation</html>");
         revalidate();
         repaint();
@@ -279,7 +279,7 @@ public class AdminGUI extends javax.swing.JFrame {
     }
     
     ///////// Start of Variable and Attribute Declaration//////////////
-    protected static boolean cancelButton = false;
+    protected static boolean cancelButton;// = false;
     protected static boolean bookButton;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected static javax.swing.JButton adminBookingButton;

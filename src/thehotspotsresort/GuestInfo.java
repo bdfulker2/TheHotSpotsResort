@@ -1,7 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class get all reservation info from the GuestInfoGUI. It also handles 
+ * all the method/class calling for printing and formatting reservations lines
+ * to files and calling to remove and edit reservations
  */
 package thehotspotsresort;
 
@@ -24,6 +24,7 @@ import java.util.logging.Logger;
  */
 public class GuestInfo// extends MyJXMonthViewCalendar
 {
+    //all the attribute declarations
     private static final SimpleDateFormat dateFormatter = new SimpleDateFormat(
             "EE- MMM d- yyyy"
     );
@@ -46,6 +47,86 @@ public class GuestInfo// extends MyJXMonthViewCalendar
     private static int priceForStay;
     private static final Date today = Calendar.getInstance().getTime();
     private static String dateOfReservation = dateFormatter.format(today); 
+    
+    //this class has 2 constructors on 
+    public GuestInfo(String firstName, String lastName) {
+        GuestInfo.firstName = firstName;
+        GuestInfo.lastName = lastName;
+        GuestInfo.stayLength = stayLength;
+        GuestInfo.dateCheckOut = dateCheckOut;
+        GuestInfo.dateCheckIn = dateCheckIn;
+        if((StaffGUI.cancelButton == true)     ) {
+            try {           //so remove from file for both cancel/edit button 
+                removeFromFile();   //or delete buttons
+            } 
+            catch (IOException ex) {
+                Logger.getLogger(GuestInfo.class.getName()).
+                        log(Level.SEVERE, null, ex);
+            }
+                //but if cancel edit button is true and delete is false 
+                //re writed edited data with passToFile
+            
+            
+        } 
+        StaffGUI newStaff = new StaffGUI();
+        newStaff.setVisible(true);
+    }
+    public GuestInfo(String firstName, String lastName, String streetAddress, 
+                        String aptNum, String zipCode, String creditCard, String 
+                                   twoDigMonth, String twoDigYear, String cvv2){
+        GuestInfo.firstName = firstName;
+        GuestInfo.lastName = lastName;
+        GuestInfo.streetAddress = streetAddress;
+        GuestInfo.aptNum = aptNum;
+        GuestInfo.zipCode = zipCode;
+        GuestInfo.creditCard = creditCard;
+        GuestInfo.twoDigMonth = twoDigMonth;
+        GuestInfo.twoDigYear = twoDigYear;
+        GuestInfo.cvv2 = cvv2;
+        GuestInfo.stayLength = stayLength;
+        GuestInfo.dateCheckOut = dateCheckOut;
+        GuestInfo.dateCheckIn = dateCheckIn;
+        GuestInfo.edited = false;
+        GuestInfo.priceForStay = priceForStay;
+        
+       
+        if(((AdminGUI.cancelButton == true ) || 
+           (GuestInfoGUI.deleteFromFile == true)) &&
+           (StaffGUI.cancelButton == false)     ) {
+            try {           //so remove from file for both cancel/edit button 
+                removeFromFile();   //or delete buttons
+            } 
+            catch (IOException ex) {
+                Logger.getLogger(GuestInfo.class.getName()).
+                        log(Level.SEVERE, null, ex);
+            }
+                //but if cancel edit button is true and delete is false 
+                //re writed edited data with passToFile
+            
+               
+        } 
+        
+        if( (GuestInfoGUI.saveToFile == true) &&
+            (AdminGUI.cancelButton == false )) {
+            try {
+                passToFile();
+            } catch (IOException ex) {
+                Logger.getLogger(
+                        GuestInfo.class.getName()
+                ).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        if(Login.isAdmin()) {
+            AdminGUI admin = new AdminGUI();
+            admin.setVisible(true);
+        } 
+        else if(Login.isStaff()) {
+            StaffGUI newStaff = new StaffGUI();
+            newStaff.setVisible(true);
+        }
+    }
+    
     
     /**
      * @return the dateOfReservation
@@ -192,7 +273,7 @@ public class GuestInfo// extends MyJXMonthViewCalendar
         if(AdminGUI.cancelButton == false && StaffGUI.cancelButton == false) {
             File file = null;       //new File from filePath
             try {
-                                               //room# is true check that .txt file
+                                           //room# is true check that .txt file
                 if(RoomGUI.one == true) {
                     file = new File(WriteReservationToFile.getRoom1Path());  
                 }
@@ -219,8 +300,11 @@ public class GuestInfo// extends MyJXMonthViewCalendar
                 long maxValue = 0;
                 for(String line: lines) {
                     if(!line.equals("")) {      //if line not null
-                        //each line is ! delimited so split at '!' and store in array
-                        String[] array = line.split("!");
+                  //each line is ! delimited so split at '!' and store in array
+                        String[] array = line.split("!"); 
+                        //this gets the String confirm from file and parses
+                        //to a long then it finds the max value and add 1 to it
+                        //for the new reservations confirmation number
                         Long temp = Long.parseLong(array[0]);
 
                         if (temp > maxValue) {
@@ -299,11 +383,17 @@ public class GuestInfo// extends MyJXMonthViewCalendar
                 }
             }
             catch (IOException ex) {
-                Logger.getLogger(GuestInfo.class.getName()).log(Level.SEVERE, null,
-                        ex);
+                Logger.getLogger(
+                        GuestInfo.class.getName()
+                ).log(
+                        Level.SEVERE, null,ex
+                );
             }
-            System.out.println("last confirmation number = " + 
-                    confirmationNum + "newConfirmation number is = " );
+            System.out.println(
+                    "last confirmation number = " + 
+                    confirmationNum + 
+                    "newConfirmation number is = " 
+            );
             return confirmationNum + 1;
         }else {
             
@@ -401,84 +491,14 @@ public class GuestInfo// extends MyJXMonthViewCalendar
     public static void setPriceForStay(int aPriceForStay) {
         priceForStay = aPriceForStay;
     }
-    public GuestInfo(String firstName, String lastName) {
-        GuestInfo.firstName = firstName;
-        GuestInfo.lastName = lastName;
-        GuestInfo.stayLength = stayLength;
-        GuestInfo.dateCheckOut = dateCheckOut;
-        GuestInfo.dateCheckIn = dateCheckIn;
-        if((StaffGUI.cancelButton == true)     ) {
-            try {           //so remove from file for both cancel/edit button 
-                removeFromFile();   //or delete buttons
-            } 
-            catch (IOException ex) {
-                Logger.getLogger(GuestInfo.class.getName()).
-                        log(Level.SEVERE, null, ex);
-            }
-                //but if cancel edit button is true and delete is false 
-                //re writed edited data with passToFile
-            
-            
-        } 
-        StaffGUI newStaff = new StaffGUI();
-        newStaff.setVisible(true);
-    }
-    public GuestInfo(String firstName, String lastName, String streetAddress, 
-                        String aptNum, String zipCode, String creditCard, String 
-                                   twoDigMonth, String twoDigYear, String cvv2){
-        GuestInfo.firstName = firstName;
-        GuestInfo.lastName = lastName;
-        GuestInfo.streetAddress = streetAddress;
-        GuestInfo.aptNum = aptNum;
-        GuestInfo.zipCode = zipCode;
-        GuestInfo.creditCard = creditCard;
-        GuestInfo.twoDigMonth = twoDigMonth;
-        GuestInfo.twoDigYear = twoDigYear;
-        GuestInfo.cvv2 = cvv2;
-        GuestInfo.stayLength = stayLength;
-        GuestInfo.dateCheckOut = dateCheckOut;
-        GuestInfo.dateCheckIn = dateCheckIn;
-        GuestInfo.edited = false;
-        GuestInfo.priceForStay = priceForStay;
-        
-       
-        if(((AdminGUI.cancelButton == true ) || 
-           (GuestInfoGUI.deleteFromFile == true)) &&
-           (StaffGUI.cancelButton == false)     ) {
-            try {           //so remove from file for both cancel/edit button 
-                removeFromFile();   //or delete buttons
-            } 
-            catch (IOException ex) {
-                Logger.getLogger(GuestInfo.class.getName()).
-                        log(Level.SEVERE, null, ex);
-            }
-                //but if cancel edit button is true and delete is false 
-                //re writed edited data with passToFile
-            
-               
-        } 
-        
-        if( (GuestInfoGUI.saveToFile == true) &&
-                                            (AdminGUI.cancelButton == false )) {
-            try {
-                passToFile();
-            } catch (IOException ex) {
-                Logger.getLogger(GuestInfo.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        if(Login.isAdmin()) {
-            AdminGUI admin = new AdminGUI();
-            admin.setVisible(true);
-        } 
-        else if(Login.isStaff()) {
-            StaffGUI newStaff = new StaffGUI();
-            newStaff.setVisible(true);
-        }
-    }
     
     /**
-     *
+     *  This method is for removeing or canceling reservations. A 
+     * RemoveReservationFromFile object instance. and based on the confirmation
+     * number of the reservation to be removed or editied and the deleteFromFile
+     * flag from the GUESTGUI frome and if it is false it means that its is 
+     * being edited and that since this is a text file we have to be removed 
+     * from the file and then reprinte/written to the file
      * @throws IOException
      */
     private void removeFromFile() throws IOException {
@@ -549,10 +569,16 @@ public class GuestInfo// extends MyJXMonthViewCalendar
         }
     }
    
+    /**
+     * The toString method is used to write new reservations to file for both
+     * staff and Admin. If either admin or staff cancel res flags are true it 
+     * means that Admin is editing
+     * @return 
+     */
     
     @Override
     public String toString() {
-       System.out.print("in toString should be printing");
+       //System.out.print("in toString should be printing");
     String line = "";
     
     if((AdminGUI.cancelButton == true) || (StaffGUI.cancelButton == true)) {

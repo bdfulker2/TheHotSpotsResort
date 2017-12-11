@@ -1,17 +1,15 @@
 package thehotspotsresort;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Event;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,7 +30,7 @@ import javax.swing.event.DocumentListener;
  *
  * @author bdfulker2
  */
-public class LoginGUI extends javax.swing.JFrame {
+public class LoginGUI extends javax.swing.JFrame  {
 
     /**
      * Creates new form GUI
@@ -43,7 +41,8 @@ public class LoginGUI extends javax.swing.JFrame {
        
         initComponents(); //initializes all components from GUI editor
        setLookAndFeel();
-        
+       //LoginGUI gui = new LoginGUI();
+     
         //set the systems OS look and feel if 
         
      /** Image citation 
@@ -56,8 +55,12 @@ public class LoginGUI extends javax.swing.JFrame {
       */
         
         
-        ImageIcon imageIcon = new ImageIcon(
+      /*  ImageIcon imageIcon = new ImageIcon(
                 "src/thehotspotsresort/HotSpotLow.JPG"
+        ); // load the image to a imageIcon 
+       */
+        ImageIcon imageIcon = new ImageIcon(
+                "HotSpotLow.JPG"
         ); // load the image to a imageIcon
         Image image = imageIcon.getImage(); // transform it 
         Image newimg = image.getScaledInstance(
@@ -299,36 +302,33 @@ public class LoginGUI extends javax.swing.JFrame {
                 );
                 
                 Login.setEIN(einTextField.getText());
-               /* LoginGUI.jPanel1.setEnabled(false);
-                LoginGUI.jPanel1.setOpaque(true);
-                LoginGUI.jPanel1.setVisible(false);         
-                LoginGUI.jPanel1.revalidate();
-                repaint();*/
-                remove(jPanel1);
-                revalidate();
+             
+                remove(jPanel1);  //remove jpanel but keep background frame
+                revalidate();      
                 repaint();
                
                 boolean checkEINandPass = false;
                 boolean checkEIN = false;
+                                    //INSTANCE OF LOGIN
                 Login login = new Login(Login.getEIN(), Login.getPassword());
                 checkEINandPass = login.checkPassAndEINLength();
                
                 if(checkEINandPass == false) {
                     checkEIN = login.checkEinAndPassword();
                     if(checkEIN == false) {
-                        LoginGUI.jPanel1.setEnabled(false);
-                        LoginGUI.jPanel1.setOpaque(true);
+                      /*  LoginGUI.jPanel1.setEnabled(false);
+                    //    LoginGUI.jPanel1.setOpaque(true);
                         LoginGUI.jPanel1.setVisible(false);         
                         LoginGUI.jPanel1.revalidate();
-                        repaint();
+                        repaint();*/
                     }
                 }
                 if(checkEINandPass == true || checkEIN == true) {
-                    setEnabled(false);
-                    setVisible(false);
+                    setEnabled(false);  //disables currnent LoginGUI and 
+                    setVisible(false);  //sets gui visible to false
                     
-                    dispose();
-                    repaint();
+                    dispose();          //dispose of gut
+                    repaint();      //repaint and open new LgoinGUI and 
                     LoginGUI loginGUI = new LoginGUI();
                     loginGUI.setVisible(true);
                     
@@ -348,25 +348,14 @@ public class LoginGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_loginButtonActionPerformed
 
-    public void yep() {
-        add(jPanel1);
-        revalidate();
-        repaint();
-    }
-    public static void helpMeExit() {
-         LoginGUI.jPanel1.setEnabled(true);  //reEnables JPanel with 
-         LoginGUI.jPanel1.setOpaque(true);   //Login components
-         LoginGUI.jPanel1.setVisible(true);         
-         LoginGUI.jPanel1.revalidate();
-          //      repaint();
-    }
+   
     private void lookUpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lookUpButtonActionPerformed
         // TODO add your handling code here:
          //LoginGUI log = new LoginGUI();
          //log.setVisible(false);
-        if(evt.getSource() == lookUpButton) {
-            LoginGUI.jPanel1.setEnabled(false);
-            LoginGUI.jPanel1.setOpaque(true);
+        if(evt.getSource() == lookUpButton) {    //if this button is selected
+            LoginGUI.jPanel1.setEnabled(false);  //disables and set
+         //   LoginGUI.jPanel1.setOpaque(true);
             LoginGUI.jPanel1.setVisible(false);         
             LoginGUI.jPanel1.revalidate();
             repaint();
@@ -375,6 +364,8 @@ public class LoginGUI extends javax.swing.JFrame {
             look.setAutoRequestFocus(true);
             look.setVisible(true);
         }
+       
+
     }//GEN-LAST:event_lookUpButtonActionPerformed
 
  
@@ -390,8 +381,11 @@ public class LoginGUI extends javax.swing.JFrame {
     protected static javax.swing.JPanel jPanel1;
     protected static javax.swing.JButton loginButton;
     protected static javax.swing.JPasswordField loginPasswordField;
-    private javax.swing.JButton lookUpButton;
+    protected static javax.swing.JButton lookUpButton;
     // End of variables declaration//GEN-END:variables
+
+
+   
 
    
 }

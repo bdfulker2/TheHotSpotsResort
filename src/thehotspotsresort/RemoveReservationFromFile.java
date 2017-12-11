@@ -23,37 +23,30 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class RemoveReservationFromFile
-{
+{ 
                   //final static variables paths for reservation .txt databases
-    private static final String room1Path = 
-            
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\" +
-            "src\\thehotspotsresort\\roomOne.txt";
-           /* "src\\thehotspotsresort\\roomTwo.txt";*/
-    private static final String room2Path =
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomTwo.txt";
-           // "src\\thehotspotsresort\\roomTwo.txt";
-    private static final String room3Path =
-            //"src\\thehotspotsresort\\roomThree.txt";
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomThree.txt";
-    private static final String room4Path =
-            //"src\\thehotspotsresort\\roomFour.txt";
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomFour.txt";
-    private static final String room5Path =
-            //"src\\thehotspotsresort\\roomFive.txt";
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomFive.txt";
-    private static final String room6Path =
-            //"src\\thehotspotsresort\\roomSix.txt";
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomSix.txt";
-    
-    private static final String tempFilePath =
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\TempReservationFile.txt";
+    private static final String room1Path = "roomOne.txt";
+            /*"C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\" +
+            "src\\thehotspotsresort\\roomOne.txt";*/
+           // Paths.get(AbsolutePath(), "roomOne.txt");
+    private static final String room2Path = "roomTwo.txt";
+         /*  "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomTwo.txt";  */
+    private static final String room3Path = "roomThree.txt";
+         /*  "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomThree.txt";  */
+    private static final String room4Path = "roomFour.txt";
+        /*   "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomFour.txt";  */
+    private static final String room5Path = "roomFive.txt";
+        /*   "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomFive.txt";  */
+    private static final String room6Path = "roomSix.txt";
+       /*    "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomSix.txt";     */
+    private static final String tempFilePath = "TempReservationFile.txt";
+          /* "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\TempReservationFile.txt"; */
    
     RemoveReservationFromFile()
     {

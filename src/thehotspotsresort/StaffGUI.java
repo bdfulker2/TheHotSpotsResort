@@ -5,10 +5,13 @@
  */
 package thehotspotsresort;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -21,6 +24,7 @@ public class StaffGUI extends javax.swing.JFrame {
      * Creates new form BookCancelLookUpGUI
      */
     public StaffGUI() {
+        cancelButton = false;
         initComponents();
         setLookAndFeel();
         this.setLocationRelativeTo(null);   //Centers the AdminGUI frame
@@ -181,13 +185,16 @@ public class StaffGUI extends javax.swing.JFrame {
 			).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }
-    protected static boolean guiFrameBool = false;
-    protected static boolean cancelButton = false;
+   
+    protected static boolean cancelButton;// = false;
     protected static boolean bookButton;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel2;
     protected static javax.swing.JButton staffBookingButton;
     protected static javax.swing.JButton staffCancelButton;
     protected static javax.swing.JButton staffLookUpButton;
     // End of variables declaration//GEN-END:variables
+
+    
 }

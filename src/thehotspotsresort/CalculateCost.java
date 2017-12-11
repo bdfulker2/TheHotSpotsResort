@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This class calculates the cost for new reservations only
  */
 package thehotspotsresort;
 
@@ -50,7 +48,11 @@ public class CalculateCost {
     public static void setSumForReport(int aSumForReport) {
         sumForReport = aSumForReport;
     }
-     
+    /**
+    *This caclulates the cost for the new reservations by taking the room cost
+    * and the numOfDays in reservation and mulitplies that together for the 
+    * sumOfStay
+    */
     public static void costForStay() {
         if((RoomGUI.one == true) || 
                 (RoomGUI.two == true) || 

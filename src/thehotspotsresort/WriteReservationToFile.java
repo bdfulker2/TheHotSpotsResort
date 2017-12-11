@@ -19,27 +19,29 @@ import java.util.Date;
  */
 public class WriteReservationToFile {
                   //final static variables paths for reservation .txt databases
-    private static final String room1Path = 
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\" +
-            "src\\thehotspotsresort\\roomOne.txt";
-    private static final String room2Path =
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomTwo.txt";
-    private static final String room3Path =
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomThree.txt";
-    private static final String room4Path =
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomFour.txt";
-    private static final String room5Path =
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomFive.txt";
-    private static final String room6Path =
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\roomSix.txt";
+    private static final String room1Path = "roomOne.txt";
+            /*"C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\" +
+            "src\\thehotspotsresort\\roomOne.txt";*/
+           // Paths.get(AbsolutePath(), "roomOne.txt");
+    private static final String room2Path = "roomTwo.txt";
+         /*  "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomTwo.txt";  */
+    private static final String room3Path = "roomThree.txt";
+         /*  "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomThree.txt";  */
+    private static final String room4Path = "roomFour.txt";
+        /*   "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomFour.txt";  */
+    private static final String room5Path = "roomFive.txt";
+        /*   "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomFive.txt";  */
+    private static final String room6Path = "roomSix.txt";
+       /*    "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\roomSix.txt";     */
     private static final String reservationMasterAllRoomsPath =
-            "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
-            "\\thehotspotsresort\\reservationMasterAllRooms.txt";
+            "reservationMasterAllRooms.txt";
+       /*    "C:\\Users\\bdfulker2\\Desktop\\CEN-3031\\TheHotSpotsResort\\src" +
+            "\\thehotspotsresort\\reservationMasterAllRooms.txt";  */
     
     /** getter for room 1 file path
      * @return the room1Path
@@ -89,7 +91,8 @@ public class WriteReservationToFile {
      * @param toFile
      * @throws java.io.IOException
      */
-    public static void FileWriter(String room, String toFile) throws IOException//throws IOException, FileNotFoundException
+                                //throws IOException, FileNotFoundException
+    public static void FileWriter(String room, String toFile) throws IOException
     {       
         BufferedWriter writeFile = null;
         BufferedWriter writeFile2 = null;
