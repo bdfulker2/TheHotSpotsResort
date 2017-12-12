@@ -12,6 +12,8 @@ package thehotspotsresort;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
@@ -25,6 +27,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.OK_OPTION;
+import static javax.swing.JOptionPane.CANCEL_OPTION;
 import javax.swing.event.DocumentEvent;
 import static thehotspotsresort.LookUpGUI.jTable1;
 
@@ -39,7 +42,7 @@ import static thehotspotsresort.LookUpGUI.jTable1;
  * and the user can save the guest info to the .txt file database
  * @author Your Name <Ben Fulker FGCU.EDU>
  */
-public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
+public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener {
     /**
      * Creates new form GuestInfoGUI
      */
@@ -47,6 +50,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
          System.out.print("firstName --------------------- " + LookUpGUI.firstName);
         saveToFile = false;
         deleteFromFile = false;
+        optionPanceCancelClick = false;
         initComponents();       //initiate components with GUI built code
         
         setLookAndFeel();       //sets look and feel of system running program
@@ -62,6 +66,8 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         cvv2JTextField.addKeyListener(this);
         zipCodeJTextField.addKeyListener(this);
         AptNumJTextField.addKeyListener(this);
+        
+        
                                                     //setEditability to false
         checkInDateJTextField1.setEditable(false);  //for Jtextboxes that 
         checkOutDateJTextField.setEditable(false);  //shoudn't be editable
@@ -239,6 +245,11 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
             revalidate();
             repaint();
         }
+        saveInfoJButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e){
+            
+            }
+        });
         
         
     }
@@ -622,6 +633,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         // TODO add your handling code here:
         if(evt.getSource() == saveInfoJButton)
         {                       //pulls the data from the textField on GUI
+            input1 = 0;
             GuestInfo.setFirstName(firstNameJTextField.getText());
             GuestInfo.setLastName(lastNameJTextField.getText());
             GuestInfo.setStreetAddress(streetAddJTextField.getText());
@@ -650,7 +662,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
             dateMade  = (resMadeDateJTextField.getText());
             checkIn   = (checkInDateJTextField1.getText());
             checkOut  = (checkOutDateJTextField.getText());
-            cost      = (costJTextField.getText());
+            cost      = (costJTextField.getText()); 
            /* GuestInfo.setPriceForStay(
                     Integer.parseInt(costJTextField.getText())
             ); */
@@ -682,7 +694,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 "\n Date Reserved---: %s" +
                 "\n Cost of Stay---: %s" +
                 "\n CONFIRMATION--: %s",
-                GuestInfo.getLastName(), GuestInfo.getFirstName(),
+                /*GuestInfo.getLastName(), GuestInfo.getFirstName(),
                 GuestInfo.getDateCheckIn(),
                 GuestInfo.getDateCheckOut(),
                 GuestInfo.getStayLength(),
@@ -695,10 +707,25 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 GuestInfo.getZipCode(),
                 GuestInfo.getDateOfReservation(),
                 GuestInfo.getPriceForStay(),
+                GuestInfo.getConfirmationNum()*/
+                lastName, firstName,
+                checkIn, 
+                checkOut,
+                GuestInfo.getStayLength(),
+                cc,
+                month,
+                year,
+                cvv2,
+                address,
+                apt,
+                zip,
+                dateMade,
+                cost,
                 GuestInfo.getConfirmationNum()
+                
             );
             //joption pane with return dialog this has an image in it
-            int input = JOptionPane.showConfirmDialog(
+            input1 = JOptionPane.showConfirmDialog(
                     new GuestInfoGUI(),
                     str,
                     "Confirm Reservation Information",
@@ -707,7 +734,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                     newIcon
             );
                         //if user selects ok on the JOptionPane set current
-            if(input == 0)  //fame to not visible and create GuestInfo Object
+            if(input1 == OK_OPTION)  //fame to not visible and create GuestInfo Object
             {
                 saveToFile = true;
                 setVisible(false);  //makes current AdminGUI frame to invisible
@@ -724,12 +751,103 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 );
 
             }else {
-              /*  GuestInfoGUI newGuestGUI = new GuestInfoGUI();
+                setVisible(false);  //current AdminGUI set to invisible
+                        setEnabled(false);  //disables the AdminGUI frame
+                        revalidate();       //revalidates componenets
+                        repaint();          //rpaints the frame
+                        dispose();
+                GuestInfoGUI newGuestGUI = new GuestInfoGUI();
                 newGuestGUI.setAlwaysOnTop(true);
                 newGuestGUI.setAutoRequestFocus(true);
                 newGuestGUI.setFocusTraversalKeysEnabled(false);
-                revalidate();
-                repaint();*/
+                 newGuestGUI.setVisible(true);
+                optionPanceCancelClick = true;
+                GuestInfoGUI.resMadeDateJTextField.setText(
+                        GuestInfo.getDateOfReservation()
+                );
+
+                GuestInfoGUI.checkInDateJTextField1.setText(
+                        GuestInfo.getDateCheckIn()
+                );
+
+                GuestInfoGUI.checkOutDateJTextField.setText(
+                        GuestInfo.getDateCheckOut()
+                );
+
+                GuestInfoGUI.firstNameJTextField.setText(
+                        GuestInfo.getFirstName()
+                );
+
+                GuestInfoGUI.lastNameJTextField.setText(GuestInfo.getLastName());
+
+                GuestInfoGUI.streetAddJTextField.setText(GuestInfo.getStreetAddress());
+
+                GuestInfoGUI.AptNumJTextField.setText(GuestInfo.getAptNum());
+
+                GuestInfoGUI.zipCodeJTextField.setText(GuestInfo.getZipCode());
+
+                GuestInfoGUI.creditJTextField.setText(GuestInfo.getCreditCard());
+
+                GuestInfoGUI.monthJTextField.setText(GuestInfo.getTwoDigMonth());
+
+                GuestInfoGUI.yearJTextField.setText(GuestInfo.getTwoDigYear());
+
+                GuestInfoGUI.cvv2JTextField.setText(GuestInfo.getCvv2());
+
+                GuestInfoGUI.costJTextField.setText(cost); 
+                
+                /*
+                getLastName(), GuestInfo.getFirstName(),
+                GuestInfo.getDateCheckIn(),
+                GuestInfo.getDateCheckOut(),
+                GuestInfo.getStayLength(),
+                GuestInfo.getCreditCard(),
+                GuestInfo.getTwoDigMonth(),
+                GuestInfo.getTwoDigYear(),
+                GuestInfo.getCvv2(),
+                GuestInfo.getStreetAddress(),
+                GuestInfo.getAptNum(),
+                GuestInfo.getZipCode(),
+                GuestInfo.getDateOfReservation(),
+                GuestInfo.getPriceForStay(),
+                GuestInfo.getConfirmationNum()
+            );
+                */
+               /* optionPanceCancelClick = true;
+                GuestInfoGUI.resMadeDateJTextField.setText(
+                        GuestInfo.getDateOfReservation()
+                );
+
+                GuestInfoGUI.checkInDateJTextField1.setText(
+                        GuestInfo.getDateCheckIn()
+                );
+
+                GuestInfoGUI.checkOutDateJTextField.setText(
+                        GuestInfo.getDateCheckOut()
+                );
+
+                GuestInfoGUI.firstNameJTextField.setText(
+                        GuestInfo.getFirstName()
+                );
+
+                GuestInfoGUI.lastNameJTextField.setText(GuestInfo.getLastName());
+
+                GuestInfoGUI.streetAddJTextField.setText(GuestInfo.getStreetAddress());
+
+                GuestInfoGUI.AptNumJTextField.setText(GuestInfo.getAptNum());
+
+                GuestInfoGUI.zipCodeJTextField.setText(GuestInfo.getZipCode());
+
+                GuestInfoGUI.creditJTextField.setText(GuestInfo.getCreditCard());
+
+                GuestInfoGUI.monthJTextField.setText(GuestInfo.getTwoDigMonth());
+
+                GuestInfoGUI.yearJTextField.setText(GuestInfo.getTwoDigYear());
+
+                GuestInfoGUI.cvv2JTextField.setText(GuestInfo.getCvv2());
+
+                GuestInfoGUI.costJTextField.setText(cost); */
+               /* optionPanceCancelClick = true;
                 GuestInfoGUI.resMadeDateJTextField.setText(
                         dateMade
                 );
@@ -762,7 +880,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
 
                 GuestInfoGUI.cvv2JTextField.setText(cvv2);
 
-                GuestInfoGUI.costJTextField.setText(cost);
+                GuestInfoGUI.costJTextField.setText(cost);*/
             }
         }
 
@@ -1062,6 +1180,8 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
     //attribute and variable declarations 
     protected static boolean saveToFile;// = false;
     protected static boolean deleteFromFile;// = false;
+    protected static boolean optionPanceCancelClick;
+    private static int input1;
     private static final Date today = Calendar.getInstance().getTime();
     SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
     private boolean creditCheck, cvv2Check, monthCheck, zipCodeCheck, yearCheck;
@@ -1117,6 +1237,7 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
         char c = e.getKeyChar();
         char d = e.getKeyChar();
         
+        
                 //all special chars except the hypen and apostrophe are blocked
                 //user can't type any special chars beside those 2 otherwise 
                 //the system will beep and consume them.
@@ -1149,12 +1270,26 @@ public class GuestInfoGUI extends javax.swing.JFrame implements KeyListener{
                 e.consume();
             }
         }
+       
         
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {  /*implemented but not needed */ }
+    public void keyPressed(KeyEvent e) {  /*implemented but not needed */
+        char f = e.getKeyChar();
+        if(     (e.getSource() == streetAddJTextField)  ||
+                (e.getSource() == AptNumJTextField)     ||
+                (e.getSource() == streetAddJTextField)  ||
+                (e.getSource() == firstNameJTextField)  ||
+                (e.getSource() == lastNameJTextField) )
+                {
+                    if(f == '!')
+                        e.consume();
+                }
+        
+    }
     
     @Override
     public void keyReleased(KeyEvent e) { /*implemented but not needed */ }
+
 }
