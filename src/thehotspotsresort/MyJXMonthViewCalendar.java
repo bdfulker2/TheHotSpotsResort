@@ -459,7 +459,7 @@ public class MyJXMonthViewCalendar extends JFrame {
                 dateStart.add(Calendar.DAY_OF_MONTH, 1);
                 numOfDays++;
             }
-        
+            GuestInfo.setStayLength(String.valueOf(numOfDays));
             System.out.println("num of day = " + numOfDays);
             
         }

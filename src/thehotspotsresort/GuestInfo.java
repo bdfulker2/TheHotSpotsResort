@@ -44,7 +44,7 @@ public class GuestInfo// extends MyJXMonthViewCalendar
     private static String stayLength;
     private static long confirmationNum; 
     private static boolean edited;
-    private static int priceForStay;
+    private static String priceForStay;
     private static final Date today = Calendar.getInstance().getTime();
     private static String dateOfReservation = dateFormatter.format(today); 
     
@@ -481,14 +481,14 @@ public class GuestInfo// extends MyJXMonthViewCalendar
     /**
      * @return the priceForStay
      */
-    public static int getPriceForStay() {
+    public static String getPriceForStay() {
         return priceForStay;
     }
 
     /**
      * @param aPriceForStay the priceForStay to set
      */
-    public static void setPriceForStay(int aPriceForStay) {
+    public static void setPriceForStay(String aPriceForStay) {
         priceForStay = aPriceForStay;
     }
     

@@ -93,7 +93,7 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder thickness="3">
+            <LineBorder thickness="8">
               <Color PropertyName="color" blue="66" green="66" red="0" type="rgb"/>
             </LineBorder>
           </Border>
@@ -107,7 +107,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
         <Property name="columns" type="int" value="0"/>
-        <Property name="horizontalGap" type="int" value="3"/>
+        <Property name="horizontalGap" type="int" value="6"/>
         <Property name="rows" type="int" value="1"/>
         <Property name="verticalGap" type="int" value="6"/>
       </Layout>

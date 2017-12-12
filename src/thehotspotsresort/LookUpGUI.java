@@ -199,67 +199,67 @@ public class LookUpGUI extends javax.swing.JFrame {
                         );
                         GuestInfo.setConfirmationNum(confirmationPass);
                         
-                        String resMade = (String)jTable1.getValueAt(
+                        dateMade = (String)jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 1).toString();
-                        GuestInfoGUI.resMadeDateJTextField.setText(resMade);
                         
-                        GuestInfoGUI.checkInDateJTextField1.setText((String)
-                                jTable1.getValueAt(
-                                       jTable1.getSelectedRow(), 2).toString()
-                        );
-                        GuestInfoGUI.checkOutDateJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 3).toString()
-                        );
+                        GuestInfoGUI.resMadeDateJTextField.setText(dateMade);
+                        
+                        checkIn = jTable1.getValueAt(
+                                       jTable1.getSelectedRow(), 2).toString();
+                        GuestInfoGUI.checkInDateJTextField1.setText(checkIn);
+                      
+                        checkOut = jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 3).toString();
+                        GuestInfoGUI.checkOutDateJTextField.setText(checkOut);
+                       
                         GuestInfo.setStayLength((String)
                                 jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 4).toString()
                         ); 
-                        GuestInfoGUI.firstNameJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 5).toString()
-                        );
-                        GuestInfoGUI.lastNameJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 6).toString()
-                        );
-                        GuestInfoGUI.streetAddJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 7).toString()
-                        );
-                        GuestInfoGUI.AptNumJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 8).toString()
-                        );
-                        GuestInfoGUI.zipCodeJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 9).toString()
-                        );
+                        firstName = jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 5).toString();
+                        GuestInfoGUI.firstNameJTextField.setText(firstName);
+                      
+                        lastName = jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 6).toString();
+                        GuestInfoGUI.lastNameJTextField.setText(lastName);
                        
-                        GuestInfoGUI.creditJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 10).toString()
-                        );
-                        GuestInfoGUI.monthJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 11).toString()
-                        );
-                        GuestInfoGUI.yearJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 12).toString()
-                        );
-                        GuestInfoGUI.cvv2JTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 13).toString()
-                        );
+                        address = jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 7).toString();
+                        GuestInfoGUI.streetAddJTextField.setText(address);
+                      
+                        apt = jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 8).toString();
+                        GuestInfoGUI.AptNumJTextField.setText(apt);
+                       
+                        zip = jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 9).toString();
+                        GuestInfoGUI.zipCodeJTextField.setText(zip);
+                      
+                        cc = jTable1.getValueAt(
+                                       jTable1.getSelectedRow(), 10).toString();
+                        GuestInfoGUI.creditJTextField.setText(cc);
+                       
+                        month = jTable1.getValueAt(
+                                       jTable1.getSelectedRow(), 11).toString();
+                        GuestInfoGUI.monthJTextField.setText(month);
+                      
+                        year = jTable1.getValueAt(
+                                       jTable1.getSelectedRow(), 12).toString();
+                        GuestInfoGUI.yearJTextField.setText(year);
+                     
+                        cvv2 = jTable1.getValueAt(
+                                       jTable1.getSelectedRow(), 13).toString();
+                        GuestInfoGUI.cvv2JTextField.setText(cvv2);
+                        
                         GuestInfo.setOriginalEIN((String)
                                 jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 14).toString()
                         );
-                        GuestInfoGUI.costJTextField.setText((String)
-                                jTable1.getValueAt(
-                                        jTable1.getSelectedRow(), 16).toString()
-                        );
+                        cost = jTable1.getValueAt(
+                                       jTable1.getSelectedRow(), 16).toString();
+                        GuestInfoGUI.costJTextField.setText(cost);
+                       
                     }
                 }
             });
@@ -288,11 +288,11 @@ public class LookUpGUI extends javax.swing.JFrame {
                         //jtable displays it in the GuestInfoGUI to its 
                         //corresponding textField
                         
-                        long confirmationPass = Long.parseLong(
+                       /* long confirmationPass = Long.parseLong(
                                 jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 0).toString()
                         );
-                         GuestInfo.setConfirmationNum(confirmationPass);
+                        GuestInfo.setConfirmationNum(confirmationPass);
                         
                         String resMade = (String)jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 1).toString();
@@ -317,8 +317,42 @@ public class LookUpGUI extends javax.swing.JFrame {
                         GuestInfoGUI.lastNameJTextField.setText((String)
                                 jTable1.getValueAt(
                                         jTable1.getSelectedRow(), 6).toString()
-                        );
+                        );*/
                         
+                        //easch the following data from the row of cells of the 
+                        //jtable displays it in the GuestInfoGUI to its 
+                        //corresponding textField
+                        long confirmationPass = Long.parseLong(
+                                jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 0).toString()
+                        );
+                        GuestInfo.setConfirmationNum(confirmationPass);
+                        
+                        dateMade = (String)jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 1).toString();
+                        
+                        GuestInfoGUI.resMadeDateJTextField.setText(dateMade);
+                        
+                        checkIn = jTable1.getValueAt(
+                                       jTable1.getSelectedRow(), 2).toString();
+                        GuestInfoGUI.checkInDateJTextField1.setText(checkIn);
+                      
+                        checkOut = jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 3).toString();
+                        GuestInfoGUI.checkOutDateJTextField.setText(checkOut);
+                      
+                        GuestInfo.setStayLength((String)
+                                jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 4).toString()
+                        ); 
+                        firstName = jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 5).toString();
+                        GuestInfoGUI.firstNameJTextField.setText(firstName);
+                       
+                        lastName = jTable1.getValueAt(
+                                        jTable1.getSelectedRow(), 6).toString();
+                        GuestInfoGUI.lastNameJTextField.setText(lastName);
+                       
                     }
                 }
             });
@@ -396,8 +430,8 @@ public class LookUpGUI extends javax.swing.JFrame {
         getContentPane().add(tableModelForJPanel, java.awt.BorderLayout.CENTER);
 
         inputsJPanel.setBackground(new java.awt.Color(0, 102, 102));
-        inputsJPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
-        inputsJPanel.setLayout(new java.awt.GridLayout(1, 0, 3, 6));
+        inputsJPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 8));
+        inputsJPanel.setLayout(new java.awt.GridLayout(1, 0, 6, 6));
 
         jLabel1.setFont(new java.awt.Font("Gloucester MT Extra Condensed", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -622,6 +656,9 @@ public class LookUpGUI extends javax.swing.JFrame {
     private static ArrayList<String> linesOfReservations;
     DefaultTableModel resTable;
     private static JButton CancelOrEditJButton;
+    protected static String firstName, lastName, confirmNum, cc, cvv2,zip, dateMade,
+            checkIn, checkOut, apt, address,month,year, cost;
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backToGUIJButton;
     private static javax.swing.JTextField confirmNumJTextField;
