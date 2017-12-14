@@ -4,7 +4,8 @@ VERSION or DATE: 12/12/2017
 HOW TO START THIS PROJECT:
 AUTHORS: Ben Fulker, Haley Ovenhouse, Bryan Cordes, Hunter Bedwell, and Christian Bedwell
 USER INSTRUCTIONS:
-To run the application, select the jar file. You may have to choose to open it with a jar launcher.
+To run the application, your windows system needs to be JAVA compatible. If it is you can download this programe by clicking the releases tab. once it opens select or double click the most latest version of our executable of the hotspotsresort-V-1.# the higest number is the latest version.
+To run the system after download open the unzipped file and select the jar executable file. You may have to choose to open it with a jar launcher depending on the system.
 Once open, the main menu will appear. From there the user can log in as an administrator or staff or choose to not login at all.
 
 If logging in as an administrator:
