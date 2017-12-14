@@ -280,7 +280,7 @@ public class LoginGUI extends javax.swing.JFrame  {
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {loginButton, lookUpButton});
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 430, 383, 189));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 400, 383, 189));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/thehotspotsresort/HotSpotLow.JPG"))); // NOI18N
         jLabel2.setMaximumSize(new java.awt.Dimension(128888888, 128888832));

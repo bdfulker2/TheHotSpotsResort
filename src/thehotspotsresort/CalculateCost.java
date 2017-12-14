@@ -18,6 +18,7 @@ public class CalculateCost {
     public CalculateCost() {
         this. sumOfStay = sumOfStay;
         this.sumForReport = sumForReport;
+        
         costForStay();
     }
 
@@ -54,6 +55,7 @@ public class CalculateCost {
     * sumOfStay
     */
     public static void costForStay() {
+        sumOfStay = 0;
         if((RoomGUI.one == true) || 
                 (RoomGUI.two == true) || 
                 (GuestInfo.getConfirmationNum() >= 10000000 && 

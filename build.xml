@@ -75,7 +75,7 @@
     <!-- Change the value to the name of the final jar without .jar -->
     <!--<property name="store.jar.name" value="TheHotSpotsResort_MAC_CENTER_LOGIN_UPDATE_NUM_3"/> -->
     
-    <property name="store.jar.name" value="TheHotSpotsResort_Bens_CPU_UPDATE_NUM_3"/> 
+    <property name="store.jar.name" value="TheHotSpotsResort_Bens_PC_VERSION_6"/> 
     <!-- don't edit below this line -->
     <property name="store.dir" value="dist"/>
     <property name="temp.dir" value="temp"/>

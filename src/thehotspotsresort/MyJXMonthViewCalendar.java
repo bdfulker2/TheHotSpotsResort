@@ -72,6 +72,7 @@ public class MyJXMonthViewCalendar extends JFrame {
         this.numOfDays = numOfDays;
         this.datesClear = false;
         this.stayCal = new Calendar[numOfDays];
+        this.numOfDays = 0;
                             //probably will never reach this amount of 2000
                             //but Its beeter to set the array size and not use
         unselectable = new Date[2000];
@@ -240,7 +241,7 @@ public class MyJXMonthViewCalendar extends JFrame {
             cal.set(sYear, sMonth, sDay+i);
             //allOfFile.add(cal.getTime());
             System.out.println("calendar cal = "+ cal);
-            
+        
             monthView.addFlaggedDates(cal.getTime());
             if(i<num)
                 unselectable[count++] = cal.getTime();
@@ -356,6 +357,7 @@ public class MyJXMonthViewCalendar extends JFrame {
                     dateTypeToCalendarType(getSpan());
                     numOfDays();
                     ///////////////////////////////////////////////////////////
+                    CalculateCost.setSumOfStay(0);
                                             //calculates the cost of the stay
                     CalculateCost cost = new CalculateCost();
                        /*call to remeberChck which is for JOption dialog for
@@ -431,8 +433,8 @@ public class MyJXMonthViewCalendar extends JFrame {
                                                    "November", "December" };
      //this line goes to the above array and gets its index locations number
                          //and adds one to get correct month nubmer
-        eMonth = (Arrays.asList(monthInYear).indexOf(endMonth) + 1); 		 				
-        sMonth = (Arrays.asList(monthInYear).indexOf(startMonth) + 1);
+        eMonth = (Arrays.asList(monthInYear).indexOf(endMonth)); 		 				
+        sMonth = (Arrays.asList(monthInYear).indexOf(startMonth));                                  ///////////////////////////////////////////////////////
                             //print to console to test wont show when 
                             //system acutally runs
         System.out.println("emonth = " + eMonth + " -- sMonth = " + sMonth);
@@ -459,6 +461,8 @@ public class MyJXMonthViewCalendar extends JFrame {
             while(dateStart.before(eCal))
             {
                 dateStart.add(Calendar.DAY_OF_MONTH, 1);
+                    SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
+            System.out.println("-------------------------------------------------------------------days listed in selected range" + dateFormatter.format(dateStart.getTime()));
                 numOfDays++;
             }
             GuestInfo.setStayLength(String.valueOf(numOfDays));
@@ -493,6 +497,7 @@ public class MyJXMonthViewCalendar extends JFrame {
         acceptDates = rememberChk.isSelected();
         if((yesNoSelection == JOptionPane.NO_OPTION) || 
                 !rememberChk.isSelected() /*(acceptDates == false)*/){
+            CalculateCost.setSumOfStay(0);
             numOfDays =0;
             monthView.clearSelection(); //clears selected dates
         }
