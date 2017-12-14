@@ -178,7 +178,8 @@ public class MyJXMonthViewCalendar extends JFrame {
                     );
                     Date startDate = dateFormatter.parse(array[2]);
                     int num = Integer.parseInt(array[4]);
-                    length += (num -1);
+                   // num = num -1;
+                    length += (num-1);
                     listAllDates(startDate, num);
                 }
 
@@ -241,7 +242,8 @@ public class MyJXMonthViewCalendar extends JFrame {
             System.out.println("calendar cal = "+ cal);
             
             monthView.addFlaggedDates(cal.getTime());
-            unselectable[count++] = cal.getTime();
+            if(i<num)
+                unselectable[count++] = cal.getTime();
             //count++;
             i++;
         }   
@@ -310,7 +312,7 @@ public class MyJXMonthViewCalendar extends JFrame {
                     //subtract one frome JXpicker start and add 1 to end so 
                     //when the range is checked the actual start and end date 
                     //are included then converted to a date instance of each
-                pickerStart.add(Calendar.DAY_OF_MONTH, -1);
+                pickerStart.add(Calendar.DAY_OF_MONTH, 1);
                 pickerEnd.add(Calendar.DAY_OF_MONTH, 1);
                 Date pStart = pickerStart.getTime();
                 Date pEnd = pickerEnd.getTime();
