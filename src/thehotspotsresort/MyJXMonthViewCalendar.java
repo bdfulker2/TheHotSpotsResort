@@ -432,9 +432,9 @@ public class MyJXMonthViewCalendar extends JFrame {
                     "May", "June", "July", "August", "September", "October", 
                                                    "November", "December" };
      //this line goes to the above array and gets its index locations number
-                         //and adds one to get correct month nubmer
+                         //and correct month nubmer
         eMonth = (Arrays.asList(monthInYear).indexOf(endMonth)); 		 				
-        sMonth = (Arrays.asList(monthInYear).indexOf(startMonth));                                  ///////////////////////////////////////////////////////
+        sMonth = (Arrays.asList(monthInYear).indexOf(startMonth));                                  
                             //print to console to test wont show when 
                             //system acutally runs
         System.out.println("emonth = " + eMonth + " -- sMonth = " + sMonth);
@@ -461,8 +461,6 @@ public class MyJXMonthViewCalendar extends JFrame {
             while(dateStart.before(eCal))
             {
                 dateStart.add(Calendar.DAY_OF_MONTH, 1);
-                    SimpleDateFormat dateFormatter = new SimpleDateFormat("EE, MMM d, yyyy");
-            System.out.println("-------------------------------------------------------------------days listed in selected range" + dateFormatter.format(dateStart.getTime()));
                 numOfDays++;
             }
             GuestInfo.setStayLength(String.valueOf(numOfDays));
